@@ -1,91 +1,170 @@
+:root {
+  --primary-color: #4a6fa5;
+  --secondary-color: #334e68;
+  --background-color: #f8f9fa;
+  --text-color: #334e68;
+  --border-color: #d9e2ec;
+  --added-color: #31a354;
+  --added-bg: #e6f5ee;
+  --removed-color: #e53935;
+  --removed-bg: #fbe9e7;
+  --chunk-color: #8a008b;
+  --header-height: 60px;
+}
+
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 html, body {
-	background: #EEE;
-	font: 12px sans-serif;
+  background: var(--background-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  color: var(--text-color);
+  height: 100%;
+  line-height: 1.5;
 }
+
 body {
-	padding-top: 1.8em;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+  padding-top: var(--header-height);
+  display: flex;
+  flex-direction: column;
 }
-html, body, table, tbody, tr, td, textarea, div {
-	height: 100%
+
+.container {
+  display: flex;
+  height: calc(100% - var(--header-height));
+  width: 100%;
 }
-table {
-	table-layout: fixed;
-	width: 100%;
+
+.panel {
+  flex: 1;
+  padding: 10px;
+  height: 100%;
+  position: relative;
 }
-td {
-	box-sizing:border-box;
-	width: 33.3333%;
-	padding: 3px 4px;
-	border: 1px solid transparent;
-}
-td div, td textarea {
-	overflow: auto;
-	font: 1em monospace;
-	width: 100%;
-	resize: none;
-}
-h1 {
-	display: inline;
-	font-size: 100%;
-}
-del {
-	text-decoration: none;
-	color: #b30000;
-	background: #fadad7;
-}
-ins {
-	background: #eaf2c2;
-	color: #406619;
-	text-decoration: none;
-}
-.chunk-header {
-	color: #8a008b;
-	text-decoration: none;
+
+textarea, #result {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: white;
+  resize: none;
+  overflow: auto;
 }
 
 #result {
-	white-space: pre-wrap;
+  white-space: pre-wrap;
+  background-color: white;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+del {
+  text-decoration: none;
+  color: var(--removed-color);
+  background: var(--removed-bg);
+  padding: 1px 0;
+}
+
+ins {
+  background: var(--added-bg);
+  color: var(--added-color);
+  text-decoration: none;
+  padding: 1px 0;
+}
+
+.chunk-header {
+  color: var(--chunk-color);
+  text-decoration: none;
+  font-weight: bold;
 }
 
 #settings {
-	position: absolute;
-	top: 0;
-	left: 5px;
-	right: 5px;
-	height: 2em;
-	line-height: 2em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 }
+
+.title-section {
+  flex: 1;
+}
+
+.options-section {
+  display: flex;
+  align-items: center;
+}
+
 #settings label {
-	margin-left: 1em;
+  margin-left: 15px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#settings input[type="radio"] {
+  margin-right: 5px;
+}
+
+.links-section {
+  margin-left: 20px;
 }
 
 .source {
-	position: absolute;
-	right: 1%;
-	top: .2em;
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 14px;
+  transition: color 0.2s;
 }
 
-textarea {
-	background: #F9F9F9;
-	border-color: #BBB #D9D9D9 #DDD;
-	border-radius: 4px;
-	outline: none;
+.source:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
 }
+
 textarea:focus {
-	background: #FFF;
-	border-color: #6699cc;
-	box-shadow: 0 0 4px #2175c9;
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
 }
 
-@-moz-document url-prefix() {
-	body {
-		height: 99%; /* Hide scroll bar in Firefox */
-	}
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .panel {
+    height: 33.3%;
+  }
+  
+  #settings {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+  
+  .title-section, .options-section, .links-section {
+    width: 100%;
+    margin: 5px 0;
+  }
 }

@@ -1,46 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>jsdiff - JavaScript Text Diff Library | Myers Algorithm Implementation</title>
-	<meta
-			name="description"
-			content="High-performance JavaScript library for text comparison. Supports character/word-level diffs, Node.js/browser compatibility, and custom algorithms. Try the live demo."
-	/>
-	<script type="application/ld+json">
-		{
-			"@type": "SoftwareApplication",
-			"name": "jsdiff",
-			"description": "A JavaScript library for text difference comparison",
-			"operatingSystem": "Windows, macOS, Linux",
-			"applicationCategory": "Development",
-			"downloadUrl": "https://www.npmjs.com/package/diff",
-			"githubUrl": "https://github.com/kpdecker/jsdiff"
-		}
-	</script>
-	<link rel="stylesheet" href="style.css"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsdiff - JavaScript Text Diff Library | Myers Algorithm Implementation</title>
+    <meta
+        name="description"
+        content="High-performance JavaScript library for text comparison. Supports character/word-level diffs, Node.js/browser compatibility, and custom algorithms. Try the live demo."
+    />
+    <script type="application/ld+json">
+        {
+            "@type": "SoftwareApplication",
+            "name": "jsdiff",
+            "description": "A JavaScript library for text difference comparison",
+            "operatingSystem": "Windows, macOS, Linux",
+            "applicationCategory": "Development",
+            "downloadUrl": "https://www.npmjs.com/package/diff",
+            "githubUrl": "https://github.com/kpdecker/jsdiff"
+        }
+    </script>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
 <div id="settings">
-	<h1>jsdiff: JavaScript Text Difference Library</h1>
-	<label><input type="radio" name="diff_type" value="diffChars" checked> Chars</label>
-	<label><input type="radio" name="diff_type" value="diffWords"> Words</label>
-	<label><input type="radio" name="diff_type" value="diffLines"> Lines</label>
-	<label><input type="radio" name="diff_type" value="diffPatch"> Patch</label>
+    <div class="title-section">
+        <h1>jsdiff: JavaScript Text Difference Library</h1>
+    </div>
+    <div class="options-section">
+        <label><input type="radio" name="diff_type" value="diffChars" checked> Chars</label>
+        <label><input type="radio" name="diff_type" value="diffWords"> Words</label>
+        <label><input type="radio" name="diff_type" value="diffLines"> Lines</label>
+        <label><input type="radio" name="diff_type" value="diffPatch"> Patch</label>
+    </div>
+    <div class="links-section">
+        <a href="https://github.com/kpdecker/jsdiff" class="source">GitHub</a>
+        <a href="https://json.jsdiff.com/" class="source">JSON Diff Tool</a>
+        <a href="https://tools.zthinker.com/" class="source">更多工具</a>
+    </div>
 </div>
 
-<a href="https://github.com/kpdecker/jsdiff" class="source">github.com/kpdecker/jsdiff</a>
-<a href="https://json.jsdiff.com/" class="source">JSON Diff Tool</a>
-<a href="https://tools.zthinker.com/" class="source">更多工具</a>
-
-<table>
-	<tr>
-		<td><textarea id="a">restaurant</textarea></td>
-		<td><textarea id="b">aura</textarea></td>
-		<td><div><pre id="result"></pre></div></td>
-	</tr>
-</table>
+<div class="container">
+    <div class="panel">
+        <textarea id="a" placeholder="Enter original text here">restaurant</textarea>
+    </div>
+    <div class="panel">
+        <textarea id="b" placeholder="Enter modified text here">aura</textarea>
+    </div>
+    <div class="panel">
+        <pre id="result"></pre>
+    </div>
+</div>
 
 <script src="diff.js"></script>
 <script defer>
@@ -49,88 +59,87 @@ var b = document.getElementById('b');
 var result = document.getElementById('result');
 
 function changed() {
-	var fragment = document.createDocumentFragment();
-	var diff;
-	if (window.diffType === 'diffPatch') {
-		// We contort the patch into a similar data structure to that returned by diffChars,
-		// diffWords, etc so that the same rendering code below can work on both.
-		var pastHunkHeader = false;
-		diff = Diff.createTwoFilesPatch('a.txt', 'b.txt', a.value, b.value)
-			.split('\n')
-			.map(function(entry) {
-				const result = {
-					value: entry + '\n',
-				};
-				if (entry.startsWith('@@')) {
-					result.chunkHeader = true;
-					pastHunkHeader = true;
-				} else if (pastHunkHeader) {
-					if (entry.startsWith('-')) {
-						result.removed = true;
-					} else if (entry.startsWith('+')) {
-						result.added = true;
-					}
-				}
-				return result;
-			});
-	} else {
-		diff = Diff[window.diffType](a.value, b.value);
-	}
+    var fragment = document.createDocumentFragment();
+    var diff;
+    if (window.diffType === 'diffPatch') {
+        // We contort the patch into a similar data structure to that returned by diffChars,
+        // diffWords, etc so that the same rendering code below can work on both.
+        var pastHunkHeader = false;
+        diff = Diff.createTwoFilesPatch('a.txt', 'b.txt', a.value, b.value)
+            .split('\n')
+            .map(function(entry) {
+                const result = {
+                    value: entry + '\n',
+                };
+                if (entry.startsWith('@@')) {
+                    result.chunkHeader = true;
+                    pastHunkHeader = true;
+                } else if (pastHunkHeader) {
+                    if (entry.startsWith('-')) {
+                        result.removed = true;
+                    } else if (entry.startsWith('+')) {
+                        result.added = true;
+                    }
+                }
+                return result;
+            });
+    } else {
+        diff = Diff[window.diffType](a.value, b.value);
+    }
 
-	for (var i=0; i < diff.length; i++) {
+    for (var i=0; i < diff.length; i++) {
+        if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
+            var swap = diff[i];
+            diff[i] = diff[i + 1];
+            diff[i + 1] = swap;
+        }
 
-		if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
-			var swap = diff[i];
-			diff[i] = diff[i + 1];
-			diff[i + 1] = swap;
-		}
+        var node;
+        if (diff[i].removed) {
+            node = document.createElement('del');
+            node.appendChild(document.createTextNode(diff[i].value));
+        } else if (diff[i].added) {
+            node = document.createElement('ins');
+            node.appendChild(document.createTextNode(diff[i].value));
+        } else if (diff[i].chunkHeader) {
+            node = document.createElement('span');
+            node.setAttribute('class', 'chunk-header');
+            node.appendChild(document.createTextNode(diff[i].value));
+        } else {
+            node = document.createTextNode(diff[i].value);
+        }
+        fragment.appendChild(node);
+    }
 
-		var node;
-		if (diff[i].removed) {
-			node = document.createElement('del');
-			node.appendChild(document.createTextNode(diff[i].value));
-		} else if (diff[i].added) {
-			node = document.createElement('ins');
-			node.appendChild(document.createTextNode(diff[i].value));
-		} else if (diff[i].chunkHeader) {
-			node = document.createElement('span');
-			node.setAttribute('class', 'chunk-header');
-			node.appendChild(document.createTextNode(diff[i].value));
-		} else {
-			node = document.createTextNode(diff[i].value);
-		}
-		fragment.appendChild(node);
-	}
-
-	result.textContent = '';
-	result.appendChild(fragment);
+    result.textContent = '';
+    result.appendChild(fragment);
 }
 
 window.onload = function() {
-	onDiffTypeChange(document.querySelector('#settings [name="diff_type"]:checked'));
-	changed();
+    onDiffTypeChange(document.querySelector('#settings [name="diff_type"]:checked'));
+    changed();
 };
 
 a.onpaste = a.onchange =
 b.onpaste = b.onchange = changed;
 
 if ('oninput' in a) {
-	a.oninput = b.oninput = changed;
+    a.oninput = b.oninput = changed;
 } else {
-	a.onkeyup = b.onkeyup = changed;
+    a.onkeyup = b.onkeyup = changed;
 }
 
 function onDiffTypeChange(radio) {
-	window.diffType = radio.value;
-	document.title = "Diff " + radio.value.slice(4);
+    window.diffType = radio.value;
+    document.title = "Diff " + radio.value.slice(4);
 }
 
 var radio = document.getElementsByName('diff_type');
 for (var i = 0; i < radio.length; i++) {
-	radio[i].onchange = function(e) {
-		onDiffTypeChange(e.target);
-		changed();
-	}
+    radio[i].onchange = function(e) {
+        onDiffTypeChange(e.target);
+        changed();
+    }
 }
 </script>
 </body>
