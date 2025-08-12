@@ -1,6 +1,6 @@
 # jsdiff
 
-A JavaScript text differencing implementation. Try it out in the **[online demo](https://kpdecker.github.io/jsdiff)**.
+A JavaScript text differencing implementation. Try it out in the **[online demo](https://jsdiff.com)**.
 
 Based on the algorithm proposed in
 ["An O(ND) Difference Algorithm and its Variations" (Myers, 1986)](http://www.xmailserver.org/diff2.pdf).
