@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- 主站首页 -->
+    <url>
+        <loc>https://jsdiff.com/</loc>
+        <lastmod>2025-08-13</lastmod> <!-- 替换为实际最后更新日期 -->
+        <priority>1.0</priority> <!-- 主站优先级最高 -->
+    </url>
+
+    <!-- 子页面1：JSON工具页 -->
+    <url>
+        <loc>https://json.jsdiff.com/</loc>
+        <lastmod>2025-08-13</lastmod> <!-- 替换为该页面实际更新日期 -->
+        <priority>0.8</priority> <!-- 子页面优先级略低于主站 -->
+    </url>
+
+    <!-- 子页面2：简化版工具页 -->
+    <url>
+        <loc>https://j.jsdiff.com/</loc>
+        <lastmod>2025-08-13</lastmod> <!-- 替换为该页面实际更新日期 -->
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://jsdiff.com/json</loc>
+        <lastmod>2025-08-13</lastmod> <!-- 替换为该页面实际更新日期 -->
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://jsdiff.com/jsdiff-online.html</loc>
+        <lastmod>2025-08-13</lastmod> <!-- 替换为该页面实际更新日期 -->
+        <priority>0.8</priority>
+    </url>
+</urlset>
