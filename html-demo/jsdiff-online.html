@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSDiff Online - Compare JSON & JavaScript with jsdiff Library</title>
+    <meta name="description" content="Use JSDiff Online to compare JSON or JavaScript code differences directly in your browser. Powered by the open-source jsdiff library with visual highlighting, structured view, and merge support.">
+    <meta name="keywords" content="jsdiff, jsdiff online, JSON diff, JavaScript diff, code compare, json compare online, jsdiff example, jsdiff merge">
+</head>
+<body>
+<header>
+    <h1>JSDiff Online - Compare JSON & JavaScript Differences</h1>
+    <p>Experience the power of the <strong>jsdiff</strong> open-source library directly in your browser. No installation, no setup — just paste your code and see the differences instantly.</p>
+</header>
+
+<section>
+    <h2>What is jsdiff?</h2>
+    <p><a href="https://github.com/kpdecker/jsdiff" target="_blank" rel="noopener">jsdiff</a> is a popular open-source JavaScript library for computing text differences. It’s often used to compare JSON, JavaScript code, or plain text, highlighting insertions, deletions, and modifications.</p>
+    <p>Many developers integrate <strong>jsdiff</strong> into their Node.js or browser-based projects for tasks like code review, API response comparison, or configuration file analysis.</p>
+</section>
+
+<section>
+    <h2>JSDiff.com - The Online Version of jsdiff</h2>
+    <p>While jsdiff is a library for developers, <strong>JSDiff.com</strong> offers an <em>online version</em> so you can use its functionality instantly without writing code. This is perfect for:</p>
+    <ul>
+        <li>Comparing two JSON objects</li>
+        <li>Finding differences in JavaScript code</li>
+        <li>Debugging API responses</li>
+        <li>Reviewing configuration changes</li>
+    </ul>
+    <p>Try it now by pasting your two JSON/JavaScript snippets below:</p>
+    <!-- Your existing diff tool UI can be embedded here -->
+    <div id="diff-tool">
+        <!-- Example placeholder -->
+        <p><em>Paste your code on the left and right to see the diff...</em></p>
+    </div>
+</section>
+
+<section>
+    <h2>Why Use JSDiff Online?</h2>
+    <ul>
+        <li>No installation or npm packages required</li>
+        <li>Visual highlighting for added, removed, and changed parts</li>
+        <li>Structured view for JSON data</li>
+        <li>Merge differences with one click</li>
+        <li>Privacy-friendly: all processing happens locally in your browser</li>
+    </ul>
+</section>
+
+<section>
+    <h2>jsdiff Code Example</h2>
+    <pre><code class="language-js">
+// Example: Using jsdiff in JavaScript
+const jsdiff = require('diff');
+
+const one = 'I love JavaScript';
+const other = 'I love JS';
+
+const diff = jsdiff.diffWords(one, other);
+diff.forEach(part => {
+  const color = part.added ? 'green' :
+    part.removed ? 'red' : 'grey';
+  console.log(color, part.value);
+});
+    </code></pre>
+    <p>You can run this in Node.js or use our <a href="/jsdiff-online">online version</a> to see the results instantly.</p>
+</section>
+
+<footer>
+    <p><small>Disclaimer: This site is not affiliated with the jsdiff open-source project. It simply provides an online interface based on the jsdiff library.</small></p>
+</footer>
+</body>
+</html>

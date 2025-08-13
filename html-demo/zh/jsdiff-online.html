@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSDiff 在线工具 - 基于 jsdiff 库的 JSON / JavaScript 对比</title>
+    <meta name="description" content="JSDiff 在线工具，基于开源 jsdiff 库实现。支持在线比较 JSON、JavaScript 代码差异，高亮显示新增、删除和修改部分，支持结构化视图与合并功能。">
+    <meta name="keywords" content="jsdiff,在线JSON对比工具,JavaScript差异比较,在线代码比较,jsdiff示例,jsdiff合并,JSON diff,代码diff">
+</head>
+<body>
+<header>
+    <h1>JSDiff 在线工具 - JSON / JavaScript 差异比较</h1>
+    <p><strong>JSDiff</strong> 在线版，让你无需安装任何软件或 npm 包，即可在浏览器中直接体验 <strong>jsdiff</strong> 库的强大功能。</p>
+</header>
+
+<section>
+    <h2>什么是 jsdiff？</h2>
+    <p><a href="https://github.com/kpdecker/jsdiff" target="_blank" rel="noopener">jsdiff</a> 是一个流行的开源 JavaScript 库，用于计算文本、代码、JSON 数据的差异。它能够精确识别新增、删除和修改的部分，并以高亮方式呈现。</p>
+    <p>开发者常用 <strong>jsdiff</strong> 来进行代码审查、接口返回结果比较、配置文件变化分析等任务。</p>
+</section>
+
+<section>
+    <h2>JSDiff.com 提供的在线版优势</h2>
+    <p>jsdiff 原本是给开发者用的编程库，而 <strong>JSDiff.com</strong> 将其功能做成了可视化的在线版本，适合以下场景：</p>
+    <ul>
+        <li>比较两个 JSON 对象的差异</li>
+        <li>对比 JavaScript 代码变化</li>
+        <li>调试 API 返回数据</li>
+        <li>检查配置文件的变动</li>
+    </ul>
+    <p>现在就试试，在下方输入两份 JSON 或 JavaScript 代码：</p>
+    <!-- 嵌入你的在线 diff 工具 -->
+    <div id="diff-tool">
+        <p><em>在左侧和右侧输入代码，实时查看差异...</em></p>
+    </div>
+</section>
+
+<section>
+    <h2>为什么选择我们的 JSDiff 在线工具？</h2>
+    <ul>
+        <li>无需安装，直接在浏览器使用</li>
+        <li>清晰的新增/删除/修改高亮</li>
+        <li>结构化 JSON 对比</li>
+        <li>支持一键合并</li>
+        <li>数据本地处理，保护隐私</li>
+    </ul>
+</section>
+
+<section>
+    <h2>jsdiff 使用示例</h2>
+    <pre><code class="language-js">
+// 使用 jsdiff 库进行文本差异比较
+const jsdiff = require('diff');
+
+const textA = '我爱 JavaScript';
+const textB = '我爱 JS';
+
+const diff = jsdiff.diffWords(textA, textB);
+diff.forEach(part => {
+  const color = part.added ? 'green' :
+    part.removed ? 'red' : 'grey';
+  console.log(color, part.value);
+});
+    </code></pre>
+    <p>你可以在 Node.js 中运行此代码，或直接在 <a href="/zh/jsdiff-online">我们的在线工具</a> 中体验。</p>
+</section>
+
+<footer>
+    <p><small>声明：本站与 jsdiff 开源项目无任何官方关联，仅基于该库提供在线可视化体验。</small></p>
+</footer>
+</body>
+</html>
