@@ -39,35 +39,37 @@
     <link rel="alternate" hreflang="zh" href="https://jsdiff.com/zh/" />
 </head>
 <body>
+<!-- 首页顶部工具区域 -->
+<section class="hero">
+    <div id="settings">
+        <div class="title-section">
+            <h1>Jsdiff: JavaScript Text Difference Library</h1>
+        </div>
+        <div class="options-section">
+            <label><input type="radio" name="diff_type" value="diffChars" checked> Chars</label>
+            <label><input type="radio" name="diff_type" value="diffWords"> Words</label>
+            <label><input type="radio" name="diff_type" value="diffLines"> Lines</label>
+            <label><input type="radio" name="diff_type" value="diffPatch"> Patch</label>
+        </div>
+        <div class="links-section">
+            <a href="https://github.com/kpdecker/jsdiff" class="source">GitHub</a>
+            <a href="https://json.jsdiff.com/" class="source">JSON Diff Tool</a>
+            <a href="https://tools.zthinker.com/" class="source">更多工具</a>
+        </div>
+    </div>
 
-<div id="settings">
-    <div class="title-section">
-        <h1>Jsdiff: JavaScript Text Difference Library</h1>
+    <div class="container">
+        <div class="panel">
+            <textarea id="a" placeholder="Enter original text here">restaurant</textarea>
+        </div>
+        <div class="panel">
+            <textarea id="b" placeholder="Enter modified text here">aura</textarea>
+        </div>
+        <div class="panel">
+            <pre id="result"></pre>
+        </div>
     </div>
-    <div class="options-section">
-        <label><input type="radio" name="diff_type" value="diffChars" checked> Chars</label>
-        <label><input type="radio" name="diff_type" value="diffWords"> Words</label>
-        <label><input type="radio" name="diff_type" value="diffLines"> Lines</label>
-        <label><input type="radio" name="diff_type" value="diffPatch"> Patch</label>
-    </div>
-    <div class="links-section">
-        <a href="https://github.com/kpdecker/jsdiff" class="source">GitHub</a>
-        <a href="https://json.jsdiff.com/" class="source">JSON Diff Tool</a>
-        <a href="https://tools.zthinker.com/" class="source">更多工具</a>
-    </div>
-</div>
-
-<div class="container">
-    <div class="panel">
-        <textarea id="a" placeholder="Enter original text here">restaurant</textarea>
-    </div>
-    <div class="panel">
-        <textarea id="b" placeholder="Enter modified text here">aura</textarea>
-    </div>
-    <div class="panel">
-        <pre id="result"></pre>
-    </div>
-</div>
+</section>
 
 <script src="diff.js"></script>
 <script defer>
@@ -170,28 +172,31 @@ for (var i = 0; i < radio.length; i++) {
     })();
 </script>
 
-<section>
-    <h1>JSDiff - Online JSON / JavaScript Comparison Tool</h1>
-    <p>
-        JSDiff is a free online tool designed specifically for developers. It helps you quickly compare the differences between two segments of JSON or JavaScript code,
-        supporting highlighted display, structured presentation, and one-click merging. It is suitable for scenarios such as front-end development, interface debugging, and configuration file comparison.
-    </p>
-</section>
 
-<section>
-    <h2>Feature Highlights</h2>
-    <ul>
-        <li>Supports structured comparison of JSON and JavaScript objects</li>
-        <li>Highlights added, deleted, and modified parts</li>
-        <li>Supports merging differences and exporting results</li>
-        <li>Adapts to mobile devices, allowing code comparison anytime and anywhere</li>
-        <li>Data is processed locally to ensure privacy and security</li>
-    </ul>
-</section>
+<section class="seo-intro">
+    <section>
+        <h1>JSDiff - Online JSON / JavaScript Comparison Tool</h1>
+        <p>
+            JSDiff is a free online tool designed specifically for developers. It helps you quickly compare the differences between two segments of JSON or JavaScript code,
+            supporting highlighted display, structured presentation, and one-click merging. It is suitable for scenarios such as front-end development, interface debugging, and configuration file comparison.
+        </p>
+    </section>
 
-<section>
-    <h2>Usage Scenarios</h2>
-    <p>Whether you are engaged in <strong>API debugging</strong>, <strong>configuration file comparison</strong>, or <strong>code review</strong>, JSDiff can help you quickly identify differences and improve work efficiency.</p>
+    <section>
+        <h2>Feature Highlights</h2>
+        <ul>
+            <li>Supports structured comparison of JSON and JavaScript objects</li>
+            <li>Highlights added, deleted, and modified parts</li>
+            <li>Supports merging differences and exporting results</li>
+            <li>Adapts to mobile devices, allowing code comparison anytime and anywhere</li>
+            <li>Data is processed locally to ensure privacy and security</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Usage Scenarios</h2>
+        <p>Whether you are engaged in <strong>API debugging</strong>, <strong>configuration file comparison</strong>, or <strong>code review</strong>, JSDiff can help you quickly identify differences and improve work efficiency.</p>
+    </section>
 </section>
 </body>
 </html>

@@ -271,6 +271,43 @@ textarea:focus {
   }
 }
 
+/* Hero section - ensure it takes at least full viewport height */
+.hero {
+  min-height: 100vh; /* 至少占满首屏 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* SEO intro section - ensure it's below the fold */
+.seo-intro {
+  margin-top: 20px;
+  padding: 40px;
+  background-color: white;
+  border-top: 1px solid var(--border-color);
+}
+
+.seo-intro h1 {
+  margin-bottom: 20px;
+}
+
+.seo-intro h2 {
+  margin: 25px 0 15px;
+  color: var(--primary-color);
+}
+
+.seo-intro p, .seo-intro ul {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.seo-intro ul {
+  padding-left: 20px;
+}
+
+.seo-intro li {
+  margin-bottom: 8px;
+}
+
 /* Landscape orientation on mobile */
 @media (max-width: 768px) and (orientation: landscape) {
   body {
@@ -304,5 +341,9 @@ textarea:focus {
   
   .options-section label {
     margin-right: 20px;
+  }
+
+  .hero {
+    min-height: 100vh; /* 至少占满首屏 */
   }
 }
