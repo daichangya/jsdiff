@@ -149,22 +149,160 @@ textarea:focus {
 
 /* Responsive design */
 @media (max-width: 768px) {
+  :root {
+    --header-height: auto;
+  }
+  
+  body {
+    padding-top: 180px; /* Increased to prevent settings from overlapping content */
+  }
+  
   .container {
     flex-direction: column;
+    height: auto;
+    min-height: calc(100% - 140px);
   }
   
   .panel {
-    height: 33.3%;
+    height: auto;
+    min-height: 200px;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+  }
+  
+  body {
+    overflow-y: auto;
   }
   
   #settings {
     flex-direction: column;
     height: auto;
-    padding: 10px;
+    padding: 15px;
+    align-items: flex-start;
   }
   
   .title-section, .options-section, .links-section {
     width: 100%;
     margin: 5px 0;
+  }
+  
+  h1 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .options-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+    overflow-x: auto;
+    padding-bottom: 5px; /* Space for potential scrollbar */
+  }
+  
+  .options-section label {
+    white-space: nowrap;
+    flex: 1;
+    text-align: center;
+    padding: 8px 5px;
+  }
+  
+  #settings label {
+    margin-left: 0;
+    padding: 8px 0;
+  }
+  
+  .links-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .source {
+    margin: 5px 15px 5px 0;
+    padding: 5px 0;
+  }
+  
+  textarea, #result {
+    font-size: 16px; /* Larger font for better readability on mobile */
+    padding: 10px;
+    height: auto;
+    min-height: 180px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  body {
+    padding-top: 200px; /* Increased to prevent settings from overlapping content on small screens */
+    height: auto;
+    min-height: 100%;
+  }
+  
+  .container {
+    height: auto;
+    min-height: calc(100% - 160px);
+  }
+  
+  /* Keep options in a single row even on very small screens */
+  .options-section label {
+    padding: 8px 3px;
+    font-size: 13px;
+  }
+  
+  .panel {
+    min-height: 150px;
+  }
+  
+  /* Make radio buttons and links more touch-friendly */
+  #settings input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+  
+  .source {
+    padding: 8px 0;
+    display: inline-block;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  body {
+    padding-top: 140px; /* Increased to prevent settings from overlapping content in landscape mode */
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+  }
+  
+  .container {
+    height: auto;
+    min-height: calc(100% - 100px);
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .panel {
+    width: calc(50% - 10px);
+    height: auto;
+    min-height: 150px;
+    margin: 0 5px 10px 5px;
+  }
+  
+  .panel:nth-child(3) {
+    width: calc(100% - 10px);
+  }
+  
+  .options-section {
+    justify-content: flex-start;
+  }
+  
+  .options-section label {
+    margin-right: 20px;
   }
 }
