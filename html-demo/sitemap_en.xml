@@ -20,4 +20,16 @@
         <lastmod>2025-08-13</lastmod> <!-- 替换为该页面实际更新日期 -->
         <priority>0.8</priority>
     </url>
+
+    <url>
+        <loc>https://jsdiff.com/json</loc>
+        <lastmod>2025-08-13</lastmod> <!-- 替换为该页面实际更新日期 -->
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://jsdiff.com/jsdiff-online.html</loc>
+        <lastmod>2025-08-13</lastmod> <!-- 替换为该页面实际更新日期 -->
+        <priority>0.8</priority>
+    </url>
 </urlset>
