@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Myers' Diff Algorithm: A Powerful Tool for Efficient Sequence Comparison | jsdiff</title>
+    <meta
+        name="description"
+        content="Explore how Myers' Diff Algorithm works, its advantages, and applications. Learn how this O(ND) algorithm efficiently compares sequence differences, powering Git, text editors, and more."
+    />
+    <meta name="keywords"
+          content="Myers algorithm, diff algorithm, sequence comparison, O(ND) algorithm, text comparison, Git diff, edit distance">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Myers' Diff Algorithm: A Powerful Tool for Efficient Sequence Comparison" />
+    <meta
+            property="og:description"
+            content="Explore how Myers' Diff Algorithm works, its advantages, and applications. Learn how this O(ND) algorithm efficiently compares sequence differences, powering Git, text editors, and more."
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://jsdiff.com/docs/myers-diff-algorithm.html" />
+
+    <link rel="stylesheet" href="../style.css"/>
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .article-container h1 {
+            font-size: 2em;
+            margin-bottom: 0.8em;
+            color: var(--primary-color);
+        }
+
+        .article-container h2 {
+            font-size: 1.5em;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            color: var(--primary-color);
+        }
+
+        .article-container h3 {
+            font-size: 1.2em;
+            margin-top: 1.2em;
+            margin-bottom: 0.6em;
+        }
+
+        .article-container p {
+            margin-bottom: 1em;
+        }
+
+        .article-container ul, .article-container ol {
+            margin-bottom: 1em;
+            padding-left: 2em;
+        }
+
+        .article-container li {
+            margin-bottom: 0.5em;
+        }
+
+        .article-container code {
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <!-- Language alternatives -->
+    <link rel="alternate" hreflang="en" href="https://jsdiff.com/docs/myers-diff-algorithm.html" />
+    <link rel="alternate" hreflang="zh" href="https://jsdiff.com/zh/docs/myers-diff-algorithm.html" />
+</head>
+<body>
+<div id="settings">
+    <div class="title-section">
+        <h1>Myers' Diff Algorithm: A Powerful Tool for Efficient Sequence Comparison</h1>
+    </div>
+    <div class="links-section">
+        <a href="../index.html" class="source">Home</a>
+        <a href="https://github.com/kpdecker/jsdiff" class="source">GitHub</a>
+        <a href="https://json.jsdiff.com/" class="source">JSON Diff Tool</a>
+        <a href="https://tools.zthinker.com/" class="source">More Tools</a>
+    </div>
+</div>
+
+<div class="article-container">
+    <a href="../index.html" class="back-link">← Back to Home</a>
+
+    <h1>Myers' Diff Algorithm: A Powerful Tool for Efficient Sequence Comparison</h1>
+
+    <p>In our daily work and life, we often need to compare the differences between two texts, files, or data sequences. Examples include tracking modifications in code version management and comparing changes in document editing. The O(ND) difference algorithm proposed by computer scientist Eugene W. Myers in 1986 provides an efficient solution to such problems. It can not only quickly find the differences between two sequences but also generate the shortest edit script (i.e., the minimum number of operations required to convert one sequence into another). Nowadays, it is widely used in scenarios such as Git and text comparison tools.</p>
+
+    <h2>Core Idea of the Algorithm: Viewing Sequence Differences from the "Edit Graph"</h2>
+
+    <p>The core of Myers' algorithm is to transform the sequence comparison problem into a path-finding problem in an "edit graph", simplifying complex difference calculations through an intuitive geometric model.</p>
+
+    <h3>Construction of the Edit Graph</h3>
+    <p>Suppose there are two sequences:</p>
+    <ul>
+        <li>Sequence A: <code>[a, b, c, d]</code> (with length m)</li>
+        <li>Sequence B: <code>[a, c, d, e]</code> (with length n)</li>
+    </ul>
+
+    <p>We can construct an (m + 1) × (n + 1) grid (edit graph), where the horizontal axis represents the positions of sequence A (from 0 to m), and the vertical axis represents the positions of sequence B (from 0 to n). Each point <code>(x, y)</code> in the grid represents "having processed the first x elements of A and the first y elements of B".</p>
+
+    <p>A path from the starting point <code>(0, 0)</code> to the ending point <code>(m, n)</code> in the grid corresponds to a set of edit operations:</p>
+    <ul>
+        <li>Moving one step to the right <code>(x + 1, y)</code>: represents deleting an element from A (corresponding to the "DELETE" operation)</li>
+        <li>Moving one step upward <code>(x, y + 1)</code>: represents inserting an element from B (corresponding to the "INSERT" operation)</li>
+        <li>Moving one step diagonally <code>(x + 1, y + 1)</code>: indicates that the current elements of A and B are the same, and no operation is needed (corresponding to "MATCH")</li>
+    </ul>
+
+    <h3>Shortest Path = Minimum Edit Operations</h3>
+    <p>The goal of Myers' algorithm is to find the <strong>shortest path</strong> from <code>(0, 0)</code> to <code>(m, n)</code>, and the edit operations corresponding to this path are the minimum in number (i.e., the minimum edit distance). Here, the "distance" is determined by the number of non-diagonal steps (insertions/deletions), and diagonal steps (matches) do not increase the distance.</p>
+
+    <p>To efficiently find the shortest path, the algorithm introduces the concept of "k-lines": <code>k = x - y</code> (x is the horizontal coordinate, y is the vertical coordinate). Each k-line represents a set of points satisfying <code>x - y = k</code>, and the movement of the path on the k-line essentially balances the number of insertion and deletion operations.</p>
+
+    <h2>Algorithm Steps: Layered Exploration of the Shortest Path</h2>
+
+    <p>Myers' algorithm uses a "layered exploration" approach, starting from distance d = 0, gradually increasing the distance until reaching the end point. Each layer d represents "having used d insertion/deletion operations currently". The algorithm quickly narrows down the search range by recording the farthest position that can be reached in each layer.</p>
+
+    <p>The specific steps can be simplified as follows:</p>
+    <ol>
+        <li>Initialize the distance d = 0, and record the farthest x-coordinate that can be reached on each k-line (indicating the maximum number of elements of A that can be processed with d operations under that k-line).</li>
+        <li>Check if the end point <code>(m, n)</code> has been reached. If yes, stop.</li>
+        <li>Increase the distance d, explore new k-lines (the range of k is from -d to +d, with a step of 2), and calculate the farthest x-coordinate that can be reached on each k-line.</li>
+        <li>Repeat steps 2-3 until the end point is found.</li>
+    </ol>
+
+    <h2>Example: Intuitively Understanding the Working Process of the Algorithm</h2>
+
+    <p>The following is a specific example to show how Myers' algorithm compares the differences between two short sequences.</p>
+
+    <h3>Example Sequences</h3>
+    <ul>
+        <li>Sequence A: <code>ABCABBA</code> (length 7)</li>
+        <li>Sequence B: <code>CBABAC</code> (length 6)</li>
+    </ul>
+
+    <p>We want to find the shortest edit script (insert I, delete D, match M) from A to B.</p>
+
+    <h3>Algorithm Execution Process</h3>
+    <ol>
+        <li><strong>Construct the edit graph</strong>: The horizontal axis is the position of A (0-7), the vertical axis is the position of B (0-6), with the starting point <code>(0,0)</code> and the ending point <code>(7,6)</code>.</li>
+        <li><strong>Layered exploration of the path</strong>:
+            <ul>
+                <li>When d = 0, it can only move along the k = 0 line (x = y), and the farthest point reached is <code>(0,0)</code> (no elements are matched).</li>
+                <li>When d = 1, explore the k = -1 and k = 1 lines, and the farthest points reached are <code>(1,0)</code> (delete the first element "A" of A) or <code>(0,1)</code> (insert the first element "C" of B).</li>
+                <li>As d increases, the algorithm progresses step by step, and finally reaches the end point <code>(7,6)</code> when d = 4.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Generated Edit Script</h3>
+    <p>By backtracking the shortest path, we obtain the minimum operations from A to B:</p>
+    <ul>
+        <li>D (delete the first "A" of A)</li>
+        <li>M (match "B")</li>
+        <li>M (match "C")</li>
+        <li>M (match "A")</li>
+        <li>M (match "B")</li>
+        <li>I (insert "C", the new element in B)</li>
+        <li>D (delete the last "A" of A)</li>
+    </ul>
+
+    <p>That is, the edit script is: <code>D, M, M, M, M, I, D</code>, with a total of 7 operations, among which 4 are insertions/deletions (d = 4), which is consistent with the minimum edit distance calculated by the algorithm.</p>
+
+    <h2>Advantages and Applications of the Algorithm</h2>
+
+    <p>The greatest advantage of Myers' algorithm is its <strong>high efficiency when the sequence differences are small (i.e., high similarity)</strong>. Its time complexity is O(ND) (where N is the sum of the lengths of the two sequences, and D is the minimum edit distance), which is much better than the traditional dynamic programming algorithm (O(N²)). This makes it perform excellently in practical scenarios, such as:</p>
+    <ul>
+        <li>Version control systems (e.g., Git): used to compare different versions of code files and generate difference patches.</li>
+        <li>Text editors (e.g., VS Code): display the modified positions of two documents in real-time.</li>
+        <li>Data synchronization tools: quickly detect differences between two data sets to achieve incremental synchronization.</li>
+    </ul>
+
+    <h2>Summary</h2>
+
+    <p>Myers' O(ND) difference algorithm, by transforming sequence comparison into the search for the shortest path in the edit graph and using an efficient layered exploration strategy, shows excellent performance when dealing with similar sequences. It is not only an important theoretical breakthrough but also has become a standard tool in the industry to solve difference comparison problems, profoundly affecting the way we manage and process texts and data. Whether developers use Git to track code changes or ordinary people use tools to compare document modifications, Myers' algorithm may be silently supporting behind the scenes.</p>
+</div>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4bdc02239b6fe6f4e90583308d9ed3cd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>
