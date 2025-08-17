@@ -1,242 +1,387 @@
+/**
+ * 表示文本差异中的一个变化单元对象
+ * @template ValueT 变化值的类型
+ */
 export interface ChangeObject<ValueT> {
   /**
-   * The concatenated content of all the tokens represented by this change object - i.e. generally the text that is either added, deleted, or common, as a single string.
-   * In cases where tokens are considered common but are non-identical (e.g. because an option like `ignoreCase` or a custom `comparator` was used), the value from the *new* string will be provided here.
+   * 该变化对象所代表的所有标记(token)的连接内容 - 通常是作为单个字符串的添加、删除或公共文本。
+   * 在标记被认为是公共的但不完全相同的情况下（例如因为使用了 ignoreCase 选项或自定义比较器），
+   * 这里将提供新字符串中的值。
    */
   value: ValueT;
   /**
-   * true if the value was inserted into the new string, otherwise false
+   * 如果该值是插入到新字符串中则为 true，否则为 false
    */
   added: boolean;
   /**
-   * true if the value was removed from the old string, otherwise false
+   * 如果该值是从旧字符串中删除则为 true，否则为 false
    */
   removed: boolean;
   /**
-   * How many tokens (e.g. chars for `diffChars`, lines for `diffLines`) the value in the change object consists of
+   * 该变化对象中的值由多少个标记组成（例如对于 diffChars 是字符数，对于 diffLines 是行数）
    */
   count: number;
 }
 
-// Name "Change" is used here for consistency with the previous type definitions from
-// DefinitelyTyped. I would *guess* this is probably the single most common type for people to
-// explicitly reference by name in their own code, so keeping its name consistent is valuable even
-// though the names of many other types are inconsistent with the old DefinitelyTyped names.
+// 这里使用"Change"这个名称是为了与之前来自 DefinitelyTyped 的类型定义保持一致。
+// 我猜测这可能是人们在自己代码中最常明确引用的类型，因此保持名称一致是有价值的，
+// 即使许多其他类型的名称与旧的 DefinitelyTyped 名称不一致。
 export type Change = ChangeObject<string>;
 export type ArrayChange<T> = ChangeObject<T[]>;
 
+/**
+ * 通用差异选项接口
+ */
 export interface CommonDiffOptions {
   /**
-   * If `true`, the array of change objects returned will contain one change object per token (e.g. one per line if calling `diffLines`), instead of runs of consecutive tokens that are all added / all removed / all conserved being combined into a single change object.
+   * 如果为 true，返回的变化对象数组将包含每个标记一个变化对象（例如调用 diffLines 时每行一个），
+   * 而不是将连续的全部添加/全部删除/全部保留的标记合并为单个变化对象。
    */
   oneChangePerToken?: boolean,
 }
 
+/**
+ * 超时选项接口
+ */
 export interface TimeoutOption {
   /**
-   * A number of milliseconds after which the diffing algorithm will abort and return `undefined`.
-   * Supported by the same functions as `maxEditLength`.
+   * 差异算法在指定毫秒数后中止并返回 undefined 的时间。
+   * 支持的函数与 maxEditLength 相同。
    */
   timeout: number;
 }
 
+/**
+ * 最大编辑长度选项接口
+ */
 export interface MaxEditLengthOption {
   /**
-   * A number specifying the maximum edit distance to consider between the old and new texts.
-   * You can use this to limit the computational cost of diffing large, very different texts by giving up early if the cost will be huge.
-   * This option can be passed either to diffing functions (`diffLines`, `diffChars`, etc) or to patch-creation function (`structuredPatch`, `createPatch`, etc), all of which will indicate that the max edit length was reached by returning `undefined` instead of whatever they'd normally return.
+   * 指定旧文本和新文本之间考虑的最大编辑距离。
+   * 您可以使用此选项来限制对大型、非常不同文本进行差异计算的计算成本，
+   * 通过在成本巨大时提前放弃。
+   * 此选项可以传递给差异函数（diffLines、diffChars 等）或补丁创建函数（structuredPatch、createPatch 等），
+   * 所有这些函数在达到最大编辑长度时都会返回 undefined 而不是正常返回值来表示。
    */
   maxEditLength: number;
 }
 
+/**
+ * 可中止的差异选项类型
+ */
 export type AbortableDiffOptions = TimeoutOption | MaxEditLengthOption;
 
+/**
+ * 不可中止的差异回调类型
+ */
 export type DiffCallbackNonabortable<T> = (result: ChangeObject<T>[]) => void;
+/**
+ * 可中止的差异回调类型
+ */
 export type DiffCallbackAbortable<T> = (result: ChangeObject<T>[] | undefined) => void;
 
+/**
+ * 不可中止的回调选项接口
+ */
 export interface CallbackOptionNonabortable<T> {
   /**
-   * If provided, the diff will be computed in async mode to avoid blocking the event loop while the diff is calculated.
-   * The value of the `callback` option should be a function and will be passed the computed diff or patch as its first argument.
+   * 如果提供，将在异步模式下计算差异以避免在计算差异时阻塞事件循环。
+   * callback 选项的值应该是一个函数，它将接收计算出的差异或补丁作为第一个参数。
    */
   callback: DiffCallbackNonabortable<T>
 }
+/**
+ * 可中止的回调选项接口
+ */
 export interface CallbackOptionAbortable<T> {
   /**
-   * If provided, the diff will be computed in async mode to avoid blocking the event loop while the diff is calculated.
-   * The value of the `callback` option should be a function and will be passed the computed diff or patch as its first argument.
+   * 如果提供，将在异步模式下计算差异以避免在计算差异时阻塞事件循环。
+   * callback 选项的值应该是一个函数，它将接收计算出的差异或补丁作为第一个参数。
    */
   callback: DiffCallbackAbortable<T>
 }
 
+/**
+ * 数组差异选项接口
+ */
 interface DiffArraysOptions<T> extends CommonDiffOptions {
+  /**
+   * 自定义比较函数
+   */
   comparator?: (a: T, b: T) => boolean,
 }
+/**
+ * 不可中止的数组差异选项接口
+ */
 export interface DiffArraysOptionsNonabortable<T> extends DiffArraysOptions<T> {
   /**
-   * If provided, the diff will be computed in async mode to avoid blocking the event loop while the diff is calculated.
-   * The value of the `callback` option should be a function and will be passed the computed diff or patch as its first argument.
+   * 如果提供，将在异步模式下计算差异以避免在计算差异时阻塞事件循环。
+   * callback 选项的值应该是一个函数，它将接收计算出的差异或补丁作为第一个参数。
    */
   callback?: DiffCallbackNonabortable<T[]>
 }
-export type DiffArraysOptionsAbortable<T> = DiffArraysOptions<T> & AbortableDiffOptions & Partial<CallbackOptionAbortable<T[]>>
+/**
+ * 可中止的数组差异选项类型
+ */
+export type DiffArraysOptionsAbortable<T> = DiffArraysOptions<T> & AbortableDiffOptions & Partial<CallbackOptionAbortable<T[]>>;
 
 
+/**
+ * 字符差异选项接口
+ */
 interface DiffCharsOptions extends CommonDiffOptions {
   /**
-   * If `true`, the uppercase and lowercase forms of a character are considered equal.
+   * 如果为 true，则大写和小写形式的字符被视为相等。
    * @default false
    */
   ignoreCase?: boolean;
 }
+/**
+ * 不可中止的字符差异选项接口
+ */
 export interface DiffCharsOptionsNonabortable extends DiffCharsOptions {
   /**
-   * If provided, the diff will be computed in async mode to avoid blocking the event loop while the diff is calculated.
-   * The value of the `callback` option should be a function and will be passed the computed diff or patch as its first argument.
+   * 如果提供，将在异步模式下计算差异以避免在计算差异时阻塞事件循环。
+   * callback 选项的值应该是一个函数，它将接收计算出的差异或补丁作为第一个参数。
    */
   callback?: DiffCallbackNonabortable<string>
 }
+/**
+ * 可中止的字符差异选项类型
+ */
 export type DiffCharsOptionsAbortable = DiffCharsOptions & AbortableDiffOptions & Partial<CallbackOptionAbortable<string>>
 
+/**
+ * 行差异选项接口
+ */
 interface DiffLinesOptions extends CommonDiffOptions {
   /**
-   * `true` to remove all trailing CR (`\r`) characters before performing the diff.
-   * This helps to get a useful diff when diffing UNIX text files against Windows text files.
+   * 如果为 true，则在执行差异之前删除所有尾随的回车符(\r)。
+   * 这有助于在对 UNIX 文本文件与 Windows 文本文件进行差异比较时获得有用的结果。
    * @default false
    */
   stripTrailingCr?: boolean,
   /**
-   * `true` to treat the newline character at the end of each line as its own token.
-   * This allows for changes to the newline structure to occur independently of the line content and to be treated as such.
-   * In general this is the more human friendly form of `diffLines`; the default behavior with this option turned off is better suited for patches and other computer friendly output.
+   * 如果为 true，则将每行末尾的换行符视为独立的标记。
+   * 这允许对换行结构的更改独立于行内容发生并被如此处理。
+   * 一般来说，这是对人类更友好的 diffLines 形式；关闭此选项的默认行为更适合补丁和其他计算机友好的输出。
    *
-   * Note that while using `ignoreWhitespace` in combination with `newlineIsToken` is not an error, results may not be as expected.
-   * With `ignoreWhitespace: true` and `newlineIsToken: false`, changing a completely empty line to contain some spaces is treated as a non-change, but with `ignoreWhitespace: true` and `newlineIsToken: true`, it is treated as an insertion.
-   * This is because the content of a completely blank line is not a token at all in `newlineIsToken` mode.
+   * 注意，虽然同时使用 ignoreWhitespace 和 newlineIsToken 不会出错，但结果可能不如预期。
+   * 当 ignoreWhitespace: true 且 newlineIsToken: false 时，将完全空行更改为包含一些空格被视为非更改，
+   * 但当 ignoreWhitespace: true 且 newlineIsToken: true 时，它被视为插入。
+   * 这是因为在 newlineIsToken 模式下，完全空白行的内容根本不是标记。
    *
    * @default false
    */
   newlineIsToken?: boolean,
   /**
-   * `true` to ignore a missing newline character at the end of the last line when comparing it to other lines.
-   * (By default, the line `'b\n'` in text `'a\nb\nc'` is not considered equal to the line `'b'` in text `'a\nb'`; this option makes them be considered equal.)
-   * Ignored if `ignoreWhitespace` or `newlineIsToken` are also true.
+   * 如果为 true，则在将最后一行与其他行比较时忽略末尾缺少的换行符。
+   * （默认情况下，文本 'a\nb\nc' 中的行 'b\n' 不被认为与文本 'a\nb' 中的行 'b' 相等；此选项使它们被视为相等。）
+   * 如果 ignoreWhitespace 或 newlineIsToken 也为 true，则忽略此选项。
    * @default false
    */
   ignoreNewlineAtEof?: boolean,
   /**
-   * `true` to ignore leading and trailing whitespace characters when checking if two lines are equal.
+   * 如果为 true，则在检查两行是否相等时忽略前导和尾随的空白字符。
    * @default false
    */
   ignoreWhitespace?: boolean,
 }
+/**
+ * 不可中止的行差异选项接口
+ */
 export interface DiffLinesOptionsNonabortable extends DiffLinesOptions {
   /**
-   * If provided, the diff will be computed in async mode to avoid blocking the event loop while the diff is calculated.
-   * The value of the `callback` option should be a function and will be passed the computed diff or patch as its first argument.
+   * 如果提供，将在异步模式下计算差异以避免在计算差异时阻塞事件循环。
+   * callback 选项的值应该是一个函数，它将接收计算出的差异或补丁作为第一个参数。
    */
   callback?: DiffCallbackNonabortable<string>
 }
+/**
+ * 可中止的行差异选项类型
+ */
 export type DiffLinesOptionsAbortable = DiffLinesOptions & AbortableDiffOptions & Partial<CallbackOptionAbortable<string>>
 
 
+/**
+ * 单词差异选项接口
+ */
 interface DiffWordsOptions extends CommonDiffOptions {
   /**
-   * Same as in `diffChars`.
+   * 同 diffChars 中的选项。
    * @default false
    */
   ignoreCase?: boolean
 
   /**
-   * An optional [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) object (which must have a `granularity` of `'word'`) for `diffWords` to use to split the text into words.
+   * 可选的 Intl.Segmenter 对象（必须具有 'word' 的 granularity），供 diffWords 用于将文本分割成单词。
    *
-   * Note that this is (deliberately) incorrectly typed as `any` to avoid users whose `lib` & `target` settings in tsconfig.json are older than es2022 getting type errors when they build about `Intl.Segmenter` not existing.
-   * This is kind of ugly, since it makes the type declarations worse for users who genuinely use this feature, but seemed worth it to avoid the majority of the library's users (who probably do not use this particular option) getting confusing errors and being forced to change their `lib` to es2022 (even if their own code doesn't use any es2022 functions).
+   * 注意，这故意错误地类型化为 any，以避免 lib 和 target 设置在 tsconfig.json 中早于 es2022 的用户
+   * 在构建时出现关于 Intl.Segmenter 不存在的类型错误。
+   * 这有点丑陋，因为它使真正使用此功能的用户的类型声明变差，但似乎值得避免大多数库用户（可能不使用此特定选项）
+   * 遇到令人困惑的错误并被迫将他们的 lib 更改为 es2022（即使他们自己的代码不使用任何 es2022 函数）。
    *
-   * By default, `diffWords` does not use an `Intl.Segmenter`, just some regexes for splitting text into words. This will tend to give worse results than `Intl.Segmenter` would, but ensures the results are consistent across environments; `Intl.Segmenter` behaviour is only loosely specced and the implementations in browsers could in principle change dramatically in future. If you want to use `diffWords` with an `Intl.Segmenter` but ensure it behaves the same whatever environment you run it in, use an `Intl.Segmenter` polyfill instead of the JavaScript engine's native `Intl.Segmenter` implementation.
+   * 默认情况下，diffWords 不使用 Intl.Segmenter，只使用一些正则表达式将文本分割成单词。
+   * 这往往会给出比 Intl.Segmenter 更差的结果，但确保结果在环境中一致；
+   * Intl.Segmenter 行为只是松散地规范，浏览器中的实现原则上可能在未来发生巨大变化。
+   * 如果您想使用带有 Intl.Segmenter 的 diffWords 但确保它在任何环境中行为相同，请使用 Intl.Segmenter 填充而不是 JavaScript 引擎的原生 Intl.Segmenter 实现。
    *
-   * Using an `Intl.Segmenter` should allow better word-level diffing of non-English text than the default behaviour. For instance, `Intl.Segmenter`s can generally identify via built-in dictionaries which sequences of adjacent Chinese characters form words, allowing word-level diffing of Chinese. By specifying a language when instantiating the segmenter (e.g. `new Intl.Segmenter('sv', {granularity: 'word'})`) you can also support language-specific rules, like treating Swedish's colon separated contractions (like *k:a* for *kyrka*) as single words; by default this would be seen as two words separated by a colon.
+   * 使用 Intl.Segmenter 应该能够比默认行为更好地对非英文文本进行单词级差异比较。
+   * 例如，Intl.Segmenter 通常可以通过内置词典识别哪些相邻的中文字符序列构成单词，从而允许对中文进行单词级差异比较。
+   * 通过在实例化分段器时指定语言（例如 new Intl.Segmenter('sv', {granularity: 'word'})），
+   * 您还可以支持特定语言的规则，如将瑞典语的冒号分隔缩写（如 k:a 表示 kyrka）视为单个单词；默认情况下这将被视为由冒号分隔的两个单词。
    */
   intlSegmenter?: any,
 }
+/**
+ * 不可中止的单词差异选项接口
+ */
 export interface DiffWordsOptionsNonabortable extends DiffWordsOptions {
   /**
-   * If provided, the diff will be computed in async mode to avoid blocking the event loop while the diff is calculated.
-   * The value of the `callback` option should be a function and will be passed the computed diff or patch as its first argument.
+   * 如果提供，将在异步模式下计算差异以避免在计算差异时阻塞事件循环。
+   * callback 选项的值应该是一个函数，它将接收计算出的差异或补丁作为第一个参数。
    */
   callback?: DiffCallbackNonabortable<string>
 }
+/**
+ * 可中止的单词差异选项类型
+ */
 export type DiffWordsOptionsAbortable = DiffWordsOptions & AbortableDiffOptions & Partial<CallbackOptionAbortable<string>>
 
 
+/**
+ * 句子差异选项接口
+ */
 interface DiffSentencesOptions extends CommonDiffOptions {}
+/**
+ * 不可中止的句子差异选项接口
+ */
 export interface DiffSentencesOptionsNonabortable extends DiffSentencesOptions {
   /**
-   * If provided, the diff will be computed in async mode to avoid blocking the event loop while the diff is calculated.
-   * The value of the `callback` option should be a function and will be passed the computed diff or patch as its first argument.
+   * 如果提供，将在异步模式下计算差异以避免在计算差异时阻塞事件循环。
+   * callback 选项的值应该是一个函数，它将接收计算出的差异或补丁作为第一个参数。
    */
   callback?: DiffCallbackNonabortable<string>
 }
+/**
+ * 可中止的句子差异选项类型
+ */
 export type DiffSentencesOptionsAbortable = DiffSentencesOptions & AbortableDiffOptions & Partial<CallbackOptionAbortable<string>>
 
 
+/**
+ * JSON 差异选项接口
+ */
 interface DiffJsonOptions extends CommonDiffOptions {
   /**
-   * A value to replace `undefined` with. Ignored if a `stringifyReplacer` is provided.
+   * 用于替换 undefined 的值。如果提供了 stringifyReplacer 则忽略此选项。
    */
   undefinedReplacement?: any,
   /**
-   * A custom replacer function.
-   * Operates similarly to the `replacer` parameter to [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#the_replacer_parameter), but must be a function.
+   * 自定义替换函数。
+   * 操作方式类似于 JSON.stringify() 的 replacer 参数，但必须是函数。
    */
   stringifyReplacer?: (k: string, v: any) => any,
 }
+/**
+ * 不可中止的 JSON 差异选项接口
+ */
 export interface DiffJsonOptionsNonabortable extends DiffJsonOptions {
   /**
-   * If provided, the diff will be computed in async mode to avoid blocking the event loop while the diff is calculated.
-   * The value of the `callback` option should be a function and will be passed the computed diff or patch as its first argument.
+   * 如果提供，将在异步模式下计算差异以避免在计算差异时阻塞事件循环。
+   * callback 选项的值应该是一个函数，它将接收计算出的差异或补丁作为第一个参数。
    */
   callback?: DiffCallbackNonabortable<string>
 }
+/**
+ * 可中止的 JSON 差异选项类型
+ */
 export type DiffJsonOptionsAbortable = DiffJsonOptions & AbortableDiffOptions & Partial<CallbackOptionAbortable<string>>
 
 
+/**
+ * CSS 差异选项接口
+ */
 interface DiffCssOptions extends CommonDiffOptions {}
+/**
+ * 不可中止的 CSS 差异选项接口
+ */
 export interface DiffCssOptionsNonabortable extends DiffCssOptions {
   /**
-   * If provided, the diff will be computed in async mode to avoid blocking the event loop while the diff is calculated.
-   * The value of the `callback` option should be a function and will be passed the computed diff or patch as its first argument.
+   * 如果提供，将在异步模式下计算差异以避免在计算差异时阻塞事件循环。
+   * callback 选项的值应该是一个函数，它将接收计算出的差异或补丁作为第一个参数。
    */
   callback?: DiffCallbackNonabortable<string>
 }
+/**
+ * 可中止的 CSS 差异选项类型
+ */
 export type DiffCssOptionsAbortable = DiffCssOptions & AbortableDiffOptions & Partial<CallbackOptionAbortable<string>>
 
 
 /**
- * Note that this contains the union of ALL options accepted by any of the built-in diffing
- * functions. The README notes which options are usable which functions. Using an option with a
- * diffing function that doesn't support it might yield unreasonable results.
+ * 注意，这包含了所有内置差异函数接受的选项的并集。
+ * README 中注明了哪些选项可以与哪些函数一起使用。
+ * 将选项与不支持它的差异函数一起使用可能会产生不合理的结果。
  */
 export type AllDiffOptions =
-  DiffArraysOptions<unknown> &
-  DiffCharsOptions &
-  DiffWordsOptions &
-  DiffLinesOptions &
-  DiffJsonOptions;
+    DiffArraysOptions<unknown> &
+    DiffCharsOptions &
+    DiffWordsOptions &
+    DiffLinesOptions &
+    DiffJsonOptions;
 
+/**
+ * 结构化补丁接口
+ */
 export interface StructuredPatch {
+  /**
+   * 旧文件名
+   */
   oldFileName: string,
+  /**
+   * 新文件名
+   */
   newFileName: string,
+  /**
+   * 旧文件头
+   */
   oldHeader: string | undefined,
+  /**
+   * 新文件头
+   */
   newHeader: string | undefined,
+  /**
+   * 补丁块数组
+   */
   hunks: StructuredPatchHunk[],
+  /**
+   * 索引信息（可选）
+   */
   index?: string,
 }
 
+/**
+ * 结构化补丁块接口
+ */
 export interface StructuredPatchHunk {
+  /**
+   * 旧行起始位置
+   */
   oldStart: number,
+  /**
+   * 旧行数
+   */
   oldLines: number,
+  /**
+   * 新行起始位置
+   */
   newStart: number,
+  /**
+   * 新行数
+   */
   newLines: number,
+  /**
+   * 行内容数组
+   */
   lines: string[],
 }

@@ -46,7 +46,8 @@
             <h1>Jsdiff: JavaScript Text Difference Library</h1>
         </div>
         <div class="options-section">
-            <label><input type="radio" name="diff_type" value="diffChars" checked> Chars</label>
+            <label><input type="radio" name="diff_type" value="diffJson" checked> JSON</label>
+            <label><input type="radio" name="diff_type" value="diffChars"> Chars</label>
             <label><input type="radio" name="diff_type" value="diffWords"> Words</label>
             <label><input type="radio" name="diff_type" value="diffLines"> Lines</label>
             <label><input type="radio" name="diff_type" value="diffPatch"> Patch</label>
@@ -54,7 +55,7 @@
         <div class="links-section">
             <a href="https://github.com/kpdecker/jsdiff" class="source">GitHub</a>
             <a href="https://json.jsdiff.com/" class="source">JSON Diff Tool</a>
-            <a href="https://tools.zthinker.com/" class="source">更多工具</a>
+            <a href="https://tools.zthinker.com/" class="source">More Tools</a>
         </div>
     </div>
 
@@ -102,6 +103,16 @@ function changed() {
                 }
                 return result;
             });
+    } else if (window.diffType === 'diffJson') {
+        try {
+            // Try to parse JSON input
+            var oldObj = JSON.parse(a.value);
+            var newObj = JSON.parse(b.value);
+            diff = Diff.diffJson(oldObj, newObj);
+        } catch (e) {
+            // If parsing fails, treat as text
+            diff = [{value: 'Invalid JSON input: ' + e.message, added: true}];
+        }
     } else {
         diff = Diff[window.diffType](a.value, b.value);
     }
@@ -134,8 +145,48 @@ function changed() {
     result.appendChild(fragment);
 }
 
+function setExampleText(diffType) {
+    if (diffType === 'diffJson') {
+        a.value = JSON.stringify({
+            name: "Product A",
+            price: 100,
+            features: ["Durable", "Easy to use"],
+            metadata: {
+                created: "2023-01-15",
+                rating: 4.5
+            }
+        }, null, 2);
+        
+        b.value = JSON.stringify({
+            name: "Product A",
+            price: 120,
+            features: ["Durable", "Easy to use", "Lightweight"],
+            metadata: {
+                created: "2023-01-15",
+                rating: 4.7,
+                inStock: true
+            }
+        }, null, 2);
+    } else if (diffType === 'diffPatch') {
+        a.value = "Line 1\nLine 2\nLine 3\nLine 4";
+        b.value = "Line 1\nModified Line 2\nLine 3\nNew Line\nLine 4";
+    } else if (diffType === 'diffLines') {
+        a.value = "Line 1\nLine 2\nLine 3\nLine 4";
+        b.value = "Line 1\nModified Line 2\nLine 3\nNew Line\nLine 4";
+    } else if (diffType === 'diffWords') {
+        a.value = "The quick brown fox jumps over the lazy dog";
+        b.value = "The fast brown fox leaps over the lazy dog";
+    } else {
+        // diffChars and default
+        a.value = "restaurant";
+        b.value = "aura";
+    }
+}
+
 window.onload = function() {
-    onDiffTypeChange(document.querySelector('#settings [name="diff_type"]:checked'));
+    var selectedDiffType = document.querySelector('#settings [name="diff_type"]:checked');
+    onDiffTypeChange(selectedDiffType);
+    setExampleText(selectedDiffType.value);
     changed();
 };
 
@@ -157,6 +208,7 @@ var radio = document.getElementsByName('diff_type');
 for (var i = 0; i < radio.length; i++) {
     radio[i].onchange = function(e) {
         onDiffTypeChange(e.target);
+        setExampleText(e.target.value);
         changed();
     }
 }
