@@ -110,8 +110,6 @@
     "webpack": "^5.99.7",
     "webpack-dev-server": "^5.2.1"
   },
-  "optionalDependencies": {},
-  "dependencies": {},
   "nyc": {
     "require": [
       "@babel/register"
