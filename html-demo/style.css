@@ -44,6 +44,7 @@ body {
   padding: 10px;
   height: 100%;
   position: relative;
+  min-width: 0; /* 确保flex子元素可以正确收缩 */
 }
 
 textarea, #result {
@@ -57,11 +58,15 @@ textarea, #result {
   background: white;
   resize: none;
   overflow: auto;
+  box-sizing: border-box; /* 确保padding包含在width内 */
 }
 
 #result {
   white-space: pre-wrap;
   background-color: white;
+  word-break: break-all; /* 强制长字符串换行 */
+  overflow-wrap: break-word; /* 备用方案，处理长单词 */
+  overflow-x: hidden; /* 防止水平溢出 */
 }
 
 h1 {
@@ -232,6 +237,9 @@ textarea:focus {
     min-height: 180px;
     max-height: 300px;
     overflow-y: auto;
+    overflow-x: hidden; /* 防止水平溢出 */
+    word-break: break-all; /* 强制长字符串换行 */
+    overflow-wrap: break-word; /* 备用方案 */
   }
 }
 
