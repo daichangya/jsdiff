@@ -18,8 +18,8 @@ Java 实现的文本差异比较库，基于 Myers Diff 算法。这是 [jsdiff]
 
 ```xml
 <dependency>
-    <groupId>com.github.jsdiff</groupId>
-    <artifactId>jsdiff</artifactId>
+    <groupId>com.github.textdiff</groupId>
+    <artifactId>textdiff</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
@@ -29,8 +29,8 @@ Java 实现的文本差异比较库，基于 Myers Diff 算法。这是 [jsdiff]
 #### 字符级别差异比较
 
 ```java
-import com.github.jsdiff.diff.CharacterDiff;
-import com.github.jsdiff.model.ChangeObject;
+import com.github.textdiff.diff.CharacterDiff;
+import com.github.textdiff.model.ChangeObject;
 import java.util.List;
 
 List<ChangeObject<String>> changes = CharacterDiff.diffChars("beep boop", "beep boob blah");
@@ -49,8 +49,8 @@ for (ChangeObject<String> change : changes) {
 #### 行级别差异比较
 
 ```java
-import com.github.jsdiff.diff.LineDiff;
-import com.github.jsdiff.model.DiffOptions;
+import com.github.textdiff.diff.LineDiff;
+import com.github.textdiff.model.DiffOptions;
 
 String oldText = "line1\nline2\nline3";
 String newText = "line1\nline2 modified\nline3";
@@ -68,7 +68,7 @@ List<ChangeObject<String>> changes2 = LineDiff.diffLines(oldText, newText, optio
 #### 单词级别差异比较
 
 ```java
-import com.github.jsdiff.diff.WordDiff;
+import com.github.textdiff.diff.WordDiff;
 
 String oldText = "hello world";
 String newText = "hello beautiful world";
@@ -79,7 +79,7 @@ List<ChangeObject<String>> changes = WordDiff.diffWords(oldText, newText);
 #### JSON 对象差异比较
 
 ```java
-import com.github.jsdiff.diff.JsonDiff;
+import com.github.textdiff.diff.JsonDiff;
 import java.util.Map;
 
 Map<String, Object> oldObj = Map.of("name", "John", "age", 30);
@@ -93,7 +93,7 @@ List<ChangeObject<String>> changes = JsonDiff.diffJson(oldObj, newObj);
 #### 创建补丁
 
 ```java
-import com.github.jsdiff.patch.PatchCreator;
+import com.github.textdiff.patch.PatchCreator;
 
 String oldText = "line1\nline2\nline3";
 String newText = "line1\nline2 modified\nline3";
@@ -106,7 +106,7 @@ System.out.println(patch);
 #### 应用补丁
 
 ```java
-import com.github.jsdiff.patch.PatchApplier;
+import com.github.textdiff.patch.PatchApplier;
 
 String result = PatchApplier.applyPatch(oldText, patch);
 System.out.println(result);
@@ -115,8 +115,8 @@ System.out.println(result);
 #### 解析补丁
 
 ```java
-import com.github.jsdiff.patch.PatchParser;
-import com.github.jsdiff.model.StructuredPatch;
+import com.github.textdiff.patch.PatchParser;
+import com.github.textdiff.model.StructuredPatch;
 import java.util.List;
 
 String patchStr = "--- test.txt\n+++ test.txt\n@@ -1,3 +1,3 @@\n line1\n-line2\n+line2 modified\n line3\n";
@@ -126,7 +126,7 @@ List<StructuredPatch> patches = PatchParser.parsePatch(patchStr);
 #### 反转补丁
 
 ```java
-import com.github.jsdiff.patch.PatchReverser;
+import com.github.textdiff.patch.PatchReverser;
 
 StructuredPatch reversed = PatchReverser.reversePatch(patch);
 ```
@@ -136,8 +136,8 @@ StructuredPatch reversed = PatchReverser.reversePatch(patch);
 #### 转换为 DMP 格式
 
 ```java
-import com.github.jsdiff.convert.DmpConverter;
-import com.github.jsdiff.convert.DmpConverter.DmpOperation;
+import com.github.textdiff.convert.DmpConverter;
+import com.github.textdiff.convert.DmpConverter.DmpOperation;
 
 List<ChangeObject<String>> changes = CharacterDiff.diffChars("abc", "adc");
 List<DmpOperation<String>> dmpFormat = DmpConverter.convertChangesToDMP(changes);
@@ -146,7 +146,7 @@ List<DmpOperation<String>> dmpFormat = DmpConverter.convertChangesToDMP(changes)
 #### 转换为 XML 格式
 
 ```java
-import com.github.jsdiff.convert.XmlConverter;
+import com.github.textdiff.convert.XmlConverter;
 
 List<ChangeObject<String>> changes = CharacterDiff.diffChars("abc", "adc");
 String xml = XmlConverter.convertChangesToXML(changes);

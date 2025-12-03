@@ -4,21 +4,37 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.jsdiff</groupId>
-    <artifactId>jsdiff</artifactId>
+    <groupId>com.github.textdiff</groupId>
+    <artifactId>textdiff</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>JSDiff Java</name>
     <description>A Java text diff implementation based on Myers Diff Algorithm</description>
-    <url>https://github.com/kpdecker/jsdiff</url>
+    <url>https://github.com/daichangya/jsdiff</url>
 
     <licenses>
         <license>
-            <name>BSD-3-Clause</name>
-            <url>https://opensource.org/licenses/BSD-3-Clause</url>
+            <name>GNU General Public License</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <name>daichangya</name>
+            <email>daichangya@163.com</email>
+            <url>https://github.com/daichangya</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/daichangya/jsdiff.git</connection>
+        <developerConnection>scm:git:git@github.com:daichangya/jsdiff.git</developerConnection>
+        <url>https://github.com/daichangya/jsdiff</url>
+    </scm>
+
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -81,7 +97,46 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.3</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
-
