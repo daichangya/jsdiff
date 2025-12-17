@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Diff for Code Review - Compare JSON in Code Reviews | JSDiff</title>
+    <meta name="description" content="Use JSDiff for code reviews. Compare JSON configurations, API contracts, and data structures during code review. Free online JSON diff tool for developers.">
+    <meta name="keywords" content="json diff code review, compare json code review, json diff tool code review, code review json comparison">
+    
+    <link rel="canonical" href="https://jsdiff.com/use-cases/code-review.html" />
+    <link rel="stylesheet" href="../../style.css"/>
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JSON Diff for Code Review - Compare JSON in Code Reviews | JSDiff" />
+    <meta property="og:description" content="Use JSDiff for code reviews. Compare JSON configurations and data structures during code review." />
+    <meta property="og:url" content="https://jsdiff.com/use-cases/code-review.html" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<!-- Skip to main content link for accessibility -->
+<a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; z-index: 999; padding: 1em; background: var(--primary-color); color: white; text-decoration: none;">Skip to main content</a>
+
+<div id="settings" role="banner">
+    <div class="title-section">
+        <h1><a href="/" style="text-decoration: none; color: inherit;" aria-label="JSDiff home">JSDiff</a> - Code Review</h1>
+    </div>
+    <nav class="links-section" aria-label="Navigation links">
+        <a href="/" class="source" aria-label="Home page">Home</a>
+        <a href="/use-cases/" class="source" aria-label="Use cases">Use Cases</a>
+        <a href="/faq.html" class="source" aria-label="Frequently asked questions">FAQ</a>
+    </nav>
+</div>
+
+<main id="main-content" style="max-width: 1000px; margin: 100px auto 40px; padding: 20px;">
+    <h1 style="font-size: 36px; margin-bottom: 20px; color: var(--primary-color);">Using JSDiff for Code Review</h1>
+    
+    <p style="line-height: 1.8; margin-bottom: 30px; font-size: 18px;">
+        Code reviews often involve comparing JSON configurations, API contracts, or data structures. JSDiff makes it easy to see exactly what changed, helping reviewers provide better feedback and catch issues early.
+    </p>
+    
+    <!-- Use Cases in Code Review -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Common Code Review Scenarios</h2>
+        
+        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">1. Configuration File Changes</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                When reviewing changes to configuration files (package.json, tsconfig.json, etc.), JSDiff helps you quickly see what was added, removed, or modified.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare package.json before and after dependency updates to ensure no breaking changes.</p>
+        </div>
+        
+        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">2. API Contract Changes</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Review API contract changes by comparing the old and new API response schemas. This helps identify breaking changes or new features.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare OpenAPI/Swagger JSON schemas to see what endpoints or fields changed.</p>
+        </div>
+        
+        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">3. Data Structure Modifications</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                When code changes affect data structures, compare sample JSON to understand the impact on existing data.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare database migration JSON schemas to verify backward compatibility.</p>
+        </div>
+        
+        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">4. Test Data Comparison</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Compare expected vs actual test results in JSON format to identify test failures or regressions.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare test output JSON to identify what changed when a test fails.</p>
+        </div>
+    </section>
+    
+    <!-- How to Use in Code Review -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">How to Use JSDiff in Code Review</h2>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 1: Extract JSON from Code Changes</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Copy the JSON content from the code changes you're reviewing. This could be from:
+            </p>
+            <ul style="line-height: 1.8; padding-left: 30px;">
+                <li>Configuration files (package.json, config.json, etc.)</li>
+                <li>API response examples in code comments</li>
+                <li>Test data or fixtures</li>
+                <li>Database schema definitions</li>
+            </ul>
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 2: Compare with Previous Version</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Use Git or your version control system to get the previous version of the JSON, then compare both versions in JSDiff.
+            </p>
+            <p style="line-height: 1.8;">
+                <strong>Tip:</strong> You can use <code>git show HEAD:path/to/file.json</code> to get the previous version from Git.
+            </p>
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 3: Review Differences</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Analyze the highlighted differences:
+            </p>
+            <ul style="line-height: 1.8; padding-left: 30px;">
+                <li>Check if removed fields will break existing functionality</li>
+                <li>Verify that new fields are properly documented</li>
+                <li>Ensure data type changes are intentional and safe</li>
+                <li>Look for potential breaking changes</li>
+            </ul>
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 4: Provide Feedback</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Use the comparison results to provide specific, actionable feedback in your code review comments.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Working with Git -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Integrating with Git Diff</h2>
+        
+        <p style="line-height: 1.8; margin-bottom: 20px;">
+            While Git's built-in diff works well for code, JSDiff is better for JSON because it performs semantic comparison. Here's how to combine both:
+        </p>
+        
+        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">Workflow:</h3>
+            <ol style="line-height: 1.8; padding-left: 30px;">
+                <li style="margin-bottom: 10px;">Use Git diff to see which files changed</li>
+                <li style="margin-bottom: 10px;">For JSON files, copy the old and new versions</li>
+                <li style="margin-bottom: 10px;">Paste both into JSDiff for semantic comparison</li>
+                <li style="margin-bottom: 10px;">Use the visual diff to understand the changes better</li>
+            </ol>
+        </div>
+        
+        <p style="line-height: 1.8;">
+            This approach gives you the best of both worlds: Git's file-level tracking and JSDiff's semantic JSON comparison.
+        </p>
+    </section>
+    
+    <!-- Team Collaboration -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Team Collaboration Tips</h2>
+        
+        <ul style="line-height: 1.8; padding-left: 30px;">
+            <li style="margin-bottom: 15px;">
+                <strong>Share Comparison URLs:</strong> While JSDiff doesn't support URL sharing yet, you can copy the diff results and paste them in code review comments.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Document Changes:</strong> Use JSDiff results to create clear documentation of what changed in your pull request description.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Standardize Review Process:</strong> Establish a team practice of using JSDiff for JSON-related code reviews.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Mobile Reviews:</strong> Since JSDiff works on mobile, team members can review JSON changes on the go.
+            </li>
+        </ul>
+    </section>
+    
+    <!-- Real-World Example -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Real-World Example</h2>
+        
+        <p style="line-height: 1.8; margin-bottom: 20px;">
+            Imagine you're reviewing a pull request that updates the API configuration:
+        </p>
+        
+        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">Before (Old Configuration):</h3>
+            <pre style="background: white; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>{
+  "api": {
+    "version": "v1",
+    "timeout": 5000,
+    "retries": 3
+  }
+}</code></pre>
+        </div>
+        
+        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">After (New Configuration):</h3>
+            <pre style="background: white; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>{
+  "api": {
+    "version": "v2",
+    "timeout": 10000,
+    "retries": 3,
+    "cache": true
+  }
+}</code></pre>
+        </div>
+        
+        <p style="line-height: 1.8; margin-bottom: 15px;">
+            <strong>JSDiff will highlight:</strong>
+        </p>
+        <ul style="line-height: 1.8; padding-left: 30px; margin-bottom: 20px;">
+            <li>Version changed from "v1" to "v2" (potential breaking change!)</li>
+            <li>Timeout increased from 5000 to 10000</li>
+            <li>New "cache" field added</li>
+        </ul>
+        
+        <p style="line-height: 1.8;">
+            This visual comparison makes it immediately clear what changed, helping you ask the right questions in your code review.
+        </p>
+    </section>
+    
+    <!-- Best Practices -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Best Practices for Code Review</h2>
+        
+        <ul style="line-height: 1.8; padding-left: 30px;">
+            <li style="margin-bottom: 15px;">
+                <strong>Always Use JSON Mode:</strong> Select "JSON" mode for semantic comparison that ignores property order.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Check for Breaking Changes:</strong> Pay special attention to removed fields or changed data types.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Verify Documentation:</strong> Ensure new fields or changes are properly documented.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Test Compatibility:</strong> Consider how changes affect existing code that uses the JSON.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Review Incrementally:</strong> For large JSON files, compare specific sections to focus your review.
+            </li>
+        </ul>
+    </section>
+    
+    <!-- Call to Action -->
+    <section style="margin-top: 50px; padding: 30px; background: #e6f5ee; border-radius: 8px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--primary-color);">Improve Your Code Reviews Today</h2>
+        <p style="line-height: 1.8; margin-bottom: 20px;">
+            Start using JSDiff in your code review process to catch issues faster and provide better feedback. Free, private, and works offline.
+        </p>
+        <p style="line-height: 1.8;">
+            <a href="/" style="display: inline-block; padding: 12px 24px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Try JSDiff Now →</a>
+        </p>
+    </section>
+    
+    <!-- Related Links -->
+    <section style="margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--border-color);">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">Related Resources</h2>
+        <ul style="line-height: 1.8; padding-left: 30px;">
+            <li><a href="/" style="color: var(--primary-color);">JSDiff Home - Try the Tool</a></li>
+            <li><a href="/use-cases/api-debugging.html" style="color: var(--primary-color);">Using JSDiff for API Debugging</a></li>
+            <li><a href="/docs/how-to-use-jsdiff.html" style="color: var(--primary-color);">Complete Usage Guide</a></li>
+            <li><a href="/faq.html" style="color: var(--primary-color);">FAQ - Frequently Asked Questions</a></li>
+        </ul>
+    </section>
+</main>
+
+<!-- Baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4bdc02239b6fe6f4e90583308d9ed3cd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWZV1HVCPJ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HWZV1HVCPJ');
+</script>
+</body>
+</html>
+
