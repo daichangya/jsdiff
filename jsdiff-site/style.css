@@ -27,6 +27,35 @@ html, body {
   line-height: 1.5;
 }
 
+/* Accessibility: Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Accessibility: Skip to content link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 6px;
+  top: 6px;
+}
+
 body {
   padding-top: var(--header-height);
   display: flex;

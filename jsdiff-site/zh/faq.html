@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>常见问题 - JSDiff 在线 JSON/JavaScript 对比工具</title>
+    <meta name="description" content="JSDiff 常见问题解答 - 免费在线 JSON 和 JavaScript 对比工具的使用方法、功能介绍等常见问题。">
+    <meta name="keywords" content="JSDiff 常见问题, JSON 对比问题, JavaScript 差异工具帮助, 在线对比工具 FAQ">
+    
+    <link rel="canonical" href="https://jsdiff.com/zh/faq.html" />
+    <link rel="stylesheet" href="../style.css"/>
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="常见问题 - JSDiff 在线 JSON/JavaScript 对比工具" />
+    <meta property="og:description" content="JSDiff 常见问题解答 - 免费在线 JSON 和 JavaScript 对比工具的使用方法、功能介绍等常见问题。" />
+    <meta property="og:url" content="https://jsdiff.com/zh/faq.html" />
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "JSDiff 是什么？",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "JSDiff 是一款免费的在线 JSON 和 JavaScript 代码对比工具。它使用 Myers 差异算法来高亮显示两个文本段之间的差异，让您轻松看到添加、删除或修改的内容。"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "JSDiff 是免费的吗？",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "是的，JSDiff 完全免费使用。所有处理都在您的浏览器本地完成，确保您的数据保持私密和安全。"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "JSDiff 支持哪些类型的对比？",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "JSDiff 支持多种对比模式：JSON（语义对比）、字符、单词、行和补丁格式。每种模式都针对不同的使用场景进行了优化。"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "JSDiff 可以在移动设备上使用吗？",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "是的，JSDiff 完全响应式设计，可以在移动设备、平板电脑和台式机上使用。您可以随时随地对比代码。"
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "使用 JSDiff 时我的数据安全吗？",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "是的，所有数据处理都在您的浏览器本地进行。不会向任何服务器发送数据，确保完全的隐私和安全性。"
+                    }
+                }
+            ]
+        }
+    </script>
+    
+    <link rel="alternate" hreflang="en" href="https://jsdiff.com/faq.html" />
+    <link rel="alternate" hreflang="zh" href="https://jsdiff.com/zh/faq.html" />
+</head>
+<body>
+<div id="settings">
+    <div class="title-section">
+        <h1><a href="/zh/" style="text-decoration: none; color: inherit;">JSDiff</a> - 常见问题</h1>
+    </div>
+    <div class="links-section">
+        <a href="/zh/" class="source">首页</a>
+        <a href="/docs/zh/myers-diff-algorithm.html" class="source">文档</a>
+        <a href="https://github.com/daichangya/jsdiff" class="source">GitHub</a>
+    </div>
+</div>
+
+<div style="max-width: 900px; margin: 100px auto 40px; padding: 20px;">
+    <h1 style="font-size: 32px; margin-bottom: 30px; color: var(--primary-color);">常见问题</h1>
+    
+    <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">JSDiff 是什么？</h2>
+        <p style="line-height: 1.8; margin-bottom: 10px;">
+            JSDiff 是一款免费的在线 JSON 和 JavaScript 代码对比工具。它使用 Myers 差异算法来高亮显示两个文本段之间的差异，让您轻松看到添加、删除或修改的内容。
+        </p>
+    </div>
+    
+    <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">JSDiff 是免费的吗？</h2>
+        <p style="line-height: 1.8; margin-bottom: 10px;">
+            是的，JSDiff 完全免费使用。所有处理都在您的浏览器本地完成，确保您的数据保持私密和安全。
+        </p>
+    </div>
+    
+    <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">JSDiff 支持哪些类型的对比？</h2>
+        <p style="line-height: 1.8; margin-bottom: 10px;">
+            JSDiff 支持多种对比模式：
+        </p>
+        <ul style="line-height: 1.8; padding-left: 30px; margin-top: 10px;">
+            <li><strong>JSON</strong>：JSON 对象的语义对比，忽略属性顺序</li>
+            <li><strong>Chars</strong>：逐字符对比</li>
+            <li><strong>Words</strong>：逐单词对比</li>
+            <li><strong>Lines</strong>：逐行对比</li>
+            <li><strong>Patch</strong>：生成统一差异补丁格式</li>
+        </ul>
+    </div>
+    
+    <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">JSDiff 可以在移动设备上使用吗？</h2>
+        <p style="line-height: 1.8; margin-bottom: 10px;">
+            是的，JSDiff 完全响应式设计，可以在移动设备、平板电脑和台式机上使用。您可以随时随地对比代码。
+        </p>
+    </div>
+    
+    <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">使用 JSDiff 时我的数据安全吗？</h2>
+        <p style="line-height: 1.8; margin-bottom: 10px;">
+            是的，所有数据处理都在您的浏览器本地进行。不会向任何服务器发送数据，确保完全的隐私和安全性。
+        </p>
+    </div>
+    
+    <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">如何对比两个 JSON 文件？</h2>
+        <p style="line-height: 1.8; margin-bottom: 10px;">
+            对比两个 JSON 文件的步骤：
+        </p>
+        <ol style="line-height: 1.8; padding-left: 30px; margin-top: 10px;">
+            <li>从选项中选择 'JSON' 模式</li>
+            <li>在左侧文本框中粘贴第一个 JSON</li>
+            <li>在右侧文本框中粘贴第二个 JSON</li>
+            <li>在结果面板中查看高亮显示的差异（绿色表示新增，红色表示删除）</li>
+        </ol>
+    </div>
+    
+    <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">什么是 Myers 差异算法？</h2>
+        <p style="line-height: 1.8; margin-bottom: 10px;">
+            Myers 差异算法是一种高效的 O(ND) 算法，用于计算两个序列之间的差异。它广泛应用于 Git 等版本控制系统和文本编辑器中。JSDiff 使用此算法来提供准确快速的对比。 <a href="/docs/zh/myers-diff-algorithm.html">了解更多关于该算法的信息</a>。
+        </p>
+    </div>
+    
+    <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">我可以离线使用 JSDiff 吗？</h2>
+        <p style="line-height: 1.8; margin-bottom: 10px;">
+            是的，页面加载后，JSDiff 可以完全离线工作。所有处理都在您的浏览器中使用 JavaScript 进行，因此初始页面加载后不需要互联网连接。
+        </p>
+    </div>
+    
+    <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">JSON 模式和其他模式有什么区别？</h2>
+        <p style="line-height: 1.8; margin-bottom: 10px;">
+            JSON 模式对 JSON 对象进行语义对比，忽略属性顺序。这意味着两个属性相同但顺序不同的 JSON 对象将被视为相同。其他模式（Chars、Words、Lines）按原样对比文本，分别逐字符、逐单词或逐行对比。JSON 模式最适合对比结构化数据，而其他模式更适合纯文本或代码。
+        </p>
+    </div>
+    
+    <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">我可以导出对比结果吗？</h2>
+        <p style="line-height: 1.8; margin-bottom: 10px;">
+            目前，您可以从结果面板复制结果。我们正在开发添加各种格式的导出功能。对于补丁格式，您可以使用 'Patch' 模式生成统一差异补丁，可以保存并在以后应用。
+        </p>
+    </div>
+    
+    <div style="margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--border-color);">
+        <p style="line-height: 1.8; color: #666;">
+            还有更多问题？<a href="https://github.com/daichangya/jsdiff/issues" style="color: var(--primary-color);">访问我们的 GitHub 仓库</a>提问或报告问题。
+        </p>
+    </div>
+</div>
+
+<!-- Baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4bdc02239b6fe6f4e90583308d9ed3cd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWZV1HVCPJ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HWZV1HVCPJ');
+</script>
+</body>
+</html>
+

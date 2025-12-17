@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /docs/demo/
+
+# Sitemaps
+Sitemap: https://jsdiff.com/sitemap.xml
+Sitemap: https://jsdiff.com/sitemap_en.xml
+Sitemap: https://jsdiff.com/sitemap_zh.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
