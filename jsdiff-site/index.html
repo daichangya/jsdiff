@@ -213,7 +213,7 @@
     </div>
     
     <!-- Value Proposition Banner - Moved outside fixed header -->
-    <div class="value-proposition" style="margin-top: 70px;">
+    <div class="value-proposition below-header">
         <h2>Compare JSON Instantly - 100% Free & Private</h2>
         <p>No signup required. All processing happens locally in your browser. Your data never leaves your device.</p>
         <!-- Quick Stats -->
@@ -239,161 +239,36 @@
 
     <div class="container" id="main-content" role="main">
         <div class="panel">
+            <div class="file-input-wrapper">
+                <input type="file" id="file-a" accept=".txt,.json,.js,.md,.xml,.yaml,.yml,.csv" aria-label="Load original file">
+                <label for="file-a" class="btn-file">📁 Load File</label>
+                <span class="file-name" id="file-a-name"></span>
+                <button type="button" class="btn-clear-file" id="clear-file-a" aria-label="Clear loaded file" style="display: none;">✕</button>
+            </div>
             <label for="a" class="sr-only">Original text input</label>
             <textarea id="a" placeholder="Enter original text here" aria-label="Original text input">restaurant</textarea>
         </div>
         <div class="panel">
+            <div class="file-input-wrapper">
+                <input type="file" id="file-b" accept=".txt,.json,.js,.md,.xml,.yaml,.yml,.csv" aria-label="Load modified file">
+                <label for="file-b" class="btn-file">📁 Load File</label>
+                <span class="file-name" id="file-b-name"></span>
+                <button type="button" class="btn-clear-file" id="clear-file-b" aria-label="Clear loaded file" style="display: none;">✕</button>
+            </div>
             <label for="b" class="sr-only">Modified text input</label>
             <textarea id="b" placeholder="Enter modified text here" aria-label="Modified text input">aura</textarea>
         </div>
         <div class="panel">
             <label for="result" class="sr-only">Comparison results</label>
-            <pre id="result" role="region" aria-live="polite" aria-label="Comparison results"></pre>
+            <div class="result-wrapper">
+                <pre id="result" role="region" aria-live="polite" aria-label="Comparison results"></pre>
+            </div>
         </div>
     </div>
 </section>
 
 <script src="diff.js"></script>
-<script defer>
-    var a = document.getElementById('a');
-    var b = document.getElementById('b');
-    var result = document.getElementById('result');
-
-    function changed() {
-        var fragment = document.createDocumentFragment();
-        var diff;
-        if (window.diffType === 'diffPatch') {
-            // We contort the patch into a similar data structure to that returned by diffChars,
-            // diffWords, etc so that the same rendering code below can work on both.
-            var pastHunkHeader = false;
-            diff = Diff.createTwoFilesPatch('a.txt', 'b.txt', a.value, b.value)
-                .split('\n')
-                .map(function(entry) {
-                    const result = {
-                        value: entry + '\n',
-                    };
-                    if (entry.startsWith('@@')) {
-                        result.chunkHeader = true;
-                        pastHunkHeader = true;
-                    } else if (pastHunkHeader) {
-                        if (entry.startsWith('-')) {
-                            result.removed = true;
-                        } else if (entry.startsWith('+')) {
-                            result.added = true;
-                        }
-                    }
-                    return result;
-                });
-        } else if (window.diffType === 'diffJson') {
-            try {
-                // Try to parse JSON input
-                var oldObj = JSON.parse(a.value);
-                var newObj = JSON.parse(b.value);
-                diff = Diff.diffJson(oldObj, newObj);
-            } catch (e) {
-                // If parsing fails, treat as text
-                diff = [{value: 'Invalid JSON input: ' + e.message, added: true}];
-            }
-        } else {
-            diff = Diff[window.diffType](a.value, b.value);
-        }
-
-        for (var i=0; i < diff.length; i++) {
-            if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
-                var swap = diff[i];
-                diff[i] = diff[i + 1];
-                diff[i + 1] = swap;
-            }
-
-            var node;
-            if (diff[i].removed) {
-                node = document.createElement('del');
-                node.appendChild(document.createTextNode(diff[i].value));
-            } else if (diff[i].added) {
-                node = document.createElement('ins');
-                node.appendChild(document.createTextNode(diff[i].value));
-            } else if (diff[i].chunkHeader) {
-                node = document.createElement('span');
-                node.setAttribute('class', 'chunk-header');
-                node.appendChild(document.createTextNode(diff[i].value));
-            } else {
-                node = document.createTextNode(diff[i].value);
-            }
-            fragment.appendChild(node);
-        }
-
-        result.textContent = '';
-        result.appendChild(fragment);
-    }
-
-    function setExampleText(diffType) {
-        if (diffType === 'diffJson') {
-            a.value = JSON.stringify({
-                name: "Product A",
-                price: 100,
-                features: ["Durable", "Easy to use"],
-                metadata: {
-                    created: "2023-01-15",
-                    rating: 4.5
-                }
-            }, null, 2);
-
-            b.value = JSON.stringify({
-                name: "Product A",
-                price: 120,
-                features: ["Durable", "Easy to use", "Lightweight"],
-                metadata: {
-                    created: "2023-01-15",
-                    rating: 4.7,
-                    inStock: true
-                }
-            }, null, 2);
-        } else if (diffType === 'diffPatch') {
-            a.value = "Line 1\nLine 2\nLine 3\nLine 4";
-            b.value = "Line 1\nModified Line 2\nLine 3\nNew Line\nLine 4";
-        } else if (diffType === 'diffLines') {
-            a.value = "Line 1\nLine 2\nLine 3\nLine 4";
-            b.value = "Line 1\nModified Line 2\nLine 3\nNew Line\nLine 4";
-        } else if (diffType === 'diffWords') {
-            a.value = "The quick brown fox jumps over the lazy dog";
-            b.value = "The fast brown fox leaps over the lazy dog";
-        } else {
-            // diffChars and default
-            a.value = "restaurant";
-            b.value = "aura";
-        }
-    }
-
-    window.onload = function() {
-        var selectedDiffType = document.querySelector('#settings [name="diff_type"]:checked');
-        onDiffTypeChange(selectedDiffType);
-        setExampleText(selectedDiffType.value);
-        changed();
-    };
-
-    a.onpaste = a.onchange =
-    b.onpaste = b.onchange = changed;
-
-    if ('oninput' in a) {
-        a.oninput = b.oninput = changed;
-    } else {
-        a.onkeyup = b.onkeyup = changed;
-    }
-
-    function onDiffTypeChange(radio) {
-        window.diffType = radio.value;
-<!--        document.title = "Diff " + radio.value.slice(4);-->
-    }
-
-    var radio = document.getElementsByName('diff_type');
-    for (var i = 0; i < radio.length; i++) {
-        radio[i].onchange = function(e) {
-            onDiffTypeChange(e.target);
-            setExampleText(e.target.value);
-            changed();
-        }
-    }
-</script>
+<script src="jsdiff-app.js"></script>
 
 <!-- Baidu Analytics -->
 <script>

@@ -172,158 +172,85 @@
 
     <div class="container">
         <div class="panel">
+            <div class="file-input-wrapper">
+                <input type="file" id="file-a" accept=".txt,.json,.js,.md,.xml,.yaml,.yml,.csv" aria-label="加载原始文件">
+                <label for="file-a" class="btn-file">📁 加载文件</label>
+                <span class="file-name" id="file-a-name"></span>
+                <button type="button" class="btn-clear-file" id="clear-file-a" aria-label="清除已加载文件" style="display: none;">✕</button>
+            </div>
             <textarea id="a" placeholder="Enter original text here">restaurant</textarea>
         </div>
         <div class="panel">
+            <div class="file-input-wrapper">
+                <input type="file" id="file-b" accept=".txt,.json,.js,.md,.xml,.yaml,.yml,.csv" aria-label="加载修改文件">
+                <label for="file-b" class="btn-file">📁 加载文件</label>
+                <span class="file-name" id="file-b-name"></span>
+                <button type="button" class="btn-clear-file" id="clear-file-b" aria-label="清除已加载文件" style="display: none;">✕</button>
+            </div>
             <textarea id="b" placeholder="Enter modified text here">aura</textarea>
         </div>
         <div class="panel">
-            <pre id="result"></pre>
+            <label for="result" class="sr-only">对比结果</label>
+            <div class="result-wrapper">
+                <pre id="result" role="region" aria-live="polite" aria-label="对比结果"></pre>
+            </div>
         </div>
     </div>
 </section>
 
 <script src="../diff.js"></script>
-<script defer>
-    var a = document.getElementById('a');
-    var b = document.getElementById('b');
-    var result = document.getElementById('result');
-
-    function changed() {
-        var fragment = document.createDocumentFragment();
-        var diff;
-        if (window.diffType === 'diffPatch') {
-            // We contort the patch into a similar data structure to that returned by diffChars,
-            // diffWords, etc so that the same rendering code below can work on both.
-            var pastHunkHeader = false;
-            diff = Diff.createTwoFilesPatch('a.txt', 'b.txt', a.value, b.value)
-                .split('\n')
-                .map(function(entry) {
-                    const result = {
-                        value: entry + '\n',
-                    };
-                    if (entry.startsWith('@@')) {
-                        result.chunkHeader = true;
-                        pastHunkHeader = true;
-                    } else if (pastHunkHeader) {
-                        if (entry.startsWith('-')) {
-                            result.removed = true;
-                        } else if (entry.startsWith('+')) {
-                            result.added = true;
+<script src="../jsdiff-app.js"></script>
+<script>
+    // Override text strings for Chinese version
+    if (window.setupResultPanel) {
+        var originalSetup = window.setupResultPanel;
+        window.setupResultPanel = function() {
+            originalSetup();
+            // Update Chinese text
+            var copyBtn = document.querySelector('.btn-copy-result');
+            if (copyBtn) copyBtn.innerHTML = '📋 复制';
+            
+            var structuredBtn = document.querySelector('.btn-view-toggle[data-view="structured"]');
+            if (structuredBtn) structuredBtn.textContent = '结构化';
+            
+            var textBtn = document.querySelector('.btn-view-toggle[data-view="text"]');
+            if (textBtn) textBtn.textContent = '文本';
+            
+            var expandBtn = document.querySelector('.btn-expand-all');
+            if (expandBtn) {
+                expandBtn.textContent = '展开全部';
+                expandBtn.onclick = function() {
+                    if (window.diffType !== 'diffJson' || window.currentViewMode !== 'structured') return;
+                    var container = document.getElementById('result').querySelector('.json-container');
+                    if (!container) return;
+                    var nodes = container.querySelectorAll('.json-node.json-object, .json-node.json-array');
+                    if (nodes.length === 0) return;
+                    var allExpanded = true;
+                    for (var i = 0; i < nodes.length; i++) {
+                        if (nodes[i].classList.contains('json-collapsed')) {
+                            allExpanded = false;
+                            break;
                         }
                     }
-                    return result;
-                });
-        } else if (window.diffType === 'diffJson') {
-            try {
-                // Try to parse JSON input
-                var oldObj = JSON.parse(a.value);
-                var newObj = JSON.parse(b.value);
-                diff = Diff.diffJson(oldObj, newObj);
-            } catch (e) {
-                // If parsing fails, treat as text
-                diff = [{value: 'Invalid JSON input: ' + e.message, added: true}];
+                    var shouldExpand = !allExpanded;
+                    nodes.forEach(function(node) {
+                        if (shouldExpand) {
+                            node.classList.remove('json-collapsed');
+                            var toggle = node.querySelector('.json-toggle');
+                            if (toggle) toggle.textContent = '▼';
+                        } else {
+                            node.classList.add('json-collapsed');
+                            var toggle = node.querySelector('.json-toggle');
+                            if (toggle) toggle.textContent = '▶';
+                        }
+                    });
+                    expandBtn.textContent = shouldExpand ? '折叠全部' : '展开全部';
+                };
             }
-        } else {
-            diff = Diff[window.diffType](a.value, b.value);
-        }
-
-        for (var i=0; i < diff.length; i++) {
-            if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
-                var swap = diff[i];
-                diff[i] = diff[i + 1];
-                diff[i + 1] = swap;
-            }
-
-            var node;
-            if (diff[i].removed) {
-                node = document.createElement('del');
-                node.appendChild(document.createTextNode(diff[i].value));
-            } else if (diff[i].added) {
-                node = document.createElement('ins');
-                node.appendChild(document.createTextNode(diff[i].value));
-            } else if (diff[i].chunkHeader) {
-                node = document.createElement('span');
-                node.setAttribute('class', 'chunk-header');
-                node.appendChild(document.createTextNode(diff[i].value));
-            } else {
-                node = document.createTextNode(diff[i].value);
-            }
-            fragment.appendChild(node);
-        }
-
-        result.textContent = '';
-        result.appendChild(fragment);
-    }
-
-    function setExampleText(diffType) {
-        if (diffType === 'diffJson') {
-            a.value = JSON.stringify({
-                name: "Product A",
-                price: 100,
-                features: ["Durable", "Easy to use"],
-                metadata: {
-                    created: "2023-01-15",
-                    rating: 4.5
-                }
-            }, null, 2);
-
-            b.value = JSON.stringify({
-                name: "Product A",
-                price: 120,
-                features: ["Durable", "Easy to use", "Lightweight"],
-                metadata: {
-                    created: "2023-01-15",
-                    rating: 4.7,
-                    inStock: true
-                }
-            }, null, 2);
-        } else if (diffType === 'diffPatch') {
-            a.value = "Line 1\nLine 2\nLine 3\nLine 4";
-            b.value = "Line 1\nModified Line 2\nLine 3\nNew Line\nLine 4";
-        } else if (diffType === 'diffLines') {
-            a.value = "Line 1\nLine 2\nLine 3\nLine 4";
-            b.value = "Line 1\nModified Line 2\nLine 3\nNew Line\nLine 4";
-        } else if (diffType === 'diffWords') {
-            a.value = "The quick brown fox jumps over the lazy dog";
-            b.value = "The fast brown fox leaps over the lazy dog";
-        } else {
-            // diffChars and default
-            a.value = "restaurant";
-            b.value = "aura";
-        }
-    }
-
-    window.onload = function() {
-        var selectedDiffType = document.querySelector('#settings [name="diff_type"]:checked');
-        onDiffTypeChange(selectedDiffType);
-        setExampleText(selectedDiffType.value);
-        changed();
-    };
-
-    a.onpaste = a.onchange =
-        b.onpaste = b.onchange = changed;
-
-    if ('oninput' in a) {
-        a.oninput = b.oninput = changed;
-    } else {
-        a.onkeyup = b.onkeyup = changed;
-    }
-
-    function onDiffTypeChange(radio) {
-        window.diffType = radio.value;
-<!--        document.title = "Diff " + radio.value.slice(4);-->
-    }
-
-    var radio = document.getElementsByName('diff_type');
-    for (var i = 0; i < radio.length; i++) {
-        radio[i].onchange = function(e) {
-            onDiffTypeChange(e.target);
-            setExampleText(e.target.value);
-            changed();
-        }
+        };
     }
 </script>
+
 
 <!-- Baidu Analytics -->
 <script>
