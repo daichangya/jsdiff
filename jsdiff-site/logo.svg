@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#4a6fa5"/>
+  
+  <!-- JSON braces -->
+  <g fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left brace { -->
+    <path d="M 50 60 Q 35 80 35 100 L 35 120 Q 35 140 50 160" opacity="0.95"/>
+    <path d="M 35 100 L 35 120" opacity="0.95"/>
+    
+    <!-- Right brace } -->
+    <path d="M 150 60 Q 165 80 165 100 L 165 120 Q 165 140 150 160" opacity="0.95"/>
+    <path d="M 165 100 L 165 120" opacity="0.95"/>
+  </g>
+  
+  <!-- Diff indicators -->
+  <g>
+    <!-- Minus (removed) - left side -->
+    <circle cx="80" cy="110" r="18" fill="#e53935"/>
+    <line x1="68" y1="110" x2="92" y2="110" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Arrow pointing right -->
+    <path d="M 105 110 L 125 110" stroke="white" stroke-width="6" fill="none" marker-end="url(#arrowhead)"/>
+    <defs>
+      <marker id="arrowhead" markerWidth="14" markerHeight="14" refX="13" refY="7" orient="auto">
+        <polygon points="0 0, 14 7, 0 14" fill="white"/>
+      </marker>
+    </defs>
+    
+    <!-- Plus (added) - right side -->
+    <circle cx="120" cy="110" r="18" fill="#31a354"/>
+    <line x1="120" y1="98" x2="120" y2="122" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    <line x1="108" y1="110" x2="132" y2="110" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

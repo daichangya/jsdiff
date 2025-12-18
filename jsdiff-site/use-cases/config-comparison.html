@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Diff for Configuration File Comparison - Free Tool | JSDiff</title>
+    <meta name="description" content="Compare configuration files with JSDiff. Compare JSON config files, check environment differences, and migrate configurations safely. Free online tool.">
+    <meta name="keywords" content="json config comparison, compare config files, configuration file diff, json config diff, environment config comparison">
+    
+    <link rel="canonical" href="https://jsdiff.com/use-cases/config-comparison.html" />
+    <link rel="stylesheet" href="../../style.css"/>
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JSON Diff for Configuration File Comparison - Free Tool | JSDiff" />
+    <meta property="og:description" content="Compare configuration files with JSDiff. Compare JSON config files and check environment differences." />
+    <meta property="og:url" content="https://jsdiff.com/use-cases/config-comparison.html" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<!-- Skip to main content link for accessibility -->
+<a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; z-index: 999; padding: 1em; background: var(--primary-color); color: white; text-decoration: none;">Skip to main content</a>
+
+<div id="settings" role="banner">
+    <div class="title-section">
+        <h1><a href="/" style="text-decoration: none; color: inherit;" aria-label="JSDiff home">JSDiff</a> - Config Comparison</h1>
+    </div>
+    <nav class="links-section" aria-label="Navigation links">
+        <a href="/" class="source" aria-label="Home page">Home</a>
+        <a href="/use-cases/" class="source" aria-label="Use cases">Use Cases</a>
+        <a href="/faq.html" class="source" aria-label="Frequently asked questions">FAQ</a>
+    </nav>
+</div>
+
+<main id="main-content" class="content-container">
+    <h1 class="page-title">Using JSDiff for Configuration File Comparison</h1>
+    
+    <p class="page-intro">
+        Configuration files are critical to application behavior. Comparing config files helps you understand changes, verify migrations, and ensure consistency across environments. JSDiff makes this process visual and straightforward.
+    </p>
+    
+    <!-- Use Cases -->
+    <section class="mb-large">
+        <h2 class="section-title">Common Configuration Comparison Scenarios</h2>
+        
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">1. Version Comparison</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Compare configuration files between different versions of your application to understand what changed and ensure backward compatibility.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare package.json before and after a major dependency update.</p>
+        </div>
+        
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">2. Environment Differences</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Compare configurations across different environments (development, staging, production) to ensure consistency and identify environment-specific settings.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare dev.config.json with prod.config.json to verify all settings are correct.</p>
+        </div>
+        
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">3. Configuration Migration</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                When migrating to a new configuration format, compare old and new configs to ensure all settings are properly migrated.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare old config.json with new config.yaml (after converting to JSON) to verify migration.</p>
+        </div>
+        
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">4. Team Configuration Sync</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Compare your local configuration with team standards to ensure everyone is using consistent settings.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare your local .eslintrc.json with the team's standard configuration.</p>
+        </div>
+    </section>
+    
+    <!-- How to Use -->
+    <section class="mb-large">
+        <h2 class="section-title">How to Compare Configuration Files</h2>
+        
+        <div class="mb-medium">
+            <h3 class="section-subtitle">Step 1: Get Your Configuration Files</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Copy the JSON content from the configuration files you want to compare. Common config files include:
+            </p>
+            <ul style="line-height: 1.8; padding-left: 30px;">
+                <li>package.json, package-lock.json</li>
+                <li>tsconfig.json, jsconfig.json</li>
+                <li>.eslintrc.json, .prettierrc.json</li>
+                <li>Application-specific config files</li>
+            </ul>
+        </div>
+        
+        <div class="mb-medium">
+            <h3 class="section-subtitle">Step 2: Use JSON Mode</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Open JSDiff at <a href="/" style="color: var(--primary-color);">https://jsdiff.com/</a> and select "JSON" mode. This ensures semantic comparison that ignores property order, which is perfect for config files.
+            </p>
+        </div>
+        
+        <div class="mb-medium">
+            <h3 class="section-subtitle">Step 3: Compare and Analyze</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Paste the original config in the left panel and the modified config in the right panel. Review the highlighted differences:
+            </p>
+            <ul style="line-height: 1.8; padding-left: 30px;">
+                <li>Check for removed settings that might break functionality</li>
+                <li>Verify new settings are correct and documented</li>
+                <li>Ensure value changes are intentional</li>
+                <li>Look for typos or incorrect values</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Real-World Example -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Real-World Example</h2>
+        
+        <p style="line-height: 1.8; margin-bottom: 20px;">
+            Let's compare two versions of a package.json file to see what dependencies changed:
+        </p>
+        
+        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">Original package.json:</h3>
+            <pre style="background: white; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>{
+  "name": "my-app",
+  "version": "1.0.0",
+  "dependencies": {
+    "react": "^18.0.0",
+    "axios": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}</code></pre>
+        </div>
+        
+        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">Updated package.json:</h3>
+            <pre style="background: white; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>{
+  "name": "my-app",
+  "version": "1.1.0",
+  "dependencies": {
+    "react": "^18.2.0",
+    "axios": "^1.0.0",
+    "lodash": "^4.17.21"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest"
+  }
+}</code></pre>
+        </div>
+        
+        <p style="line-height: 1.8; margin-bottom: 15px;">
+            <strong>JSDiff will highlight:</strong>
+        </p>
+        <ul style="line-height: 1.8; padding-left: 30px; margin-bottom: 20px;">
+            <li>Version changed from "1.0.0" to "1.1.0"</li>
+            <li>React version updated from "^18.0.0" to "^18.2.0"</li>
+            <li>New dependency added: "lodash": "^4.17.21"</li>
+            <li>New script added: "test": "jest"</li>
+        </ul>
+        
+        <p style="line-height: 1.8;">
+            This visual comparison makes it immediately clear what changed, helping you make informed decisions about the update.
+        </p>
+    </section>
+    
+    <!-- Best Practices -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Best Practices for Config Comparison</h2>
+        
+        <ul style="line-height: 1.8; padding-left: 30px;">
+            <li style="margin-bottom: 15px;">
+                <strong>Always Use JSON Mode:</strong> Select "JSON" mode for semantic comparison that ignores property order.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Format Before Comparing:</strong> While JSDiff handles unformatted JSON, formatting makes differences easier to spot.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Check for Breaking Changes:</strong> Pay special attention to removed fields or changed data types that might break functionality.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Verify Environment-Specific Values:</strong> When comparing across environments, ensure environment-specific values (like API URLs) are correctly set.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Document Changes:</strong> Use JSDiff results to document configuration changes in your change logs or pull requests.
+            </li>
+        </ul>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="card" style="background: #e6f5ee; text-align: center;">
+        <h2 class="section-subtitle" style="margin-bottom: 15px;">Start Comparing Your Config Files</h2>
+        <p style="line-height: 1.8; margin-bottom: 20px;">
+            Use JSDiff to compare configuration files safely and efficiently. Free, private, and works offline.
+        </p>
+        <p style="line-height: 1.8;">
+            <a href="/" class="btn btn-primary">Try JSDiff Now →</a>
+        </p>
+    </section>
+    
+    <!-- Related Links -->
+    <section class="related-links">
+        <h2>Related Resources</h2>
+        <ul>
+            <li><a href="/">JSDiff Home - Try the Tool</a></li>
+            <li><a href="/use-cases/api-debugging.html">Using JSDiff for API Debugging</a></li>
+            <li><a href="/use-cases/code-review.html">Using JSDiff for Code Review</a></li>
+            <li><a href="/docs/how-to-use-jsdiff.html">Complete Usage Guide</a></li>
+        </ul>
+    </section>
+</main>
+
+<!-- Baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4bdc02239b6fe6f4e90583308d9ed3cd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWZV1HVCPJ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HWZV1HVCPJ');
+</script>
+</body>
+</html>
+

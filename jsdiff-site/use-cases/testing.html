@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Diff for Testing - Compare Test Results | JSDiff</title>
+    <meta name="description" content="Use JSDiff for testing. Compare expected vs actual test results, debug test failures, and verify JSON outputs. Free online JSON diff tool for QA and testing.">
+    <meta name="keywords" content="json diff testing, compare test results, test output comparison, json test diff, qa testing tool, json diff for qa">
+    
+    <link rel="canonical" href="https://jsdiff.com/use-cases/testing.html" />
+    <link rel="stylesheet" href="../../style.css"/>
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JSON Diff for Testing - Compare Test Results | JSDiff" />
+    <meta property="og:description" content="Use JSDiff for testing. Compare expected vs actual test results and debug test failures." />
+    <meta property="og:url" content="https://jsdiff.com/use-cases/testing.html" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<!-- Skip to main content link for accessibility -->
+<a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; z-index: 999; padding: 1em; background: var(--primary-color); color: white; text-decoration: none;">Skip to main content</a>
+
+<div id="settings" role="banner">
+    <div class="title-section">
+        <h1><a href="/" style="text-decoration: none; color: inherit;" aria-label="JSDiff home">JSDiff</a> - Testing</h1>
+    </div>
+    <nav class="links-section" aria-label="Navigation links">
+        <a href="/" class="source" aria-label="Home page">Home</a>
+        <a href="/use-cases/" class="source" aria-label="Use cases">Use Cases</a>
+        <a href="/faq.html" class="source" aria-label="Frequently asked questions">FAQ</a>
+    </nav>
+</div>
+
+<main id="main-content" class="content-container">
+    <h1 class="page-title">Using JSDiff for Testing</h1>
+    
+    <p class="page-intro">
+        Testing often involves comparing expected results with actual outputs. When test results are in JSON format, JSDiff makes it easy to identify discrepancies, debug failures, and verify that your code produces the correct output.
+    </p>
+    
+    <!-- Use Cases -->
+    <section class="mb-large">
+        <h2 class="section-title">Testing Scenarios</h2>
+        
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">1. Expected vs Actual Results</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Compare expected test output with actual results to identify test failures and understand what went wrong.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare expected API response with actual response in integration tests.</p>
+        </div>
+        
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">2. Test Output Verification</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Verify that test outputs match expected formats and contain all required fields.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Verify that a data transformation function produces the correct JSON structure.</p>
+        </div>
+        
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">3. Regression Testing</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Compare current test results with previous test runs to identify regressions or unexpected changes.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare test output from version 1.0 with version 2.0 to ensure no breaking changes.</p>
+        </div>
+        
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">4. Snapshot Testing</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Compare current snapshots with previous snapshots to identify what changed and whether changes are expected.
+            </p>
+            <p style="line-height: 1.8;"><strong>Example:</strong> Compare React component snapshot JSON to see what changed in the component structure.</p>
+        </div>
+    </section>
+    
+    <!-- How to Use -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">How to Use JSDiff for Testing</h2>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 1: Get Test Results</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Export or copy your test results in JSON format. This could be:
+            </p>
+            <ul style="line-height: 1.8; padding-left: 30px;">
+                <li>API response from integration tests</li>
+                <li>Function output from unit tests</li>
+                <li>Database query results</li>
+                <li>Component snapshot data</li>
+            </ul>
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 2: Compare with Expected Results</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Open JSDiff at <a href="/" style="color: var(--primary-color);">https://jsdiff.com/</a>, select "JSON" mode, and paste:
+            </p>
+            <ul style="line-height: 1.8; padding-left: 30px;">
+                <li>Expected result in the left panel</li>
+                <li>Actual result in the right panel</li>
+            </ul>
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 3: Analyze Differences</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Review the highlighted differences to understand test failures:
+            </p>
+            <ul style="line-height: 1.8; padding-left: 30px;">
+                <li>Identify missing fields or values</li>
+                <li>Find unexpected additions</li>
+                <li>Check for incorrect values</li>
+                <li>Verify data type changes</li>
+            </ul>
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 4: Debug and Fix</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                Use the comparison results to:
+            </p>
+            <ul style="line-height: 1.8; padding-left: 30px;">
+                <li>Update test expectations if changes are intentional</li>
+                <li>Fix code bugs if differences are unexpected</li>
+                <li>Document changes for team review</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Automation Integration -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Automation Integration</h2>
+        
+        <p style="line-height: 1.8; margin-bottom: 20px;">
+            While JSDiff is primarily a web-based tool, you can integrate it into your testing workflow:
+        </p>
+        
+        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">Manual Review Workflow:</h3>
+            <ol style="line-height: 1.8; padding-left: 30px;">
+                <li style="margin-bottom: 10px;">Run your tests and export results as JSON</li>
+                <li style="margin-bottom: 10px;">Open JSDiff in your browser</li>
+                <li style="margin-bottom: 10px;">Compare expected vs actual results</li>
+                <li style="margin-bottom: 10px;">Use the visual diff to understand failures</li>
+                <li style="margin-bottom: 10px;">Copy diff results for bug reports or documentation</li>
+            </ol>
+        </div>
+        
+        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">For Programmatic Use:</h3>
+            <p style="line-height: 1.8; margin-bottom: 10px;">
+                You can use the <a href="https://www.npmjs.com/package/diff" style="color: var(--primary-color);" rel="noopener noreferrer">jsdiff npm package</a> in your test scripts to programmatically compare JSON results.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Real-World Example -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Real-World Example</h2>
+        
+        <p style="line-height: 1.8; margin-bottom: 20px;">
+            Imagine you're testing a user API endpoint. Here's how to use JSDiff to debug a test failure:
+        </p>
+        
+        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">Expected Test Result:</h3>
+            <pre style="background: white; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>{
+  "id": 123,
+  "name": "John Doe",
+  "email": "john@example.com",
+  "role": "user",
+  "created": "2025-01-01"
+}</code></pre>
+        </div>
+        
+        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">Actual Test Result:</h3>
+            <pre style="background: white; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>{
+  "id": 123,
+  "name": "John Doe",
+  "email": "john@example.com",
+  "role": "admin",
+  "created": "2025-01-01",
+  "lastLogin": "2025-01-27"
+}</code></pre>
+        </div>
+        
+        <p style="line-height: 1.8; margin-bottom: 15px;">
+            <strong>JSDiff will show:</strong>
+        </p>
+        <ul style="line-height: 1.8; padding-left: 30px; margin-bottom: 20px;">
+            <li><strong style="color: var(--removed-color);">"role": "user"</strong> was changed to <strong style="color: var(--added-color);">"role": "admin"</strong> (potential bug!)</li>
+            <li><strong style="color: var(--added-color);">"lastLogin": "2025-01-27"</strong> was added (may be expected)</li>
+        </ul>
+        
+        <p style="line-height: 1.8;">
+            This immediately shows you that the role field has an unexpected value, helping you identify the root cause of the test failure.
+        </p>
+    </section>
+    
+    <!-- Best Practices -->
+    <section style="margin-bottom: 50px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Best Practices for Testing</h2>
+        
+        <ul style="line-height: 1.8; padding-left: 30px;">
+            <li style="margin-bottom: 15px;">
+                <strong>Use JSON Mode:</strong> Always select "JSON" mode for semantic comparison of test results.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Focus on Critical Fields:</strong> When comparing large test outputs, focus on the fields that matter most for your test.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Document Expected Differences:</strong> If some differences are expected (like timestamps), document them clearly.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Use for Debugging:</strong> JSDiff is excellent for debugging test failures, especially when test output is complex.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Share Results:</strong> Copy diff results to share with team members when discussing test failures.
+            </li>
+        </ul>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="card" style="background: #e6f5ee; text-align: center;">
+        <h2 class="section-subtitle" style="margin-bottom: 15px;">Improve Your Testing Workflow</h2>
+        <p style="line-height: 1.8; margin-bottom: 20px;">
+            Start using JSDiff to debug test failures faster and verify test results more effectively. Free, private, and works offline.
+        </p>
+        <p style="line-height: 1.8;">
+            <a href="/" class="btn btn-primary">Try JSDiff Now →</a>
+        </p>
+    </section>
+    
+    <!-- Related Links -->
+    <section class="related-links">
+        <h2>Related Resources</h2>
+        <ul>
+            <li><a href="/">JSDiff Home - Try the Tool</a></li>
+            <li><a href="/use-cases/api-debugging.html">Using JSDiff for API Debugging</a></li>
+            <li><a href="/use-cases/code-review.html">Using JSDiff for Code Review</a></li>
+            <li><a href="/docs/how-to-use-jsdiff.html">Complete Usage Guide</a></li>
+        </ul>
+    </section>
+</main>
+
+<!-- Baidu Analytics -->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4bdc02239b6fe6f4e90583308d9ed3cd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWZV1HVCPJ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HWZV1HVCPJ');
+</script>
+</body>
+</html>
+
