@@ -76,35 +76,35 @@
     </nav>
 </div>
 
-<main id="main-content" style="max-width: 1000px; margin: 100px auto 40px; padding: 20px;">
-    <h1 style="font-size: 36px; margin-bottom: 20px; color: var(--primary-color);">Using JSDiff for API Debugging</h1>
+<main id="main-content" class="content-container">
+    <h1 class="page-title">Using JSDiff for API Debugging</h1>
     
-    <p style="line-height: 1.8; margin-bottom: 30px; font-size: 18px;">
+    <p class="page-intro">
         API debugging often involves comparing JSON responses to identify what changed, what's missing, or what's unexpected. JSDiff makes this process quick and visual, helping you debug API issues faster.
     </p>
     
     <!-- Common Problems -->
-    <section style="margin-bottom: 50px;">
-        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Common API Debugging Scenarios</h2>
+    <section class="mb-large">
+        <h2 class="section-title">Common API Debugging Scenarios</h2>
         
-        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">1. Comparing API Versions</h3>
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">1. Comparing API Versions</h3>
             <p style="line-height: 1.8; margin-bottom: 10px;">
                 When API versions change, you need to understand what fields were added, removed, or modified. JSDiff's semantic JSON comparison ignores property order, making it perfect for comparing API responses.
             </p>
             <p style="line-height: 1.8;"><strong>Example:</strong> Compare v1 and v2 API responses to see breaking changes.</p>
         </div>
         
-        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">2. Debugging Unexpected Responses</h3>
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">2. Debugging Unexpected Responses</h3>
             <p style="line-height: 1.8; margin-bottom: 10px;">
                 When an API returns unexpected data, compare the actual response with the expected response to quickly identify discrepancies.
             </p>
             <p style="line-height: 1.8;"><strong>Example:</strong> Compare production API response with staging to find differences.</p>
         </div>
         
-        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">3. Testing API Changes</h3>
+        <div class="card mb-medium">
+            <h3 class="section-subtitle">3. Testing API Changes</h3>
             <p style="line-height: 1.8; margin-bottom: 10px;">
                 Before and after testing: Compare API responses before and after making changes to ensure everything works as expected.
             </p>
@@ -113,32 +113,32 @@
     </section>
     
     <!-- Step-by-Step Guide -->
-    <section style="margin-bottom: 50px;">
-        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Step-by-Step Guide</h2>
+    <section class="mb-large">
+        <h2 class="section-title">Step-by-Step Guide</h2>
         
-        <div style="margin-bottom: 30px;">
-            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 1: Get Your API Responses</h3>
+        <div class="mb-medium">
+            <h3 class="section-subtitle">Step 1: Get Your API Responses</h3>
             <p style="line-height: 1.8; margin-bottom: 10px;">
                 Use your API testing tool (Postman, curl, browser DevTools) to get the JSON responses you want to compare.
             </p>
         </div>
         
-        <div style="margin-bottom: 30px;">
-            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 2: Open JSDiff</h3>
+        <div class="mb-medium">
+            <h3 class="section-subtitle">Step 2: Open JSDiff</h3>
             <p style="line-height: 1.8; margin-bottom: 10px;">
                 Navigate to <a href="/" style="color: var(--primary-color);">https://jsdiff.com/</a> and select "JSON" mode for semantic comparison.
             </p>
         </div>
         
-        <div style="margin-bottom: 30px;">
-            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 3: Paste and Compare</h3>
+        <div class="mb-medium">
+            <h3 class="section-subtitle">Step 3: Paste and Compare</h3>
             <p style="line-height: 1.8; margin-bottom: 10px;">
                 Paste your original API response in the left panel and the modified/expected response in the right panel. JSDiff will automatically highlight all differences.
             </p>
         </div>
         
-        <div style="margin-bottom: 30px;">
-            <h3 style="font-size: 22px; margin-bottom: 15px; color: var(--primary-color);">Step 4: Analyze Results</h3>
+        <div class="mb-medium">
+            <h3 class="section-subtitle">Step 4: Analyze Results</h3>
             <p style="line-height: 1.8; margin-bottom: 10px;">
                 Review the highlighted differences:
             </p>
@@ -151,15 +151,15 @@
     </section>
     
     <!-- Real-World Example -->
-    <section style="margin-bottom: 50px;">
-        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Real-World Example</h2>
+    <section class="mb-large">
+        <h2 class="section-title">Real-World Example</h2>
         
         <p style="line-height: 1.8; margin-bottom: 20px;">
             Let's say you're debugging a user API that's returning unexpected data. Here's how to use JSDiff:
         </p>
         
-        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">Original API Response (Expected):</h3>
+        <div class="card mb-medium">
+            <h3 class="section-subtitle" style="font-size: 20px; margin-bottom: 15px;">Original API Response (Expected):</h3>
             <pre style="background: white; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>{
   "id": 123,
   "name": "John Doe",
@@ -168,8 +168,8 @@
 }</code></pre>
         </div>
         
-        <div style="margin-bottom: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-            <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--primary-color);">Actual API Response (Unexpected):</h3>
+        <div class="card mb-medium">
+            <h3 class="section-subtitle" style="font-size: 20px; margin-bottom: 15px;">Actual API Response (Unexpected):</h3>
             <pre style="background: white; padding: 15px; border-radius: 4px; overflow-x: auto;"><code>{
   "id": 123,
   "name": "John Doe",
@@ -193,8 +193,8 @@
     </section>
     
     <!-- Best Practices -->
-    <section style="margin-bottom: 50px;">
-        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Best Practices for API Debugging</h2>
+    <section class="mb-large">
+        <h2 class="section-title">Best Practices for API Debugging</h2>
         
         <ul style="line-height: 1.8; padding-left: 30px;">
             <li style="margin-bottom: 15px;">
@@ -216,25 +216,25 @@
     </section>
     
     <!-- Common Questions -->
-    <section style="margin-bottom: 50px;">
-        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Frequently Asked Questions</h2>
+    <section class="mb-large">
+        <h2 class="section-title">Frequently Asked Questions</h2>
         
-        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-            <h3 style="font-size: 20px; margin-bottom: 10px; color: var(--primary-color);">Can I compare large API responses?</h3>
+        <div class="card mb-medium">
+            <h3 class="section-subtitle" style="font-size: 20px; margin-bottom: 10px;">Can I compare large API responses?</h3>
             <p style="line-height: 1.8;">
                 Yes, JSDiff can handle large JSON responses. However, for very large responses (several MB), consider comparing specific sections for better performance.
             </p>
         </div>
         
-        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-            <h3 style="font-size: 20px; margin-bottom: 10px; color: var(--primary-color);">Is my API data secure?</h3>
+        <div class="card mb-medium">
+            <h3 class="section-subtitle" style="font-size: 20px; margin-bottom: 10px;">Is my API data secure?</h3>
             <p style="line-height: 1.8;">
                 Absolutely! JSDiff processes all data locally in your browser. No data is sent to any server, making it safe for sensitive API responses containing credentials or personal information.
             </p>
         </div>
         
-        <div style="margin-bottom: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-            <h3 style="font-size: 20px; margin-bottom: 10px; color: var(--primary-color);">Can I use JSDiff offline for API debugging?</h3>
+        <div class="card mb-medium">
+            <h3 class="section-subtitle" style="font-size: 20px; margin-bottom: 10px;">Can I use JSDiff offline for API debugging?</h3>
             <p style="line-height: 1.8;">
                 Yes! Once the page is loaded, JSDiff works completely offline. This is perfect for debugging APIs in environments with limited internet access.
             </p>
@@ -242,24 +242,24 @@
     </section>
     
     <!-- Call to Action -->
-    <section style="margin-top: 50px; padding: 30px; background: #e6f5ee; border-radius: 8px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--primary-color);">Ready to Debug Your APIs?</h2>
+    <section class="card" style="background: #e6f5ee; text-align: center;">
+        <h2 class="section-subtitle" style="margin-bottom: 15px;">Ready to Debug Your APIs?</h2>
         <p style="line-height: 1.8; margin-bottom: 20px;">
             Start using JSDiff now to make your API debugging faster and more efficient. No signup required, completely free, and 100% private.
         </p>
         <p style="line-height: 1.8;">
-            <a href="/" style="display: inline-block; padding: 12px 24px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Try JSDiff Now →</a>
+            <a href="/" class="btn btn-primary">Try JSDiff Now →</a>
         </p>
     </section>
     
     <!-- Related Links -->
-    <section style="margin-top: 50px; padding-top: 30px; border-top: 2px solid var(--border-color);">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">Related Resources</h2>
-        <ul style="line-height: 1.8; padding-left: 30px;">
-            <li><a href="/" style="color: var(--primary-color);">JSDiff Home - Try the Tool</a></li>
-            <li><a href="/use-cases/code-review.html" style="color: var(--primary-color);">Using JSDiff for Code Review</a></li>
-            <li><a href="/docs/how-to-use-jsdiff.html" style="color: var(--primary-color);">Complete Usage Guide</a></li>
-            <li><a href="/faq.html" style="color: var(--primary-color);">FAQ - Frequently Asked Questions</a></li>
+    <section class="related-links">
+        <h2>Related Resources</h2>
+        <ul>
+            <li><a href="/">JSDiff Home - Try the Tool</a></li>
+            <li><a href="/use-cases/code-review.html">Using JSDiff for Code Review</a></li>
+            <li><a href="/docs/how-to-use-jsdiff.html">Complete Usage Guide</a></li>
+            <li><a href="/faq.html">FAQ - Frequently Asked Questions</a></li>
         </ul>
     </section>
 </main>

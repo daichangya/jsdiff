@@ -112,8 +112,40 @@
     <!-- Use Cases Index Page -->
     <url>
         <loc>https://jsdiff.com/use-cases/</loc>
-        <lastmod>2025-12-17</lastmod>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    
+    <!-- Config Comparison Page -->
+    <url>
+        <loc>https://jsdiff.com/use-cases/config-comparison.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Testing Page -->
+    <url>
+        <loc>https://jsdiff.com/use-cases/testing.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Best Tools Page -->
+    <url>
+        <loc>https://jsdiff.com/best-json-diff-tools.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Features Page -->
+    <url>
+        <loc>https://jsdiff.com/features.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
     </url>
 </urlset>

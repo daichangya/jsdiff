@@ -122,30 +122,31 @@
     </div>
     <nav class="links-section" aria-label="Navigation links">
         <a href="/" class="source" aria-label="Home page">Home</a>
+        <a href="/features.html" class="source" aria-label="Features">Features</a>
         <a href="/docs/myers-diff-algorithm.html" class="source" aria-label="Documentation">Documentation</a>
         <a href="https://github.com/daichangya/jsdiff" class="source" rel="noopener noreferrer" aria-label="Visit JSDiff on GitHub">GitHub</a>
     </nav>
 </div>
 
-<main id="main-content" style="max-width: 900px; margin: 100px auto 40px; padding: 20px;">
-    <h1 style="font-size: 32px; margin-bottom: 30px; color: var(--primary-color);">Frequently Asked Questions</h1>
+<main id="main-content" class="content-container">
+    <h1 class="page-title">Frequently Asked Questions</h1>
     
-    <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">What is JSDiff?</h2>
+    <div class="mb-large">
+        <h2 class="section-subtitle">What is JSDiff?</h2>
         <p style="line-height: 1.8; margin-bottom: 10px;">
             JSDiff is a free online tool for comparing JSON and JavaScript code. It uses the Myers Difference Algorithm to highlight differences between two text segments, making it easy to see what has been added, removed, or modified.
         </p>
     </div>
     
-    <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">Is JSDiff free to use?</h2>
+    <div class="mb-large">
+        <h2 class="section-subtitle">Is JSDiff free to use?</h2>
         <p style="line-height: 1.8; margin-bottom: 10px;">
             Yes, JSDiff is completely free to use. All processing is done locally in your browser, ensuring your data remains private and secure.
         </p>
     </div>
     
-    <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">What types of comparisons does JSDiff support?</h2>
+    <div class="mb-large">
+        <h2 class="section-subtitle">What types of comparisons does JSDiff support?</h2>
         <p style="line-height: 1.8; margin-bottom: 10px;">
             JSDiff supports multiple comparison modes:
         </p>
@@ -158,22 +159,22 @@
         </ul>
     </div>
     
-    <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">Does JSDiff work on mobile devices?</h2>
+    <div class="mb-large">
+        <h2 class="section-subtitle">Does JSDiff work on mobile devices?</h2>
         <p style="line-height: 1.8; margin-bottom: 10px;">
             Yes, JSDiff is fully responsive and works on mobile devices, tablets, and desktops. You can compare code anytime, anywhere.
         </p>
     </div>
     
-    <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">Is my data safe when using JSDiff?</h2>
+    <div class="mb-large">
+        <h2 class="section-subtitle">Is my data safe when using JSDiff?</h2>
         <p style="line-height: 1.8; margin-bottom: 10px;">
             Yes, all data processing happens locally in your browser. No data is sent to any server, ensuring complete privacy and security.
         </p>
     </div>
     
-    <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">How do I compare two JSON files?</h2>
+    <div class="mb-large">
+        <h2 class="section-subtitle">How do I compare two JSON files?</h2>
         <p style="line-height: 1.8; margin-bottom: 10px;">
             To compare two JSON files:
         </p>
@@ -185,29 +186,29 @@
         </ol>
     </div>
     
-    <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">What is the Myers Difference Algorithm?</h2>
+    <div class="mb-large">
+        <h2 class="section-subtitle">What is the Myers Difference Algorithm?</h2>
         <p style="line-height: 1.8; margin-bottom: 10px;">
             The Myers Difference Algorithm is an efficient O(ND) algorithm for computing the differences between two sequences. It's widely used in version control systems like Git and text editors. JSDiff uses this algorithm to provide accurate and fast comparisons. <a href="/docs/myers-diff-algorithm.html">Learn more about the algorithm</a>.
         </p>
     </div>
     
-    <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">Can I use JSDiff offline?</h2>
+    <div class="mb-large">
+        <h2 class="section-subtitle">Can I use JSDiff offline?</h2>
         <p style="line-height: 1.8; margin-bottom: 10px;">
             Yes, once the page is loaded, JSDiff works entirely offline. All processing happens in your browser using JavaScript, so no internet connection is needed after the initial page load.
         </p>
     </div>
     
-    <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">What's the difference between JSON mode and other modes?</h2>
+    <div class="mb-large">
+        <h2 class="section-subtitle">What's the difference between JSON mode and other modes?</h2>
         <p style="line-height: 1.8; margin-bottom: 10px;">
             JSON mode performs semantic comparison of JSON objects, ignoring property order. This means two JSON objects with the same properties in different orders will be considered identical. Other modes (Chars, Words, Lines) compare text as-is, character-by-character, word-by-word, or line-by-line respectively. JSON mode is best for comparing structured data, while other modes are better for plain text or code.
         </p>
     </div>
     
-    <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">Can I export the diff results?</h2>
+    <div class="mb-large">
+        <h2 class="section-subtitle">Can I export the diff results?</h2>
         <p style="line-height: 1.8; margin-bottom: 10px;">
             Currently, you can copy the results from the result panel. We're working on adding export functionality for various formats. For patch format, you can use the 'Patch' mode to generate unified diff patches that can be saved and applied later.
         </p>
