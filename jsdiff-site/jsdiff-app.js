@@ -273,6 +273,50 @@
         result.appendChild(container);
     }
     
+    // JSON语法高亮函数
+    function highlightJsonContent(text) {
+        if (!text) return '';
+        
+        var escapeHtml = function(str) {
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        };
+        
+        var result = escapeHtml(text);
+        
+        // 先标记字符串，避免后续处理破坏它们
+        var stringPlaceholders = [];
+        result = result.replace(/"([^"\\]|\\.)*"/g, function(match) {
+            var placeholder = '__STRING_' + stringPlaceholders.length + '__';
+            stringPlaceholders.push(match);
+            return placeholder;
+        });
+        
+        // 高亮数字（不在字符串中）
+        result = result.replace(/\b(-?\d+\.?\d*)\b/g, function(match) {
+            return '<span class="json-number">' + match + '</span>';
+        });
+        
+        // 高亮布尔值和null
+        result = result.replace(/\b(true|false|null)\b/g, function(match) {
+            return '<span class="json-literal">' + match + '</span>';
+        });
+        
+        // 恢复字符串并高亮
+        for (var i = 0; i < stringPlaceholders.length; i++) {
+            var highlighted = '<span class="json-string">' + stringPlaceholders[i] + '</span>';
+            result = result.replace('__STRING_' + i + '__', highlighted);
+        }
+        
+        // 高亮键名（但需要避免重复高亮）
+        result = result.replace(/(<span class="json-string">"([^"\\]|\\.)*"<\/span>)\s*:/g, function(match, stringPart) {
+            return '<span class="json-key">' + stringPart + '</span>:';
+        });
+        
+        return result;
+    }
+    
     // Render JSON in text view
     function renderJsonText(oldObj, newObj) {
         result.textContent = '';
@@ -289,12 +333,22 @@
             var node;
             if (part.added) {
                 node = document.createElement('ins');
-                node.appendChild(document.createTextNode(part.value));
+                var temp = document.createElement('span');
+                temp.innerHTML = highlightJsonContent(part.value);
+                while (temp.firstChild) {
+                    node.appendChild(temp.firstChild);
+                }
             } else if (part.removed) {
                 node = document.createElement('del');
-                node.appendChild(document.createTextNode(part.value));
+                var temp = document.createElement('span');
+                temp.innerHTML = highlightJsonContent(part.value);
+                while (temp.firstChild) {
+                    node.appendChild(temp.firstChild);
+                }
             } else {
-                node = document.createTextNode(part.value);
+                var temp = document.createElement('span');
+                temp.innerHTML = highlightJsonContent(part.value);
+                node = temp;
             }
             fragment.appendChild(node);
         });

@@ -1086,6 +1086,19 @@ a:hover {
   font-weight: 500;
 }
 
+.json-string {
+  color: #0b7500;
+}
+
+.json-number {
+  color: #1c00cf;
+}
+
+.json-literal {
+  color: #1c00cf;
+  font-weight: 500;
+}
+
 .json-brace {
   color: #666;
   font-weight: 500;
@@ -1166,6 +1179,40 @@ a:hover {
   text-decoration: none;
   padding: 1px 2px;
   border-radius: 2px;
+}
+
+/* JSON syntax highlighting in diff results */
+#result .json-key {
+  color: #881391;
+  font-weight: 500;
+}
+
+#result .json-string {
+  color: #0b7500;
+}
+
+#result .json-number {
+  color: #1c00cf;
+}
+
+#result .json-literal {
+  color: #1c00cf;
+  font-weight: 500;
+}
+
+/* Preserve diff colors in ins/del tags */
+#result ins .json-key,
+#result ins .json-string,
+#result ins .json-number,
+#result ins .json-literal {
+  color: inherit;
+}
+
+#result del .json-key,
+#result del .json-string,
+#result del .json-number,
+#result del .json-literal {
+  color: inherit;
 }
 
 /* Indentation for nested structures */
