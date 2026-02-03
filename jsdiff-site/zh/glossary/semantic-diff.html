@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>什么是语义 Diff？JSON 与代码对比定义 | JSDiff</title>
+    <meta name="description" content="语义 Diff 按数据含义而非原始文本比较。对 JSON 而言，两对象若键与值相同则视为相等，与属性顺序无关。了解 JSDiff 如何做语义对比。">
+    <meta name="keywords" content="语义 diff, 语义比较, json 语义 diff, 按含义比较">
+    
+    <link rel="canonical" href="https://jsdiff.com/zh/glossary/semantic-diff.html" />
+    <link rel="alternate" hreflang="en" href="https://jsdiff.com/glossary/semantic-diff.html" />
+    <link rel="alternate" hreflang="zh" href="https://jsdiff.com/zh/glossary/semantic-diff.html" />
+    <link rel="stylesheet" href="../../style.css"/>
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="什么是语义 Diff？| JSDiff 词条表" />
+    <meta property="og:description" content="语义 Diff 按含义比较。对 JSON，相同键与值即视为相等，与顺序无关。" />
+    <meta property="og:url" content="https://jsdiff.com/zh/glossary/semantic-diff.html" />
+    <meta property="og:locale" content="zh_CN">
+    
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "DefinedTerm",
+                    "name": "Semantic Diff",
+                    "description": "按含义而非原始文本进行的比较。对 JSON 而言，相等性基于键与值，与属性顺序或格式无关。",
+                    "url": "https://jsdiff.com/zh/glossary/semantic-diff.html"
+                },
+                {
+                    "@type": "Article",
+                    "headline": "什么是语义 Diff？",
+                    "description": "语义 Diff 的定义及其在 JSDiff 的 JSON 对比中的应用。",
+                    "url": "https://jsdiff.com/zh/glossary/semantic-diff.html",
+                    "author": { "@type": "Organization", "name": "JSDiff", "url": "https://jsdiff.com/" },
+                    "publisher": { "@type": "Organization", "name": "JSDiff", "url": "https://jsdiff.com/", "logo": { "@type": "ImageObject", "url": "https://jsdiff.com/logo.svg" } }
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jsdiff.com/zh/" },
+                        { "@type": "ListItem", "position": 2, "name": "词条表", "item": "https://jsdiff.com/zh/glossary/" },
+                        { "@type": "ListItem", "position": 3, "name": "语义 Diff", "item": "https://jsdiff.com/zh/glossary/semantic-diff.html" }
+                    ]
+                }
+            ]
+        }
+    </script>
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; z-index: 999; padding: 1em; background: var(--primary-color); color: white; text-decoration: none;">Skip to main content</a>
+
+<div id="settings" role="banner">
+    <div class="title-section">
+        <h1><a href="/zh/" style="text-decoration: none; color: inherit;" aria-label="JSDiff 首页">JSDiff</a> - 词条表</h1>
+    </div>
+    <nav class="links-section" aria-label="导航链接">
+        <a href="/zh/" class="source">首页</a>
+        <a href="/zh/glossary/" class="source" style="font-weight: bold;">词条表</a>
+        <a href="/zh/compare/jsdiff-vs-jsondiff.html" class="source">对比</a>
+        <a href="/zh/faq.html" class="source">常见问题</a>
+    </nav>
+</div>
+
+<main id="main-content" class="content-container" style="max-width: 800px;">
+    <h1 class="page-title">什么是语义 Diff？</h1>
+    
+    <p style="line-height: 1.8; margin-bottom: 20px;">
+        <strong>语义 Diff</strong> 是一种按数据的<em>含义</em>而非原始文本进行比较的方式。对 JSON 而言，若两个对象具有相同的键与值，即使属性顺序或空白不同，也会被视为相等。这样可以避免格式变动带来的干扰，只突出真实的数据差异。JSDiff 的 <strong>JSON</strong> 模式即进行语义比较，因此 <code>{"a":1,"b":2}</code> 与 <code>{"b":2,"a":1}</code> 会被视为相同。
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">语义 Diff 与文本 Diff</h2>
+    <p style="line-height: 1.8; margin-bottom: 15px;">
+        基于行的文本 diff 会在字节或行发生变化时报告差异。重排键、重新格式化或改变缩进都会显示为变更。而 JSON 的语义 diff 比较的是逻辑结构：只有新增、删除或修改的键与值会被高亮，特别适合 API 响应、配置文件等格式可能变化但含义重要的 JSON。
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">JSDiff 如何做语义 JSON Diff</h2>
+    <p style="line-height: 1.8; margin-bottom: 15px;">
+        在 <a href="/zh/">JSDiff</a> 上选择 <strong>JSON</strong> 模式即可对两个 JSON 文档进行语义对比。工具会解析两侧、规范化结构，并只高亮有意义的差异。如需字符级或行级对比，也可使用 <strong>行</strong>、<strong>词</strong> 或 <strong>字符</strong> 模式进行传统文本 diff。更多功能见 <a href="/features.html">JSDiff 功能（英文）</a>。
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">相关词条</h2>
+    <ul style="line-height: 1.8; padding-left: 30px;">
+        <li><a href="/zh/glossary/json-diff.html" style="color: var(--primary-color);">JSON Diff</a> – 比较两个 JSON 文档</li>
+        <li><a href="/zh/glossary/myers-algorithm.html" style="color: var(--primary-color);">Myers 算法</a> – 高效序列比较</li>
+        <li><a href="/zh/glossary/index.html" style="color: var(--primary-color);">词条表首页</a></li>
+    </ul>
+    
+    <p style="margin-top: 30px;">
+        <a href="/zh/" style="display: inline-block; padding: 12px 24px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">免费使用 JSDiff →</a>
+    </p>
+</main>
+</body>
+</html>

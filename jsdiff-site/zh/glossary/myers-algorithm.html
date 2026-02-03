@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>什么是 Myers Diff 算法？定义 | JSDiff</title>
+    <meta name="description" content="Myers diff 算法是一种 O(ND) 算法，用于计算两个序列之间的最短编辑脚本。被 Git、JSDiff 和文本编辑器广泛使用。了解定义与原理。">
+    <meta name="keywords" content="myers 算法, myers diff 算法, 差异算法, 序列比较, O(ND) 算法">
+    
+    <link rel="canonical" href="https://jsdiff.com/zh/glossary/myers-algorithm.html" />
+    <link rel="alternate" hreflang="en" href="https://jsdiff.com/glossary/myers-algorithm.html" />
+    <link rel="alternate" hreflang="zh" href="https://jsdiff.com/zh/glossary/myers-algorithm.html" />
+    <link rel="stylesheet" href="../../style.css"/>
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="什么是 Myers Diff 算法？| JSDiff 词条表" />
+    <meta property="og:description" content="Myers diff 算法高效计算两个序列之间的差异，被 Git 和 JSDiff 使用。" />
+    <meta property="og:url" content="https://jsdiff.com/zh/glossary/myers-algorithm.html" />
+    <meta property="og:locale" content="zh_CN">
+    
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "DefinedTerm",
+                    "name": "Myers Diff Algorithm",
+                    "description": "一种 O(ND) 算法，用于计算两个序列之间的最短编辑脚本，广泛应用于版本控制和 diff 工具。",
+                    "url": "https://jsdiff.com/zh/glossary/myers-algorithm.html"
+                },
+                {
+                    "@type": "Article",
+                    "headline": "什么是 Myers Diff 算法？",
+                    "description": "Myers diff 算法的定义及其如何驱动 Git、JSDiff 与文本对比工具。",
+                    "url": "https://jsdiff.com/zh/glossary/myers-algorithm.html",
+                    "author": { "@type": "Organization", "name": "JSDiff", "url": "https://jsdiff.com/" },
+                    "publisher": { "@type": "Organization", "name": "JSDiff", "url": "https://jsdiff.com/", "logo": { "@type": "ImageObject", "url": "https://jsdiff.com/logo.svg" } }
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jsdiff.com/zh/" },
+                        { "@type": "ListItem", "position": 2, "name": "词条表", "item": "https://jsdiff.com/zh/glossary/" },
+                        { "@type": "ListItem", "position": 3, "name": "Myers 算法", "item": "https://jsdiff.com/zh/glossary/myers-algorithm.html" }
+                    ]
+                }
+            ]
+        }
+    </script>
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; z-index: 999; padding: 1em; background: var(--primary-color); color: white; text-decoration: none;">Skip to main content</a>
+
+<div id="settings" role="banner">
+    <div class="title-section">
+        <h1><a href="/zh/" style="text-decoration: none; color: inherit;" aria-label="JSDiff 首页">JSDiff</a> - 词条表</h1>
+    </div>
+    <nav class="links-section" aria-label="导航链接">
+        <a href="/zh/" class="source">首页</a>
+        <a href="/zh/glossary/" class="source" style="font-weight: bold;">词条表</a>
+        <a href="/zh/compare/jsdiff-vs-jsondiff.html" class="source">对比</a>
+        <a href="/zh/faq.html" class="source">常见问题</a>
+    </nav>
+</div>
+
+<main id="main-content" class="content-container" style="max-width: 800px;">
+    <h1 class="page-title">什么是 Myers Diff 算法？</h1>
+    
+    <p style="line-height: 1.8; margin-bottom: 20px;">
+        <strong>Myers diff 算法</strong>（也称 Myers 差异算法）是一种高效算法，用于计算两个序列之间的<em>最短编辑脚本</em>——即将一个序列变为另一个所需的最少插入与删除操作集合。其时间复杂度为 O(ND)，其中 N 为两序列长度之和，D 为最小编辑脚本的大小。该算法被 <strong>Git</strong> 等版本控制系统、文本编辑器的 diff 视图以及 <strong>JSDiff</strong> 等用于比较 JSON、代码或文本的工具广泛使用。
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">对 Diff 工具的意义</h2>
+    <p style="line-height: 1.8; margin-bottom: 15px;">
+        好的 diff 工具应展示最小、最易读的变更集合。Myers 算法保证编辑脚本是最小的，因此你只会看到必要的增删，便于在对比配置、API 响应或代码时理解实际变化。
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">JSDiff 如何使用它</h2>
+    <p style="line-height: 1.8; margin-bottom: 15px;">
+        JSDiff 在 <strong>行</strong>、<strong>词</strong>、<strong>字符</strong> 模式以及生成 <strong>补丁</strong> 输出时底层使用 Myers 算法。对于 <strong>JSON</strong> 模式，工具会先规范化 JSON 结构再应用 diff 逻辑以产生语义对比。更深入的技术说明见 <a href="/docs/myers-diff-algorithm.html">Myers Diff Algorithm: A Powerful Tool for Efficient Sequence Comparison（英文）</a>，也可在 <a href="/zh/">JSDiff 首页</a> 直接体验。
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">相关词条</h2>
+    <ul style="line-height: 1.8; padding-left: 30px;">
+        <li><a href="/zh/glossary/json-diff.html" style="color: var(--primary-color);">JSON Diff</a> – 比较两个 JSON 文档</li>
+        <li><a href="/zh/glossary/semantic-diff.html" style="color: var(--primary-color);">语义 Diff</a> – 按含义比较</li>
+        <li><a href="/zh/glossary/index.html" style="color: var(--primary-color);">词条表首页</a></li>
+    </ul>
+    
+    <p style="margin-top: 30px;">
+        <a href="/zh/" style="display: inline-block; padding: 12px 24px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">免费使用 JSDiff →</a>
+    </p>
+</main>
+</body>
+</html>

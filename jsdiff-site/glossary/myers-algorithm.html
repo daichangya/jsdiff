@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is the Myers Diff Algorithm? Definition | JSDiff</title>
+    <meta name="description" content="The Myers diff algorithm is an O(ND) algorithm for computing the shortest edit script between two sequences. Used by Git, JSDiff, and text editors. Learn the definition and how it works.">
+    <meta name="keywords" content="myers algorithm, myers diff algorithm, diff algorithm, sequence comparison, O(ND) algorithm">
+    
+    <link rel="canonical" href="https://jsdiff.com/glossary/myers-algorithm.html" />
+    <link rel="alternate" hreflang="en" href="https://jsdiff.com/glossary/myers-algorithm.html" />
+    <link rel="alternate" hreflang="zh" href="https://jsdiff.com/zh/glossary/myers-algorithm.html" />
+    <link rel="stylesheet" href="../style.css"/>
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="What is the Myers Diff Algorithm? | JSDiff Glossary" />
+    <meta property="og:description" content="The Myers diff algorithm efficiently computes differences between two sequences. Used by Git and JSDiff." />
+    <meta property="og:url" content="https://jsdiff.com/glossary/myers-algorithm.html" />
+    
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "DefinedTerm",
+                    "name": "Myers Diff Algorithm",
+                    "description": "An O(ND) algorithm for computing the shortest edit script between two sequences, widely used in version control and diff tools.",
+                    "url": "https://jsdiff.com/glossary/myers-algorithm.html"
+                },
+                {
+                    "@type": "Article",
+                    "headline": "What is the Myers Diff Algorithm?",
+                    "description": "Definition of the Myers diff algorithm and how it powers Git, JSDiff, and text comparison tools.",
+                    "url": "https://jsdiff.com/glossary/myers-algorithm.html",
+                    "author": { "@type": "Organization", "name": "JSDiff", "url": "https://jsdiff.com/" },
+                    "publisher": { "@type": "Organization", "name": "JSDiff", "url": "https://jsdiff.com/", "logo": { "@type": "ImageObject", "url": "https://jsdiff.com/logo.svg" } }
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsdiff.com/" },
+                        { "@type": "ListItem", "position": 2, "name": "Glossary", "item": "https://jsdiff.com/glossary/" },
+                        { "@type": "ListItem", "position": 3, "name": "Myers Algorithm", "item": "https://jsdiff.com/glossary/myers-algorithm.html" }
+                    ]
+                }
+            ]
+        }
+    </script>
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; z-index: 999; padding: 1em; background: var(--primary-color); color: white; text-decoration: none;">Skip to main content</a>
+
+<div id="settings" role="banner">
+    <div class="title-section">
+        <h1><a href="/" style="text-decoration: none; color: inherit;" aria-label="JSDiff home">JSDiff</a> - Glossary</h1>
+    </div>
+    <nav class="links-section" aria-label="Navigation links">
+        <a href="/" class="source">Home</a>
+        <a href="/features.html" class="source">Features</a>
+        <a href="/glossary/" class="source" style="font-weight: bold;">Glossary</a>
+        <a href="/faq.html" class="source">FAQ</a>
+        <a href="/tools-comparison.html" class="source">Compare</a>
+    </nav>
+</div>
+
+<main id="main-content" class="content-container" style="max-width: 800px;">
+    <h1 class="page-title">What is the Myers Diff Algorithm?</h1>
+    
+    <p style="line-height: 1.8; margin-bottom: 20px;">
+        The <strong>Myers diff algorithm</strong> (also called the Myers difference algorithm) is an efficient algorithm for computing the <em>shortest edit script</em> between two sequences—i.e., the minimal set of insertions and deletions needed to turn one sequence into the other. It runs in O(ND) time, where N is the sum of the lengths of the two sequences and D is the size of the minimal edit script. It is widely used in version control systems like <strong>Git</strong>, in text editors for diff views, and in tools like <strong>JSDiff</strong> for comparing JSON, code, or text.
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">Why It Matters for Diff Tools</h2>
+    <p style="line-height: 1.8; margin-bottom: 15px;">
+        A good diff tool should show the smallest, most readable set of changes. The Myers algorithm guarantees that the edit script is minimal, so you see only the necessary additions and deletions. That makes it easier to understand what actually changed when comparing configs, API responses, or code.
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">How JSDiff Uses It</h2>
+    <p style="line-height: 1.8; margin-bottom: 15px;">
+        JSDiff uses the Myers algorithm under the hood for its <strong>Lines</strong>, <strong>Words</strong>, and <strong>Chars</strong> modes, and for generating <strong>Patch</strong> output. For <strong>JSON</strong> mode, the tool first normalizes JSON structure and then applies diff logic to produce a semantic comparison. You can read a deeper technical explanation in <a href="/docs/myers-diff-algorithm.html">Myers Diff Algorithm: A Powerful Tool for Efficient Sequence Comparison</a>, or try the algorithm in action on the <a href="/">JSDiff homepage</a>.
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">Related Terms</h2>
+    <ul style="line-height: 1.8; padding-left: 30px;">
+        <li><a href="/glossary/json-diff.html" style="color: var(--primary-color);">JSON Diff</a> – comparing two JSON documents</li>
+        <li><a href="/glossary/semantic-diff.html" style="color: var(--primary-color);">Semantic Diff</a> – meaning-aware comparison</li>
+        <li><a href="/glossary/index.html" style="color: var(--primary-color);">Glossary index</a></li>
+    </ul>
+    
+    <p style="margin-top: 30px;">
+        <a href="/" style="display: inline-block; padding: 12px 24px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Try JSDiff Free →</a>
+    </p>
+</main>
+</body>
+</html>

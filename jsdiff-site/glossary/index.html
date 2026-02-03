@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - JSON Diff & Myers Algorithm Terms | JSDiff</title>
+    <meta name="description" content="Definitions and explanations for JSON diff, Myers algorithm, semantic diff, and related terms. Learn key concepts used by JSDiff and JSON comparison tools.">
+    <meta name="keywords" content="json diff definition, myers algorithm, semantic diff, diff algorithm glossary, json comparison terms">
+    
+    <link rel="canonical" href="https://jsdiff.com/glossary/" />
+    <link rel="alternate" hreflang="en" href="https://jsdiff.com/glossary/" />
+    <link rel="alternate" hreflang="zh" href="https://jsdiff.com/zh/glossary/" />
+    <link rel="stylesheet" href="../style.css"/>
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Glossary - JSON Diff & Myers Algorithm Terms | JSDiff" />
+    <meta property="og:description" content="Definitions for JSON diff, Myers algorithm, semantic diff, and related terms." />
+    <meta property="og:url" content="https://jsdiff.com/glossary/" />
+    
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "CollectionPage",
+                    "name": "JSDiff Glossary",
+                    "description": "Definitions and explanations for JSON diff, Myers algorithm, semantic diff, and related terms.",
+                    "url": "https://jsdiff.com/glossary/"
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsdiff.com/" },
+                        { "@type": "ListItem", "position": 2, "name": "Glossary", "item": "https://jsdiff.com/glossary/" }
+                    ]
+                },
+                {
+                    "@type": "ItemList",
+                    "name": "JSDiff Glossary Terms",
+                    "description": "Glossary of JSON diff and comparison terms",
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "JSON Diff", "url": "https://jsdiff.com/glossary/json-diff.html" },
+                        { "@type": "ListItem", "position": 2, "name": "Myers Algorithm", "url": "https://jsdiff.com/glossary/myers-algorithm.html" },
+                        { "@type": "ListItem", "position": 3, "name": "Semantic Diff", "url": "https://jsdiff.com/glossary/semantic-diff.html" }
+                    ]
+                }
+            ]
+        }
+    </script>
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; z-index: 999; padding: 1em; background: var(--primary-color); color: white; text-decoration: none;">Skip to main content</a>
+
+<div id="settings" role="banner">
+    <div class="title-section">
+        <h1><a href="/" style="text-decoration: none; color: inherit;" aria-label="JSDiff home">JSDiff</a> - Glossary</h1>
+    </div>
+    <nav class="links-section" aria-label="Navigation links">
+        <a href="/" class="source" aria-label="Home page">Home</a>
+        <a href="/features.html" class="source" aria-label="Features">Features</a>
+        <a href="/glossary/" class="source" aria-label="Glossary" style="font-weight: bold;">Glossary</a>
+        <a href="/faq.html" class="source" aria-label="FAQ">FAQ</a>
+        <a href="/tools-comparison.html" class="source" aria-label="Compare">Compare</a>
+    </nav>
+</div>
+
+<main id="main-content" class="content-container" style="max-width: 900px;">
+    <h1 class="page-title">Glossary: JSON Diff & Related Terms</h1>
+    
+    <p class="page-intro">
+        Key terms and concepts used in JSON comparison, diff algorithms, and tools like JSDiff. Each entry includes a clear definition and how it relates to comparing JSON and code.
+    </p>
+    
+    <section style="margin-bottom: 40px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">Terms</h2>
+        
+        <div style="margin-bottom: 30px; padding: 25px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 22px; margin-bottom: 10px; color: var(--primary-color);"><a href="/glossary/json-diff.html" style="color: inherit; text-decoration: none;">JSON Diff</a></h3>
+            <p style="line-height: 1.8; margin-bottom: 15px;">Comparing two JSON documents to find added, removed, or changed keys and values. Unlike line-by-line text diff, JSON diff can be semantic—ignoring property order and focusing on structure.</p>
+            <a href="/glossary/json-diff.html" style="color: var(--primary-color); font-weight: bold;">Read definition →</a>
+        </div>
+        
+        <div style="margin-bottom: 30px; padding: 25px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 22px; margin-bottom: 10px; color: var(--primary-color);"><a href="/glossary/myers-algorithm.html" style="color: inherit; text-decoration: none;">Myers Algorithm</a></h3>
+            <p style="line-height: 1.8; margin-bottom: 15px;">An efficient O(ND) algorithm for computing the shortest edit script between two sequences. Used by Git, JSDiff, and many text editors for diff and merge.</p>
+            <a href="/glossary/myers-algorithm.html" style="color: var(--primary-color); font-weight: bold;">Read definition →</a>
+        </div>
+        
+        <div style="margin-bottom: 30px; padding: 25px; background: #f8f9fa; border-radius: 8px;">
+            <h3 style="font-size: 22px; margin-bottom: 10px; color: var(--primary-color);"><a href="/glossary/semantic-diff.html" style="color: inherit; text-decoration: none;">Semantic Diff</a></h3>
+            <p style="line-height: 1.8; margin-bottom: 15px;">A comparison that respects meaning rather than raw text. For JSON, two objects are treated as equal if they have the same keys and values, regardless of property order.</p>
+            <a href="/glossary/semantic-diff.html" style="color: var(--primary-color); font-weight: bold;">Read definition →</a>
+        </div>
+    </section>
+    
+    <section style="margin-top: 40px; padding-top: 30px; border-top: 2px solid var(--border-color);">
+        <h2 style="font-size: 24px; margin-bottom: 15px; color: var(--secondary-color);">Related Resources</h2>
+        <ul style="line-height: 1.8; padding-left: 30px;">
+            <li><a href="/" style="color: var(--primary-color);">JSDiff - Try the JSON diff tool</a></li>
+            <li><a href="/docs/how-to-use-jsdiff.html" style="color: var(--primary-color);">How to Use JSDiff</a></li>
+            <li><a href="/docs/myers-diff-algorithm.html" style="color: var(--primary-color);">Myers Diff Algorithm (deep dive)</a></li>
+            <li><a href="/use-cases/" style="color: var(--primary-color);">Use Cases</a></li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>

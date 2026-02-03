@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Semantic Diff? Definition for JSON & Code | JSDiff</title>
+    <meta name="description" content="Semantic diff compares data by meaning, not raw text. For JSON, two objects are equal if they have the same keys and values, regardless of property order. Learn how JSDiff does semantic comparison.">
+    <meta name="keywords" content="semantic diff, semantic comparison, json semantic diff, meaning-aware diff">
+    
+    <link rel="canonical" href="https://jsdiff.com/glossary/semantic-diff.html" />
+    <link rel="alternate" hreflang="en" href="https://jsdiff.com/glossary/semantic-diff.html" />
+    <link rel="alternate" hreflang="zh" href="https://jsdiff.com/zh/glossary/semantic-diff.html" />
+    <link rel="stylesheet" href="../style.css"/>
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="What is Semantic Diff? | JSDiff Glossary" />
+    <meta property="og:description" content="Semantic diff compares by meaning. For JSON, same keys and values mean equal, regardless of order." />
+    <meta property="og:url" content="https://jsdiff.com/glossary/semantic-diff.html" />
+    
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "DefinedTerm",
+                    "name": "Semantic Diff",
+                    "description": "A comparison that respects meaning rather than raw text. For JSON, equality is based on keys and values, not property order or formatting.",
+                    "url": "https://jsdiff.com/glossary/semantic-diff.html"
+                },
+                {
+                    "@type": "Article",
+                    "headline": "What is Semantic Diff?",
+                    "description": "Definition of semantic diff and how it applies to JSON comparison in JSDiff.",
+                    "url": "https://jsdiff.com/glossary/semantic-diff.html",
+                    "author": { "@type": "Organization", "name": "JSDiff", "url": "https://jsdiff.com/" },
+                    "publisher": { "@type": "Organization", "name": "JSDiff", "url": "https://jsdiff.com/", "logo": { "@type": "ImageObject", "url": "https://jsdiff.com/logo.svg" } }
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsdiff.com/" },
+                        { "@type": "ListItem", "position": 2, "name": "Glossary", "item": "https://jsdiff.com/glossary/" },
+                        { "@type": "ListItem", "position": 3, "name": "Semantic Diff", "item": "https://jsdiff.com/glossary/semantic-diff.html" }
+                    ]
+                }
+            ]
+        }
+    </script>
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+<a href="#main-content" class="skip-link" style="position: absolute; left: -9999px; z-index: 999; padding: 1em; background: var(--primary-color); color: white; text-decoration: none;">Skip to main content</a>
+
+<div id="settings" role="banner">
+    <div class="title-section">
+        <h1><a href="/" style="text-decoration: none; color: inherit;" aria-label="JSDiff home">JSDiff</a> - Glossary</h1>
+    </div>
+    <nav class="links-section" aria-label="Navigation links">
+        <a href="/" class="source">Home</a>
+        <a href="/features.html" class="source">Features</a>
+        <a href="/glossary/" class="source" style="font-weight: bold;">Glossary</a>
+        <a href="/faq.html" class="source">FAQ</a>
+        <a href="/tools-comparison.html" class="source">Compare</a>
+    </nav>
+</div>
+
+<main id="main-content" class="content-container" style="max-width: 800px;">
+    <h1 class="page-title">What is Semantic Diff?</h1>
+    
+    <p style="line-height: 1.8; margin-bottom: 20px;">
+        <strong>Semantic diff</strong> is a comparison that respects the <em>meaning</em> of data rather than the raw text. For JSON, two objects are considered equal if they have the same keys and values, even when property order or whitespace differs. That avoids noise from formatting changes and focuses on real data differences. JSDiff’s <strong>JSON</strong> mode performs semantic comparison so that <code>{"a":1,"b":2}</code> and <code>{"b":2,"a":1}</code> are treated as identical.
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">Semantic Diff vs Text Diff</h2>
+    <p style="line-height: 1.8; margin-bottom: 15px;">
+        A text (line-based) diff would report differences whenever the bytes or lines change. Reordering keys, reformatting, or changing indentation would all show as changes. A semantic diff for JSON compares the logical structure: only added, removed, or changed keys and values are highlighted. That is especially useful for API responses, config files, and any JSON where format may vary but meaning matters.
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">How JSDiff Does Semantic JSON Diff</h2>
+    <p style="line-height: 1.8; margin-bottom: 15px;">
+        On <a href="/">JSDiff</a>, choose the <strong>JSON</strong> mode to compare two JSON documents semantically. The tool parses both sides, normalizes structure, and highlights only meaningful differences. You can also use <strong>Lines</strong>, <strong>Words</strong>, or <strong>Chars</strong> for traditional text diff when you need character- or line-level comparison. For more on features, see <a href="/features.html">JSDiff Features</a>.
+    </p>
+    
+    <h2 style="font-size: 24px; margin: 30px 0 15px; color: var(--secondary-color);">Related Terms</h2>
+    <ul style="line-height: 1.8; padding-left: 30px;">
+        <li><a href="/glossary/json-diff.html" style="color: var(--primary-color);">JSON Diff</a> – comparing two JSON documents</li>
+        <li><a href="/glossary/myers-algorithm.html" style="color: var(--primary-color);">Myers Algorithm</a> – efficient sequence comparison</li>
+        <li><a href="/glossary/index.html" style="color: var(--primary-color);">Glossary index</a></li>
+    </ul>
+    
+    <p style="margin-top: 30px;">
+        <a href="/" style="display: inline-block; padding: 12px 24px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Try JSDiff Free →</a>
+    </p>
+</main>
+</body>
+</html>
