@@ -1,0 +1,496 @@
+:root {
+  --primary-color: #4a6fa5;
+  --secondary-color: #334e68;
+  --background-color: #f8f9fa;
+  --text-color: #334e68;
+  --border-color: #d9e2ec;
+  --added-color: #31a354;
+  --added-bg: #e6f5ee;
+  --removed-color: #e53935;
+  --removed-bg: #fbe9e7;
+  --chunk-color: #8a008b;
+  --header-height: 60px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--background-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  color: var(--text-color);
+  height: 100%;
+  line-height: 1.5;
+}
+
+/* Accessibility: Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Accessibility: Skip to content link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 6px;
+  top: 6px;
+}
+
+body {
+  padding-top: var(--header-height);
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  height: calc(100% - var(--header-height));
+  width: 100%;
+}
+
+/* Clear separation between header and tool area on homepage */
+.hero .container {
+  border-top: 1px solid var(--border-color);
+  padding-top: 12px;
+  background: #f5f7fa; /* Slight tint so tool area reads as main content */
+}
+
+/* Tool area: distinct panels with light border and spacing */
+.hero .container .panel {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  margin: 0 6px;
+}
+.hero .container .panel:first-child { margin-left: 0; }
+.hero .container .panel:last-child { margin-right: 0; }
+
+.panel {
+  flex: 1;
+  padding: 10px;
+  height: 100%;
+  position: relative;
+  min-width: 0; /* 确保flex子元素可以正确收缩 */
+  display: flex;
+  flex-direction: column;
+}
+
+.panel textarea,
+.panel #result {
+  flex: 1;
+  min-height: 200px;
+}
+
+textarea, #result {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: white;
+  resize: none;
+  overflow: auto;
+  box-sizing: border-box; /* 确保padding包含在width内 */
+}
+
+#result {
+  white-space: pre-wrap;
+  background-color: white;
+  word-break: break-all; /* 强制长字符串换行 */
+  overflow-wrap: break-word; /* 备用方案，处理长单词 */
+  overflow-x: hidden; /* 防止水平溢出 */
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+del {
+  text-decoration: none;
+  color: var(--removed-color);
+  background: var(--removed-bg);
+  padding: 1px 0;
+}
+
+ins {
+  background: var(--added-bg);
+  color: var(--added-color);
+  text-decoration: none;
+  padding: 1px 0;
+}
+
+.chunk-header {
+  color: var(--chunk-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#settings {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: var(--header-height);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.title-section {
+  flex: 1;
+  min-width: 0; /* allow shrink for ellipsis */
+}
+
+/* Desktop: single-line title with ellipsis to avoid long sentence wrapping */
+.hero #settings .title-section h1 {
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.options-section {
+  display: flex;
+  align-items: center;
+}
+
+#settings label {
+  margin-left: 15px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#settings input[type="radio"] {
+  margin-right: 5px;
+}
+
+.links-section {
+  margin-left: 20px;
+}
+
+.source {
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.source:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  :root {
+    --header-height: auto;
+  }
+  
+  body {
+    padding-top: 0; /* Header scrolls with page on mobile, no overlap */
+    overflow-y: auto;
+  }
+  
+  .value-proposition.below-header {
+    margin-top: 50px;
+  }
+  
+  .content-container {
+    margin: 60px auto 30px;
+    padding: 15px;
+  }
+  
+  .container {
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+  }
+  
+  .panel {
+    height: auto;
+    min-height: 200px;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+  }
+
+  .hero .container .panel {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  #settings {
+    position: static; /* Header scrolls with page on mobile, no overlap */
+    flex-direction: column;
+    height: auto;
+    padding: 10px 12px;
+    padding-top: max(10px, env(safe-area-inset-top, 0px)); /* Avoid title under notch/status bar */
+    align-items: flex-start;
+  }
+  
+  .title-section, .options-section, .links-section {
+    width: 100%;
+    margin: 4px 0;
+  }
+  
+  .title-section {
+    margin-bottom: 2px;
+  }
+  
+  .options-section {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  
+  .links-section {
+    margin-top: 6px;
+  }
+  
+  /* Homepage hero: compact title on small screens (2 lines max with ellipsis) */
+  .hero #settings .title-section h1 {
+    font-size: 15px;
+    line-height: 1.35;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 4px;
+  }
+  
+  h1 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .options-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+    overflow-x: auto;
+    padding-bottom: 5px; /* Space for potential scrollbar */
+  }
+  
+  .options-section label {
+    white-space: nowrap;
+    flex: 1;
+    text-align: center;
+    padding: 8px 5px;
+  }
+  
+  #settings label {
+    margin-left: 0;
+    padding: 8px 0;
+  }
+  
+  .links-section {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 36px;
+    margin-top: 6px;
+    align-items: center;
+    padding-bottom: 2px;
+  }
+  
+  .links-section .source {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .source {
+    margin: 5px 15px 5px 0;
+    padding: 5px 0;
+  }
+  
+  textarea, #result {
+    font-size: 16px; /* Larger font for better readability on mobile */
+    padding: 10px;
+    height: auto;
+    min-height: 180px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden; /* 防止水平溢出 */
+    word-break: break-all; /* 强制长字符串换行 */
+    overflow-wrap: break-word; /* 备用方案 */
+  }
+  
+  .seo-intro {
+    padding: 24px 16px;
+  }
+  
+  .hero {
+    min-height: auto; /* Let tool area appear earlier on first screen */
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  body {
+    padding-top: 0; /* Header scrolls with page on mobile */
+    height: auto;
+    min-height: 100%;
+  }
+  
+  .container {
+    height: auto;
+    min-height: auto;
+  }
+  
+  #settings {
+    padding: 8px 10px;
+    padding-top: max(8px, env(safe-area-inset-top, 0px)); /* Avoid title under notch/status bar */
+  }
+  
+  /* Single-line title on very small screens to keep header compact */
+  .hero #settings .title-section h1 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+  }
+  
+  /* Keep options in a single row even on very small screens */
+  .options-section label {
+    padding: 8px 3px;
+    font-size: 13px;
+  }
+  
+  .panel {
+    min-height: 150px;
+  }
+  
+  /* Make radio buttons and links more touch-friendly */
+  #settings input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+  
+  .source {
+    padding: 8px 0;
+    display: inline-block;
+  }
+  
+  .seo-intro {
+    padding: 16px 12px;
+  }
+}
+
+/* Hero section - ensure it takes at least full viewport height */
+.hero {
+  min-height: 100vh; /* 至少占满首屏 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* SEO intro section - ensure it's below the fold */
+.seo-intro {
+  margin-top: 20px;
+  padding: 40px;
+  background-color: white;
+  border-top: 1px solid var(--border-color);
+}
+
+.seo-intro h1 {
+  margin-bottom: 20px;
+}
+
+.seo-intro h2 {
+  margin: 25px 0 15px;
+  color: var(--primary-color);
+}
+
+.seo-intro p, .seo-intro ul {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.seo-intro ul {
+  padding-left: 20px;
+}
+
+.seo-intro li {
+  margin-bottom: 8px;
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  body {
+    padding-top: 0; /* Header scrolls with page on mobile */
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+  }
+  
+  .container {
+    height: auto;
+    min-height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .panel {
+    width: calc(50% - 10px);
+    height: auto;
+    min-height: 150px;
+    margin: 0 5px 10px 5px;
+  }
+  
+  .panel:nth-child(3) {
+    width: calc(100% - 10px);
+  }
+  
+  .options-section {
+    justify-content: flex-start;
+  }
+  
+  .options-section label {
+    margin-right: 20px;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+}
+

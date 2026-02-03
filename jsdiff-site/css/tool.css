@@ -1,0 +1,353 @@
+/* JSON Collapsible Styles */
+.json-container {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.json-node {
+  position: relative;
+}
+
+.json-line {
+  display: flex;
+  align-items: baseline;
+  min-height: 20px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.json-toggle {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  user-select: none;
+  color: var(--primary-color);
+  font-size: 12px;
+  margin-right: 4px;
+  text-align: center;
+  line-height: 16px;
+  transition: transform 0.2s;
+}
+
+.json-toggle:hover {
+  color: var(--secondary-color);
+  transform: scale(1.2);
+}
+
+.json-key {
+  color: #881391;
+  font-weight: 500;
+}
+
+.json-string {
+  color: #0b7500;
+}
+
+.json-number {
+  color: #1c00cf;
+}
+
+.json-literal {
+  color: #1c00cf;
+  font-weight: 500;
+}
+
+.json-brace {
+  color: #666;
+  font-weight: 500;
+}
+
+.json-summary {
+  color: #999;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.json-children {
+  display: block;
+}
+
+.json-node.json-collapsed .json-children {
+  display: none;
+}
+
+.json-node.json-collapsed .json-summary {
+  display: inline;
+}
+
+.json-node:not(.json-collapsed) .json-summary {
+  display: none;
+}
+
+.json-removed {
+  background-color: var(--removed-bg);
+}
+
+.json-removed .json-key,
+.json-removed .json-brace {
+  color: var(--removed-color);
+}
+
+.json-added {
+  background-color: var(--added-bg);
+}
+
+.json-added .json-key,
+.json-added .json-brace {
+  color: var(--added-color);
+}
+
+.json-modified {
+  background-color: #fff3cd;
+}
+
+.json-modified .json-key {
+  color: #856404;
+}
+
+.json-unchanged {
+  color: #666;
+}
+
+.json-unchanged .json-key {
+  color: #881391;
+}
+
+.json-unchanged .json-brace {
+  color: #666;
+}
+
+/* Ensure del and ins work within JSON nodes */
+.json-node del {
+  text-decoration: none;
+  color: var(--removed-color);
+  background: var(--removed-bg);
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+.json-node ins {
+  background: var(--added-bg);
+  color: var(--added-color);
+  text-decoration: none;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+/* JSON syntax highlighting in diff results */
+#result .json-key {
+  color: #881391;
+  font-weight: 500;
+}
+
+#result .json-string {
+  color: #0b7500;
+}
+
+#result .json-number {
+  color: #1c00cf;
+}
+
+#result .json-literal {
+  color: #1c00cf;
+  font-weight: 500;
+}
+
+/* Preserve diff colors in ins/del tags */
+#result ins .json-key,
+#result ins .json-string,
+#result ins .json-number,
+#result ins .json-literal {
+  color: inherit;
+}
+
+#result del .json-key,
+#result del .json-string,
+#result del .json-number,
+#result del .json-literal {
+  color: inherit;
+}
+
+/* Indentation for nested structures */
+.json-node .json-node {
+  margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  .json-container {
+    font-size: 13px;
+  }
+  
+  .json-toggle {
+    width: 14px;
+    height: 14px;
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+
+/* Result Toolbar Styles */
+.result-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.result-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #f5f7fa;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 6px 6px 0 0;
+  flex-shrink: 0;
+}
+
+.btn-copy-result {
+  padding: 6px 12px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-copy-result:hover {
+  background: var(--secondary-color);
+  transform: translateY(-1px);
+}
+
+.btn-copy-result:active {
+  transform: translateY(0);
+}
+
+.view-toggle {
+  display: flex;
+  gap: 4px;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.btn-view-toggle {
+  padding: 4px 12px;
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-view-toggle:hover {
+  background: #f0f0f0;
+}
+
+.btn-view-toggle.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-expand-all {
+  padding: 6px 12px;
+  background: white;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s;
+  margin-left: auto;
+}
+
+.btn-expand-all:hover {
+  background: #f0f0f0;
+  border-color: var(--primary-color);
+}
+
+/* Notification Styles */
+.notification {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s, transform 0.3s;
+  font-size: 14px;
+  font-weight: 500;
+  max-width: 300px;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.notification-success {
+  background: #31a354;
+  color: white;
+}
+
+.notification-warning {
+  background: #ff9800;
+  color: white;
+}
+
+.notification-error {
+  background: #e53935;
+  color: white;
+}
+
+.notification-info {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Adjust result panel to account for toolbar */
+.panel #result {
+  border-radius: 0 0 6px 6px;
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .result-toolbar {
+    flex-wrap: wrap;
+    padding: 6px 8px;
+    gap: 6px;
+  }
+  
+  .btn-copy-result,
+  .btn-expand-all {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+  
+  .btn-view-toggle {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  
+  .notification {
+    right: 10px;
+    top: 70px;
+    max-width: calc(100% - 20px);
+  }
+}
