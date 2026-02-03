@@ -6,3 +6,6 @@ dist
 yarn-error.log
 .vscode
 .nyc_output
+.idea/
+.cursor/
+.claude/

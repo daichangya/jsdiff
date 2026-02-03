@@ -28,126 +28,137 @@
     <meta property="og:url" content="https://jsdiff.com/" />
     <meta property="og:image" content="https://jsdiff.com/images/og-image.png" />
 
-    <!-- Enhanced Structured Data -->
+    <!-- Structured Data: Organization, WebSite, SoftwareApplication, HowTo, FAQPage, BreadcrumbList -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "JSDiff",
-            "applicationCategory": "DeveloperApplication",
-            "operatingSystem": "Windows, macOS, Linux, Web",
-            "description": "Free online JSON and JavaScript diff tool. Compare two JSON documents and see semantic differences with highlighted changes. Powered by Myers Algorithm.",
-            "url": "https://jsdiff.com/",
-            "downloadUrl": "https://www.npmjs.com/package/diff",
-            "softwareVersion": "8.0.2",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            },
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "ratingCount": "150"
-            },
-            "author": {
-                "@type": "Organization",
-                "name": "JSDiff",
-                "url": "https://github.com/daichangya/jsdiff"
-            },
-            "featureList": [
-                "JSON comparison",
-                "JavaScript diff",
-                "Code highlighting",
-                "Line-by-line comparison",
-                "Character-level diff",
-                "Word-level diff",
-                "Patch generation"
-            ]
-        }
-    </script>
-    
-    <!-- HowTo Structured Data -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            "name": "How to Compare JSON Files Online",
-            "description": "Step-by-step guide on how to use JSDiff to compare two JSON documents",
-            "step": [
+            "@graph": [
                 {
-                    "@type": "HowToStep",
-                    "position": 1,
-                    "name": "Select JSON Diff Mode",
-                    "text": "Click on the 'JSON' radio button to select JSON comparison mode"
+                    "@type": "Organization",
+                    "@id": "https://jsdiff.com/#organization",
+                    "name": "JSDiff",
+                    "url": "https://jsdiff.com/",
+                    "logo": "https://jsdiff.com/logo.svg",
+                    "sameAs": ["https://github.com/daichangya/jsdiff"]
                 },
                 {
-                    "@type": "HowToStep",
-                    "position": 2,
-                    "name": "Enter Original JSON",
-                    "text": "Paste or type your original JSON in the left textarea"
+                    "@type": "WebSite",
+                    "@id": "https://jsdiff.com/#website",
+                    "name": "JSDiff",
+                    "url": "https://jsdiff.com/",
+                    "publisher": { "@id": "https://jsdiff.com/#organization" }
                 },
                 {
-                    "@type": "HowToStep",
-                    "position": 3,
-                    "name": "Enter Modified JSON",
-                    "text": "Paste or type your modified JSON in the right textarea"
+                    "@type": "SoftwareApplication",
+                    "name": "JSDiff",
+                    "applicationCategory": "DeveloperApplication",
+                    "operatingSystem": "Windows, macOS, Linux, Web",
+                    "description": "Free online JSON and JavaScript diff tool. Compare two JSON documents and see semantic differences with highlighted changes. Powered by Myers Algorithm.",
+                    "url": "https://jsdiff.com/",
+                    "downloadUrl": "https://www.npmjs.com/package/diff",
+                    "softwareVersion": "8.0.2",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    },
+                    "author": { "@id": "https://jsdiff.com/#organization" },
+                    "featureList": [
+                        "JSON comparison",
+                        "JavaScript diff",
+                        "Code highlighting",
+                        "Line-by-line comparison",
+                        "Character-level diff",
+                        "Word-level diff",
+                        "Patch generation"
+                    ]
                 },
                 {
-                    "@type": "HowToStep",
-                    "position": 4,
-                    "name": "View Differences",
-                    "text": "The differences will be automatically highlighted in the result panel with added content in green and removed content in red"
-                }
-            ]
-        }
-    </script>
-    
-    <!-- FAQPage Structured Data -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-                {
-                    "@type": "Question",
-                    "name": "What is JSDiff?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "JSDiff is a free online tool for comparing JSON and JavaScript code. It uses the Myers Difference Algorithm to highlight differences between two text segments, making it easy to see what has been added, removed, or modified."
-                    }
+                    "@type": "HowTo",
+                    "name": "How to Compare JSON Files Online",
+                    "description": "Step-by-step guide on how to use JSDiff to compare two JSON documents",
+                    "step": [
+                        {
+                            "@type": "HowToStep",
+                            "position": 1,
+                            "name": "Select JSON Diff Mode",
+                            "text": "Click on the 'JSON' radio button to select JSON comparison mode"
+                        },
+                        {
+                            "@type": "HowToStep",
+                            "position": 2,
+                            "name": "Enter Original JSON",
+                            "text": "Paste or type your original JSON in the left textarea"
+                        },
+                        {
+                            "@type": "HowToStep",
+                            "position": 3,
+                            "name": "Enter Modified JSON",
+                            "text": "Paste or type your modified JSON in the right textarea"
+                        },
+                        {
+                            "@type": "HowToStep",
+                            "position": 4,
+                            "name": "View Differences",
+                            "text": "The differences will be automatically highlighted in the result panel with added content in green and removed content in red"
+                        }
+                    ]
                 },
                 {
-                    "@type": "Question",
-                    "name": "Is JSDiff free to use?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Yes, JSDiff is completely free to use. All processing is done locally in your browser, ensuring your data remains private and secure."
-                    }
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "What is JSDiff?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "JSDiff is a free online tool for comparing JSON and JavaScript code. It uses the Myers Difference Algorithm to highlight differences between two text segments, making it easy to see what has been added, removed, or modified."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Is JSDiff free to use?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes, JSDiff is completely free to use. All processing is done locally in your browser, ensuring your data remains private and secure."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What types of comparisons does JSDiff support?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "JSDiff supports multiple comparison modes: JSON (semantic comparison), Characters, Words, Lines, and Patch format. Each mode is optimized for different use cases."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Does JSDiff work on mobile devices?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes, JSDiff is fully responsive and works on mobile devices, tablets, and desktops. You can compare code anytime, anywhere."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Is my data safe when using JSDiff?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes, all data processing happens locally in your browser. No data is sent to any server, ensuring complete privacy and security."
+                            }
+                        }
+                    ]
                 },
                 {
-                    "@type": "Question",
-                    "name": "What types of comparisons does JSDiff support?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "JSDiff supports multiple comparison modes: JSON (semantic comparison), Characters, Words, Lines, and Patch format. Each mode is optimized for different use cases."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Does JSDiff work on mobile devices?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Yes, JSDiff is fully responsive and works on mobile devices, tablets, and desktops. You can compare code anytime, anywhere."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Is my data safe when using JSDiff?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Yes, all data processing happens locally in your browser. No data is sent to any server, ensuring complete privacy and security."
-                    }
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://jsdiff.com/"
+                        }
+                    ]
                 }
             ]
         }
@@ -271,6 +282,8 @@
 </section>
 
 <script src="diff.js"></script>
+<script src="scroll-sync.js"></script>
+<script src="json-renderer.js"></script>
 <script src="jsdiff-app.js"></script>
 
 <!-- Baidu Analytics -->

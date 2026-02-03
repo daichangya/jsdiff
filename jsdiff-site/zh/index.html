@@ -20,125 +20,136 @@
     <meta property="og:locale" content="zh_CN">
     <meta property="og:image" content="https://jsdiff.com/images/og-image.png">
 
-    <!-- Schema.org 结构化数据 -->
+    <!-- Structured Data: Organization, WebSite, SoftwareApplication, HowTo, FAQPage, BreadcrumbList -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "JSDiff",
-            "operatingSystem": "Windows, macOS, Linux, Web",
-            "applicationCategory": "DeveloperApplication",
-            "description": "免费的在线 JSON/JavaScript 对比工具，支持高亮显示差异、合并修改，帮助开发者快速比较代码或数据结构，适用于前端开发、接口调试和数据校验。",
-            "url": "https://jsdiff.com/zh/",
-            "softwareVersion": "8.0.2",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "CNY"
-            },
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "ratingCount": "150"
-            },
-            "author": {
-                "@type": "Organization",
-                "name": "JSDiff",
-                "url": "https://github.com/daichangya/jsdiff"
-            },
-            "featureList": [
-                "JSON 对比",
-                "JavaScript 差异对比",
-                "代码高亮",
-                "逐行对比",
-                "字符级对比",
-                "单词级对比",
-                "补丁生成"
-            ]
-        }
-    </script>
-    
-    <!-- HowTo Structured Data -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            "name": "如何使用 JSDiff 对比 JSON 文件",
-            "description": "使用 JSDiff 在线工具对比两个 JSON 文档的详细步骤",
-            "step": [
+            "@graph": [
                 {
-                    "@type": "HowToStep",
-                    "position": 1,
-                    "name": "选择 JSON 对比模式",
-                    "text": "点击 'JSON' 单选按钮选择 JSON 对比模式"
+                    "@type": "Organization",
+                    "@id": "https://jsdiff.com/#organization",
+                    "name": "JSDiff",
+                    "url": "https://jsdiff.com/",
+                    "logo": "https://jsdiff.com/logo.svg",
+                    "sameAs": ["https://github.com/daichangya/jsdiff"]
                 },
                 {
-                    "@type": "HowToStep",
-                    "position": 2,
-                    "name": "输入原始 JSON",
-                    "text": "在左侧文本框中粘贴或输入原始 JSON"
+                    "@type": "WebSite",
+                    "@id": "https://jsdiff.com/#website",
+                    "name": "JSDiff",
+                    "url": "https://jsdiff.com/zh/",
+                    "publisher": { "@id": "https://jsdiff.com/#organization" }
                 },
                 {
-                    "@type": "HowToStep",
-                    "position": 3,
-                    "name": "输入修改后的 JSON",
-                    "text": "在右侧文本框中粘贴或输入修改后的 JSON"
+                    "@type": "SoftwareApplication",
+                    "name": "JSDiff",
+                    "operatingSystem": "Windows, macOS, Linux, Web",
+                    "applicationCategory": "DeveloperApplication",
+                    "description": "免费的在线 JSON/JavaScript 对比工具，支持高亮显示差异、合并修改，帮助开发者快速比较代码或数据结构，适用于前端开发、接口调试和数据校验。",
+                    "url": "https://jsdiff.com/zh/",
+                    "softwareVersion": "8.0.2",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "CNY"
+                    },
+                    "author": { "@id": "https://jsdiff.com/#organization" },
+                    "featureList": [
+                        "JSON 对比",
+                        "JavaScript 差异对比",
+                        "代码高亮",
+                        "逐行对比",
+                        "字符级对比",
+                        "单词级对比",
+                        "补丁生成"
+                    ]
                 },
                 {
-                    "@type": "HowToStep",
-                    "position": 4,
-                    "name": "查看差异",
-                    "text": "差异结果会自动显示在结果面板中，新增内容以绿色高亮，删除内容以红色高亮"
-                }
-            ]
-        }
-    </script>
-    
-    <!-- FAQPage Structured Data -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-                {
-                    "@type": "Question",
-                    "name": "JSDiff 是什么？",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "JSDiff 是一款免费的在线 JSON 和 JavaScript 代码对比工具。它使用 Myers 差异算法来高亮显示两个文本段之间的差异，让您轻松看到添加、删除或修改的内容。"
-                    }
+                    "@type": "HowTo",
+                    "name": "如何使用 JSDiff 对比 JSON 文件",
+                    "description": "使用 JSDiff 在线工具对比两个 JSON 文档的详细步骤",
+                    "step": [
+                        {
+                            "@type": "HowToStep",
+                            "position": 1,
+                            "name": "选择 JSON 对比模式",
+                            "text": "点击 'JSON' 单选按钮选择 JSON 对比模式"
+                        },
+                        {
+                            "@type": "HowToStep",
+                            "position": 2,
+                            "name": "输入原始 JSON",
+                            "text": "在左侧文本框中粘贴或输入原始 JSON"
+                        },
+                        {
+                            "@type": "HowToStep",
+                            "position": 3,
+                            "name": "输入修改后的 JSON",
+                            "text": "在右侧文本框中粘贴或输入修改后的 JSON"
+                        },
+                        {
+                            "@type": "HowToStep",
+                            "position": 4,
+                            "name": "查看差异",
+                            "text": "差异结果会自动显示在结果面板中，新增内容以绿色高亮，删除内容以红色高亮"
+                        }
+                    ]
                 },
                 {
-                    "@type": "Question",
-                    "name": "JSDiff 是免费的吗？",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "是的，JSDiff 完全免费使用。所有处理都在您的浏览器本地完成，确保您的数据保持私密和安全。"
-                    }
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "JSDiff 是什么？",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "JSDiff 是一款免费的在线 JSON 和 JavaScript 代码对比工具。它使用 Myers 差异算法来高亮显示两个文本段之间的差异，让您轻松看到添加、删除或修改的内容。"
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "JSDiff 是免费的吗？",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "是的，JSDiff 完全免费使用。所有处理都在您的浏览器本地完成，确保您的数据保持私密和安全。"
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "JSDiff 支持哪些类型的对比？",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "JSDiff 支持多种对比模式：JSON（语义对比）、字符、单词、行和补丁格式。每种模式都针对不同的使用场景进行了优化。"
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "JSDiff 可以在移动设备上使用吗？",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "是的，JSDiff 完全响应式设计，可以在移动设备、平板电脑和台式机上使用。您可以随时随地对比代码。"
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "使用 JSDiff 时我的数据安全吗？",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "是的，所有数据处理都在您的浏览器本地进行。不会向任何服务器发送数据，确保完全的隐私和安全性。"
+                            }
+                        }
+                    ]
                 },
                 {
-                    "@type": "Question",
-                    "name": "JSDiff 支持哪些类型的对比？",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "JSDiff 支持多种对比模式：JSON（语义对比）、字符、单词、行和补丁格式。每种模式都针对不同的使用场景进行了优化。"
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "JSDiff 可以在移动设备上使用吗？",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "是的，JSDiff 完全响应式设计，可以在移动设备、平板电脑和台式机上使用。您可以随时随地对比代码。"
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "使用 JSDiff 时我的数据安全吗？",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "是的，所有数据处理都在您的浏览器本地进行。不会向任何服务器发送数据，确保完全的隐私和安全性。"
-                    }
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "首页",
+                            "item": "https://jsdiff.com/zh/"
+                        }
+                    ]
                 }
             ]
         }

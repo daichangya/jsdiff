@@ -7,6 +7,8 @@
     var lastJsonOldObj = null;
     var lastJsonNewObj = null;
     
+    // 滚动同步功能已移至 scroll-sync.js 模块
+    
     // Initialize when DOM is ready
     function init() {
         a = document.getElementById('a');
@@ -22,6 +24,18 @@
         setupDiffTypeHandlers();
         setupFileHandlers();
         setupInputHandlers();
+        
+        // 初始化滚动同步模块
+        if (window.initScrollSync) {
+            window.initScrollSync(a, b, result, function() {
+                return currentViewMode;
+            });
+        }
+        
+        // 初始化JSON渲染模块
+        if (window.initJsonRenderer) {
+            window.initJsonRenderer(result, a, b);
+        }
         
         // Initial load
         var selectedDiffType = document.querySelector('#settings [name="diff_type"]:checked');
@@ -98,7 +112,7 @@
             // For JSON structured view, copy formatted JSON
             if (lastJsonOldObj !== null && lastJsonNewObj !== null) {
                 // Create a merged JSON showing the final state
-                var merged = mergeJsonObjects(lastJsonOldObj, lastJsonNewObj);
+                var merged = window.mergeJsonObjects ? window.mergeJsonObjects(lastJsonOldObj, lastJsonNewObj) : lastJsonNewObj;
                 textToCopy = JSON.stringify(merged, null, 2);
             } else {
                 textToCopy = result.textContent || '';
@@ -186,9 +200,13 @@
         // Re-render
         if (lastJsonOldObj !== null && lastJsonNewObj !== null) {
             if (mode === 'structured') {
-                renderJsonStructured(lastJsonOldObj, lastJsonNewObj);
+                if (window.renderJsonStructured) {
+                    window.renderJsonStructured(lastJsonOldObj, lastJsonNewObj);
+                }
             } else {
-                renderJsonText(lastJsonOldObj, lastJsonNewObj);
+                if (window.renderJsonText) {
+                    window.renderJsonText(lastJsonOldObj, lastJsonNewObj);
+                }
             }
         }
     }
@@ -266,440 +284,7 @@
         return newObj;
     }
     
-    // Render JSON in structured (collapsible) view
-    function renderJsonStructured(oldObj, newObj) {
-        result.textContent = '';
-        var container = renderJsonWithCollapse(oldObj, newObj);
-        result.appendChild(container);
-    }
-    
-    // JSON语法高亮函数
-    function highlightJsonContent(text) {
-        if (!text) return '';
-        
-        var escapeHtml = function(str) {
-            var div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
-        };
-        
-        var result = escapeHtml(text);
-        
-        // 先标记字符串，避免后续处理破坏它们
-        var stringPlaceholders = [];
-        result = result.replace(/"([^"\\]|\\.)*"/g, function(match) {
-            var placeholder = '__STRING_' + stringPlaceholders.length + '__';
-            stringPlaceholders.push(match);
-            return placeholder;
-        });
-        
-        // 高亮数字（不在字符串中）
-        result = result.replace(/\b(-?\d+\.?\d*)\b/g, function(match) {
-            return '<span class="json-number">' + match + '</span>';
-        });
-        
-        // 高亮布尔值和null
-        result = result.replace(/\b(true|false|null)\b/g, function(match) {
-            return '<span class="json-literal">' + match + '</span>';
-        });
-        
-        // 恢复字符串并高亮
-        for (var i = 0; i < stringPlaceholders.length; i++) {
-            var highlighted = '<span class="json-string">' + stringPlaceholders[i] + '</span>';
-            result = result.replace('__STRING_' + i + '__', highlighted);
-        }
-        
-        // 高亮键名（但需要避免重复高亮）
-        result = result.replace(/(<span class="json-string">"([^"\\]|\\.)*"<\/span>)\s*:/g, function(match, stringPart) {
-            return '<span class="json-key">' + stringPart + '</span>:';
-        });
-        
-        return result;
-    }
-    
-    // Render JSON in text view
-    function renderJsonText(oldObj, newObj) {
-        result.textContent = '';
-        
-        // Create formatted JSON strings
-        var oldText = JSON.stringify(oldObj, null, 2);
-        var newText = JSON.stringify(newObj, null, 2);
-        
-        // Use diffLines to show differences
-        var diff = Diff.diffLines(oldText, newText);
-        var fragment = document.createDocumentFragment();
-        
-        diff.forEach(function(part) {
-            var node;
-            if (part.added) {
-                node = document.createElement('ins');
-                var temp = document.createElement('span');
-                temp.innerHTML = highlightJsonContent(part.value);
-                while (temp.firstChild) {
-                    node.appendChild(temp.firstChild);
-                }
-            } else if (part.removed) {
-                node = document.createElement('del');
-                var temp = document.createElement('span');
-                temp.innerHTML = highlightJsonContent(part.value);
-                while (temp.firstChild) {
-                    node.appendChild(temp.firstChild);
-                }
-            } else {
-                var temp = document.createElement('span');
-                temp.innerHTML = highlightJsonContent(part.value);
-                node = temp;
-            }
-            fragment.appendChild(node);
-        });
-        
-        result.appendChild(fragment);
-    }
-    
-    // JSON collapsible renderer
-    function renderJsonWithCollapse(oldObj, newObj) {
-        var container = document.createDocumentFragment();
-        var wrapper = document.createElement('div');
-        wrapper.className = 'json-container';
-        wrapper.appendChild(renderJsonNode(oldObj, newObj, '', 0));
-        container.appendChild(wrapper);
-        return container;
-    }
-
-    function renderJsonNode(oldVal, newVal, key, depth) {
-        var node = document.createElement('div');
-        node.className = 'json-node';
-        node.style.paddingLeft = (depth * 20) + 'px';
-
-        // Determine if values are different
-        var oldType = getValueType(oldVal);
-        var newType = getValueType(newVal);
-        var isDifferent = !deepEqual(oldVal, newVal);
-        var isRemoved = oldVal !== undefined && newVal === undefined;
-        var isAdded = oldVal === undefined && newVal !== undefined;
-        var isModified = oldVal !== undefined && newVal !== undefined && isDifferent;
-
-        // Handle different value types
-        if (isRemoved) {
-            return renderRemovedValue(oldVal, key, depth);
-        } else if (isAdded) {
-            return renderAddedValue(newVal, key, depth);
-        } else if (oldType === 'object' && newType === 'object' && (typeof oldVal === 'object' && oldVal !== null && !Array.isArray(oldVal))) {
-            return renderObject(oldVal, newVal, key, depth, isModified);
-        } else if (oldType === 'array' && newType === 'array') {
-            return renderArray(oldVal, newVal, key, depth, isModified);
-        } else if (isModified) {
-            return renderModifiedValue(oldVal, newVal, key, depth);
-        } else {
-            return renderUnchangedValue(oldVal, key, depth);
-        }
-    }
-
-    function renderObject(oldObj, newObj, key, depth, isModified) {
-        var node = document.createElement('div');
-        node.className = 'json-node json-object';
-        if (isModified) node.classList.add('json-modified');
-
-        var indent = depth * 20;
-        var line = document.createElement('div');
-        line.className = 'json-line';
-        line.style.paddingLeft = indent + 'px';
-
-        // Key
-        if (key) {
-            var keySpan = document.createElement('span');
-            keySpan.className = 'json-key';
-            keySpan.textContent = JSON.stringify(key) + ': ';
-            line.appendChild(keySpan);
-        }
-
-        // Toggle button
-        var toggle = document.createElement('span');
-        toggle.className = 'json-toggle';
-        toggle.textContent = '▼';
-        toggle.setAttribute('aria-label', 'Collapse/Expand');
-        line.appendChild(toggle);
-
-        // Opening brace
-        var openBrace = document.createElement('span');
-        openBrace.className = 'json-brace';
-        openBrace.textContent = '{';
-        line.appendChild(openBrace);
-
-        // Summary (shown when collapsed)
-        var summary = document.createElement('span');
-        summary.className = 'json-summary';
-        var keys = Object.keys(newObj || oldObj || {});
-        summary.textContent = ' ' + keys.length + ' property' + (keys.length !== 1 ? 'ies' : 'y');
-        line.appendChild(summary);
-
-        // Closing brace (shown when collapsed)
-        var closeBraceCollapsed = document.createElement('span');
-        closeBraceCollapsed.className = 'json-brace';
-        closeBraceCollapsed.textContent = ' }';
-        line.appendChild(closeBraceCollapsed);
-
-        node.appendChild(line);
-
-        // Children container
-        var children = document.createElement('div');
-        children.className = 'json-children';
-
-        // Get all keys from both objects
-        var allKeys = new Set();
-        if (oldObj) Object.keys(oldObj).forEach(function(k) { allKeys.add(k); });
-        if (newObj) Object.keys(newObj).forEach(function(k) { allKeys.add(k); });
-
-        var keysArray = Array.from(allKeys).sort();
-        keysArray.forEach(function(k) {
-            var childNode = renderJsonNode(oldObj && oldObj[k], newObj && newObj[k], k, depth + 1);
-            children.appendChild(childNode);
-        });
-
-        node.appendChild(children);
-
-        // Toggle functionality
-        toggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            node.classList.toggle('json-collapsed');
-            toggle.textContent = node.classList.contains('json-collapsed') ? '▶' : '▼';
-        });
-
-        // Also toggle on key click
-        if (key) {
-            var keyClickable = line.querySelector('.json-key');
-            if (keyClickable) {
-                keyClickable.style.cursor = 'pointer';
-                keyClickable.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    node.classList.toggle('json-collapsed');
-                    toggle.textContent = node.classList.contains('json-collapsed') ? '▶' : '▼';
-                });
-            }
-        }
-
-        return node;
-    }
-
-    function renderArray(oldArr, newArr, key, depth, isModified) {
-        var node = document.createElement('div');
-        node.className = 'json-node json-array';
-        if (isModified) node.classList.add('json-modified');
-
-        var indent = depth * 20;
-        var line = document.createElement('div');
-        line.className = 'json-line';
-        line.style.paddingLeft = indent + 'px';
-
-        // Key
-        if (key) {
-            var keySpan = document.createElement('span');
-            keySpan.className = 'json-key';
-            keySpan.textContent = JSON.stringify(key) + ': ';
-            line.appendChild(keySpan);
-        }
-
-        // Toggle button
-        var toggle = document.createElement('span');
-        toggle.className = 'json-toggle';
-        toggle.textContent = '▼';
-        toggle.setAttribute('aria-label', 'Collapse/Expand');
-        line.appendChild(toggle);
-
-        // Opening bracket
-        var openBracket = document.createElement('span');
-        openBracket.className = 'json-brace';
-        openBracket.textContent = '[';
-        line.appendChild(openBracket);
-
-        // Summary
-        var summary = document.createElement('span');
-        summary.className = 'json-summary';
-        var length = Math.max((newArr && newArr.length) || 0, (oldArr && oldArr.length) || 0);
-        summary.textContent = ' ' + length + ' item' + (length !== 1 ? 's' : '');
-        line.appendChild(summary);
-
-        // Closing bracket
-        var closeBracketCollapsed = document.createElement('span');
-        closeBracketCollapsed.className = 'json-brace';
-        closeBracketCollapsed.textContent = ' ]';
-        line.appendChild(closeBracketCollapsed);
-
-        node.appendChild(line);
-
-        // Children container
-        var children = document.createElement('div');
-        children.className = 'json-children';
-
-        var maxLength = Math.max((newArr && newArr.length) || 0, (oldArr && oldArr.length) || 0);
-        for (var i = 0; i < maxLength; i++) {
-            var childNode = renderJsonNode(
-                oldArr && oldArr[i],
-                newArr && newArr[i],
-                i,
-                depth + 1
-            );
-            children.appendChild(childNode);
-        }
-
-        node.appendChild(children);
-
-        // Toggle functionality
-        toggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            node.classList.toggle('json-collapsed');
-            toggle.textContent = node.classList.contains('json-collapsed') ? '▶' : '▼';
-        });
-
-        if (key) {
-            var keyClickable = line.querySelector('.json-key');
-            if (keyClickable) {
-                keyClickable.style.cursor = 'pointer';
-                keyClickable.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    node.classList.toggle('json-collapsed');
-                    toggle.textContent = node.classList.contains('json-collapsed') ? '▶' : '▼';
-                });
-            }
-        }
-
-        return node;
-    }
-
-    function renderRemovedValue(value, key, depth) {
-        var node = document.createElement('div');
-        node.className = 'json-node json-removed';
-        var line = document.createElement('div');
-        line.className = 'json-line';
-        line.style.paddingLeft = (depth * 20) + 'px';
-
-        if (key !== '') {
-            var keySpan = document.createElement('span');
-            keySpan.className = 'json-key';
-            keySpan.textContent = JSON.stringify(key) + ': ';
-            line.appendChild(keySpan);
-        }
-
-        var del = document.createElement('del');
-        del.textContent = formatValue(value);
-        line.appendChild(del);
-
-        node.appendChild(line);
-        return node;
-    }
-
-    function renderAddedValue(value, key, depth) {
-        var node = document.createElement('div');
-        node.className = 'json-node json-added';
-        var line = document.createElement('div');
-        line.className = 'json-line';
-        line.style.paddingLeft = (depth * 20) + 'px';
-
-        if (key !== '') {
-            var keySpan = document.createElement('span');
-            keySpan.className = 'json-key';
-            keySpan.textContent = JSON.stringify(key) + ': ';
-            line.appendChild(keySpan);
-        }
-
-        var ins = document.createElement('ins');
-        ins.textContent = formatValue(value);
-        line.appendChild(ins);
-
-        node.appendChild(line);
-        return node;
-    }
-
-    function renderModifiedValue(oldVal, newVal, key, depth) {
-        var node = document.createElement('div');
-        node.className = 'json-node json-modified';
-        var line = document.createElement('div');
-        line.className = 'json-line';
-        line.style.paddingLeft = (depth * 20) + 'px';
-
-        if (key !== '') {
-            var keySpan = document.createElement('span');
-            keySpan.className = 'json-key';
-            keySpan.textContent = JSON.stringify(key) + ': ';
-            line.appendChild(keySpan);
-        }
-
-        var del = document.createElement('del');
-        del.textContent = formatValue(oldVal);
-        line.appendChild(del);
-
-        line.appendChild(document.createTextNode(' → '));
-
-        var ins = document.createElement('ins');
-        ins.textContent = formatValue(newVal);
-        line.appendChild(ins);
-
-        node.appendChild(line);
-        return node;
-    }
-
-    function renderUnchangedValue(value, key, depth) {
-        var node = document.createElement('div');
-        node.className = 'json-node json-unchanged';
-        var line = document.createElement('div');
-        line.className = 'json-line';
-        line.style.paddingLeft = (depth * 20) + 'px';
-
-        if (key !== '') {
-            var keySpan = document.createElement('span');
-            keySpan.className = 'json-key';
-            keySpan.textContent = JSON.stringify(key) + ': ';
-            line.appendChild(keySpan);
-        }
-
-        line.appendChild(document.createTextNode(formatValue(value)));
-        node.appendChild(line);
-        return node;
-    }
-
-    function formatValue(value) {
-        if (value === null) return 'null';
-        if (value === undefined) return 'undefined';
-        if (typeof value === 'string') return JSON.stringify(value);
-        if (typeof value === 'number' || typeof value === 'boolean') return String(value);
-        if (Array.isArray(value)) return '[' + value.length + ' items]';
-        if (typeof value === 'object') return '{' + Object.keys(value).length + ' properties}';
-        return String(value);
-    }
-
-    function getValueType(value) {
-        if (value === null) return 'null';
-        if (value === undefined) return 'undefined';
-        if (Array.isArray(value)) return 'array';
-        if (typeof value === 'object') return 'object';
-        return typeof value;
-    }
-
-    function deepEqual(a, b) {
-        if (a === b) return true;
-        if (a === null || b === null) return a === b;
-        if (a === undefined || b === undefined) return a === b;
-        if (typeof a !== typeof b) return false;
-        if (typeof a !== 'object') return a === b;
-        if (Array.isArray(a) !== Array.isArray(b)) return false;
-        
-        if (Array.isArray(a)) {
-            if (a.length !== b.length) return false;
-            for (var i = 0; i < a.length; i++) {
-                if (!deepEqual(a[i], b[i])) return false;
-            }
-            return true;
-        }
-
-        var keysA = Object.keys(a);
-        var keysB = Object.keys(b);
-        if (keysA.length !== keysB.length) return false;
-        for (var i = 0; i < keysA.length; i++) {
-            if (!keysB.includes(keysA[i])) return false;
-            if (!deepEqual(a[keysA[i]], b[keysB[i]])) return false;
-        }
-        return true;
-    }
+    // JSON渲染功能已移至 json-renderer.js 模块
 
     function changed() {
         var fragment = document.createDocumentFragment();
@@ -748,9 +333,17 @@
                 // Use appropriate renderer based on view mode
                 result.textContent = '';
                 if (currentViewMode === 'structured') {
-                    result.appendChild(renderJsonWithCollapse(oldObj, newObj));
+                    if (window.renderJsonStructured) {
+                        window.renderJsonStructured(oldObj, newObj);
+                    }
+                    // For structured view, don't build mapping (use percentage sync)
+                    window.currentDiff = null;
+                    window.diffMapping = null;
                 } else {
-                    renderJsonText(oldObj, newObj);
+                    if (window.renderJsonText) {
+                        window.renderJsonText(oldObj, newObj);
+                    }
+                    // renderJsonText already saves diff and builds mapping
                 }
                 return; // Early return, rendering is done
             } catch (e) {
@@ -791,6 +384,12 @@
 
         result.textContent = '';
         result.appendChild(fragment);
+        
+        // Save diff result and build mapping for scroll sync
+        window.currentDiff = diff;
+        if (window.buildDiffMapping) {
+            window.buildDiffMapping(diff, a.value, b.value, window.diffType);
+        }
     }
 
     // Helper function to check if value matches any example data
