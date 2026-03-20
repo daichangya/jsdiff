@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - JSDiff</title>
+    <meta name="description" content="JSDiff version history and changelog. See what's new in each release."/>
+    <link rel="canonical" href="https://jsdiff.com/changelog.html" />
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="css/home-new.css"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        .changelog-item { 
+            border-left: 3px solid var(--primary-color); 
+            padding-left: 20px; 
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .changelog-item h3 { 
+            color: var(--primary-color); 
+            margin-bottom: 10px;
+        }
+        .changelog-date { 
+            color: #666; 
+            font-size: 14px; 
+            margin-bottom: 10px;
+        }
+        .changelog-item ul { 
+            padding-left: 20px; 
+        }
+        .changelog-item li { 
+            margin-bottom: 5px; 
+            line-height: 1.6;
+        }
+        .tag { 
+            display: inline-block; 
+            padding: 2px 8px; 
+            border-radius: 4px; 
+            font-size: 12px; 
+            margin-right: 5px;
+        }
+        .tag-feature { background: #e6f5ee; color: #31a354; }
+        .tag-fix { background: #fbe9e7; color: #e53935; }
+        .tag-improve { background: #e3f2fd; color: #1976d2; }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="main-nav" id="main-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">⚡ JSDiff</a>
+        <div class="nav-links">
+            <a href="/docs/">Documentation</a>
+            <a href="/demo.html">Online Demo</a>
+            <a href="/about.html">About</a>
+            <a href="/changelog.html">Changelog</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
+            <a href="/zh/">中文</a>
+        </div>
+    </div>
+</nav>
+
+<main class="content-container" id="main-content" style="margin-top: 100px;">
+    <h1 class="page-title">Changelog</h1>
+    <p class="page-intro">Version history and release notes for JSDiff.</p>
+    
+    <section class="changelog-item">
+        <h3>v8.0.2 <span class="tag tag-fix">Fix</span></h3>
+        <p class="changelog-date">Released: March 2024</p>
+        <ul>
+            <li>Fixed edge case in diffChars with empty strings</li>
+            <li>Improved performance for large text comparisons</li>
+            <li>Updated dependencies to latest versions</li>
+        </ul>
+    </section>
+
+    <section class="changelog-item">
+        <h3>v8.0.1 <span class="tag tag-fix">Fix</span></h3>
+        <p class="changelog-date">Released: February 2024</p>
+        <ul>
+            <li>Fixed TypeScript type definitions</li>
+            <li>Resolved issue with newline handling in diffLines</li>
+        </ul>
+    </section>
+
+    <section class="changelog-item">
+        <h3>v8.0.0 <span class="tag tag-feature">Feature</span></h3>
+        <p class="changelog-date">Released: January 2024</p>
+        <ul>
+            <li><strong>New:</strong> Added diffJson function for JSON object comparison</li>
+            <li><strong>New:</strong> Support for custom comparison functions</li>
+            <li><strong>Improved:</strong> 20% faster diff computation</li>
+            <li><strong>Breaking:</strong> Dropped support for Node.js 12</li>
+        </ul>
+    </section>
+
+    <section class="changelog-item">
+        <h3>v7.0.0 <span class="tag tag-feature">Feature</span></h3>
+        <p class="changelog-date">Released: June 2023</p>
+        <ul>
+            <li><strong>New:</strong> Added support for async diff computation</li>
+            <li><strong>New:</strong> Web Worker support for browser environments</li>
+            <li><strong>Improved:</strong> Memory usage optimization</li>
+            <li><strong>Improved:</strong> Better error messages</li>
+        </ul>
+    </section>
+
+    <section class="changelog-item">
+        <h3>v6.0.0 <span class="tag tag-feature">Feature</span></h3>
+        <p class="changelog-date">Released: December 2022</p>
+        <ul>
+            <li><strong>New:</strong> ESM module support</li>
+            <li><strong>New:</strong> TypeScript declarations included</li>
+            <li><strong>Improved:</strong> Bundle size reduced by 30%</li>
+            <li><strong>Fixed:</strong> Unicode character handling</li>
+        </ul>
+    </section>
+
+    <section class="changelog-item">
+        <h3>v5.0.0 <span class="tag tag-feature">Feature</span></h3>
+        <p class="changelog-date">Released: March 2022</p>
+        <ul>
+            <li><strong>New:</strong> Patch apply and create functions</li>
+            <li><strong>New:</strong> Word-level diff with ignoreWhitespace option</li>
+            <li><strong>Improved:</strong> Algorithm optimizations</li>
+        </ul>
+    </section>
+
+    <section class="cta-section" style="margin-top: 50px;">
+        <h2>Stay Updated</h2>
+        <p>Follow the project on GitHub to get notified of new releases.</p>
+        <a href="https://github.com/daichangya/jsdiff/releases" class="btn" target="_blank">View All Releases →</a>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="/about.html">About</a>
+            <a href="/changelog.html">Changelog</a>
+            <a href="/docs/">Documentation</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-of-service.html">Terms of Service</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+        </div>
+        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+    </div>
+</footer>
+
+</body>
+</html>

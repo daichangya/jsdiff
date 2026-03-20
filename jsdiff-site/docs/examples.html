@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examples - JSDiff Documentation</title>
+    <meta name="description" content="Real-world JSDiff usage examples. Learn how to compare text, JSON, and generate patches."/>
+    <link rel="canonical" href="https://jsdiff.com/docs/examples.html" />
+    <link rel="stylesheet" href="../style.css"/>
+    <link rel="stylesheet" href="../css/home-new.css"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="main-nav" id="main-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">⚡ JSDiff</a>
+        <div class="nav-links">
+            <a href="/docs/">Documentation</a>
+            <a href="/demo.html">Online Demo</a>
+            <a href="/about.html">About</a>
+            <a href="/changelog.html">Changelog</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
+            <a href="/zh/">中文</a>
+        </div>
+    </div>
+</nav>
+
+<main class="content-container" id="main-content" style="margin-top: 100px;">
+    <nav style="margin-bottom: 20px;">
+        <a href="/docs/" style="color: var(--primary-color);">← Back to Documentation</a>
+    </nav>
+    
+    <h1 class="page-title">Examples</h1>
+    
+    <section class="card-feature primary">
+        <div class="card-feature-header">
+            <div class="card-feature-icon">📝</div>
+            <div class="card-feature-content">
+                <h3>Example 1: Compare Two Text Files</h3>
+                <pre style="margin-top: 15px;"><code>import { diffLines } from 'diff';
+
+const oldText = `Line 1
+Line 2
+Line 3`;
+
+const newText = `Line 1
+Line 2 modified
+Line 3`;
+
+const diff = diffLines(oldText, newText);
+
+diff.forEach((part) => {
+  const color = part.added ? '\x1b[32m' : 
+                part.removed ? '\x1b[31m' : '\x1b[0m';
+  process.stdout.write(color + part.value + '\x1b[0m');
+});</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-feature">
+        <div class="card-feature-header">
+            <div class="card-feature-icon">🔧</div>
+            <div class="card-feature-content">
+                <h3>Example 2: Compare Configuration Files</h3>
+                <pre style="margin-top: 15px;"><code>import { diffJson } from 'diff';
+
+const oldConfig = {
+  server: 'localhost',
+  port: 3000,
+  debug: false
+};
+
+const newConfig = {
+  server: 'localhost',
+  port: 8080,
+  debug: true,
+  ssl: true
+};
+
+const diff = diffJson(oldConfig, newConfig);
+
+// Output the differences
+console.log('Configuration changes:');
+diff.forEach((part) => {
+  if (part.added) {
+    console.log('+', part.value);
+  } else if (part.removed) {
+    console.log('-', part.value);
+  }
+});</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-feature">
+        <div class="card-feature-header">
+            <div class="card-feature-icon">🎨</div>
+            <div class="card-feature-content">
+                <h3>Example 3: Generate HTML Diff</h3>
+                <pre style="margin-top: 15px;"><code>import { diffWords } from 'diff';
+
+function generateHtmlDiff(oldText, newText) {
+  const diff = diffWords(oldText, newText);
+  
+  return diff.map((part) => {
+    if (part.added) {
+      return `&lt;ins&gt;${part.value}&lt;/ins&gt;`;
+    }
+    if (part.removed) {
+      return `&lt;del&gt;${part.value}&lt;/del&gt;`;
+    }
+    return part.value;
+  }).join('');
+}
+
+const html = generateHtmlDiff(
+  'The quick brown fox',
+  'The fast brown fox'
+);
+
+// Output: The &lt;del&gt;quick&lt;/del&gt;&lt;ins&gt;fast&lt;/ins&gt; brown fox</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-feature">
+        <div class="card-feature-header">
+            <div class="card-feature-icon">📦</div>
+            <div class="card-feature-content">
+                <h3>Example 4: Create and Apply Patches</h3>
+                <pre style="margin-top: 15px;"><code>import { createPatch, applyPatch } from 'diff';
+
+const oldText = 'Hello World';
+const newText = 'Hello Universe';
+
+// Create a patch
+const patch = createPatch(
+  'greeting.txt',
+  oldText,
+  newText,
+  'Original',
+  'Modified'
+);
+
+console.log(patch);
+// Output:
+// --- Original
+// +++ Modified
+// @@ -1 +1 @@
+// -Hello World
+// +Hello Universe
+
+// Apply the patch
+const result = applyPatch(oldText, patch);
+console.log(result); // 'Hello Universe'</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-feature success">
+        <div class="card-feature-header">
+            <div class="card-feature-icon">🚀</div>
+            <div class="card-feature-content">
+                <h3>More Examples</h3>
+                <ul>
+                    <li><a href="https://github.com/daichangya/jsdiff/tree/master/examples" target="_blank">Official Examples on GitHub</a></li>
+                    <li><a href="/demo.html">Try the Online Demo</a></li>
+                    <li><a href="api-reference.html">Read the API Reference</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="/about.html">About</a>
+            <a href="/changelog.html">Changelog</a>
+            <a href="/docs/">Documentation</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-of-service.html">Terms of Service</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+        </div>
+        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+    </div>
+</footer>
+
+</body>
+</html>

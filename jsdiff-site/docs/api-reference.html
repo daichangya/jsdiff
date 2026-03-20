@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - JSDiff Documentation</title>
+    <meta name="description" content="Complete API reference for JSDiff JavaScript library. All diff functions, options, and return types."/>
+    <link rel="canonical" href="https://jsdiff.com/docs/api-reference.html" />
+    <link rel="stylesheet" href="../style.css"/>
+    <link rel="stylesheet" href="../css/home-new.css"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        .api-section { margin-bottom: 40px; }
+        .api-function { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .api-function h3 { color: var(--primary-color); margin-bottom: 10px; }
+        .api-function code { background: #2d3748; color: #e2e8f0; padding: 2px 6px; border-radius: 3px; }
+        .api-function pre { background: #2d3748; color: #e2e8f0; padding: 15px; border-radius: 6px; overflow-x: auto; }
+        .api-params { margin-top: 15px; }
+        .api-params table { width: 100%; border-collapse: collapse; }
+        .api-params th, .api-params td { padding: 10px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        .api-params th { background: #f0f0f0; }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="main-nav" id="main-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">⚡ JSDiff</a>
+        <div class="nav-links">
+            <a href="/docs/">Documentation</a>
+            <a href="/demo.html">Online Demo</a>
+            <a href="/about.html">About</a>
+            <a href="/changelog.html">Changelog</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
+            <a href="/zh/">中文</a>
+        </div>
+    </div>
+</nav>
+
+<main class="content-container" id="main-content" style="margin-top: 100px;">
+    <nav style="margin-bottom: 20px;">
+        <a href="/docs/" style="color: var(--primary-color);">← Back to Documentation</a>
+    </nav>
+    
+    <h1 class="page-title">API Reference</h1>
+    
+    <section class="api-section">
+        <h2>Diff Functions</h2>
+        
+        <div class="api-function">
+            <h3>diffChars(oldStr, newStr, [options])</h3>
+            <p>Compare two strings character by character.</p>
+            <pre><code>import { diffChars } from 'diff';
+
+const diff = diffChars('hello', 'hallo');
+// Returns array of change objects</code></pre>
+            <div class="api-params">
+                <table>
+                    <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+                    <tr><td>oldStr</td><td>string</td><td>Original string</td></tr>
+                    <tr><td>newStr</td><td>string</td><td>New string to compare</td></tr>
+                    <tr><td>options</td><td>object</td><td>Optional configuration</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="api-function">
+            <h3>diffWords(oldStr, newStr, [options])</h3>
+            <p>Compare two strings word by word. Ignores whitespace differences.</p>
+            <pre><code>import { diffWords } from 'diff';
+
+const diff = diffWords('hello world', 'hello there');</code></pre>
+        </div>
+
+        <div class="api-function">
+            <h3>diffLines(oldStr, newStr, [options])</h3>
+            <p>Compare two strings line by line.</p>
+            <pre><code>import { diffLines } from 'diff';
+
+const diff = diffLines('line1\nline2', 'line1\nline3');</code></pre>
+        </div>
+
+        <div class="api-function">
+            <h3>diffJson(oldObj, newObj, [options])</h3>
+            <p>Compare two JSON objects.</p>
+            <pre><code>import { diffJson } from 'diff';
+
+const diff = diffJson(
+  { name: 'John', age: 30 },
+  { name: 'John', age: 31 }
+);</code></pre>
+        </div>
+    </section>
+
+    <section class="api-section">
+        <h2>Patch Functions</h2>
+        
+        <div class="api-function">
+            <h3>createPatch(fileName, oldStr, newStr, oldHeader, newHeader, [options])</h3>
+            <p>Create a unified diff patch.</p>
+            <pre><code>import { createPatch } from 'diff';
+
+const patch = createPatch(
+  'file.txt',
+  'original text',
+  'modified text',
+  'Original',
+  'Modified'
+);</code></pre>
+        </div>
+
+        <div class="api-function">
+            <h3>applyPatch(oldStr, patch)</h3>
+            <p>Apply a patch to a string.</p>
+            <pre><code>import { applyPatch } from 'diff';
+
+const result = applyPatch('original text', patch);</code></pre>
+        </div>
+    </section>
+
+    <section class="api-section">
+        <h2>Options</h2>
+        <div class="api-function">
+            <table class="api-params">
+                <tr><th>Option</th><th>Type</th><th>Default</th><th>Description</th></tr>
+                <tr><td>ignoreCase</td><td>boolean</td><td>false</td><td>Ignore case differences</td></tr>
+                <tr><td>ignoreWhitespace</td><td>boolean</td><td>false</td><td>Ignore whitespace</td></tr>
+                <tr><td>newlineIsToken</td><td>boolean</td><td>false</td><td>Treat newlines as separate tokens</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="api-section">
+        <h2>Return Value</h2>
+        <p>All diff functions return an array of change objects:</p>
+        <div class="api-function">
+            <pre><code>[
+  { value: 'common text', added: undefined, removed: undefined },
+  { value: 'added text', added: true, removed: undefined },
+  { value: 'removed text', added: undefined, removed: true }
+]</code></pre>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="/about.html">About</a>
+            <a href="/changelog.html">Changelog</a>
+            <a href="/docs/">Documentation</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-of-service.html">Terms of Service</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+        </div>
+        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+    </div>
+</footer>
+
+</body>
+</html>
