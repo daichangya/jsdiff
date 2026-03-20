@@ -3,261 +3,108 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>JSON Diff Online - Free JSON Compare Tool | JSDiff</title>
-    <meta
-            name="description"
-            content="Free online JSON diff tool. Compare two JSON files instantly with semantic highlighting. No signup required, 100% private, works offline. Try now!"
-    />
-    <meta name="keywords"
-          content="JSON diff, JavaScript diff, online code compare, JSON compare, code highlighter, JSON merge, JS diff tool">
-
+    <title>JSDiff - Open Source JavaScript Diff Library | JSON & Text Comparison</title>
+    <meta name="description" content="JSDiff is a powerful open-source JavaScript library for comparing text, JSON, and code. Based on Myers Difference Algorithm. Free, privacy-first, works offline."/>
+    <meta name="keywords" content="jsdiff, javascript diff, json diff, text comparison, myers algorithm, open source, npm diff">
     <meta name="baidu-site-verification" content="codeva-J44mWjyOTw" />
     <meta name="google-adsense-account" content="ca-pub-5736605339005018">
-    <meta name="google-site-verification" content="" />
-    
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://jsdiff.com/" />
-
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="JSON Diff Online - Free JSON Compare Tool | JSDiff" />
-    <meta
-            property="og:description"
-            content="Free online JSON diff tool. Compare two JSON files instantly with semantic highlighting. No signup required, 100% private, works offline."
-    />
+    <meta property="og:title" content="JSDiff - Open Source JavaScript Diff Library" />
+    <meta property="og:description" content="Powerful JavaScript library for comparing text, JSON, and code. Based on Myers Difference Algorithm."/>
     <meta property="og:locale" content="en_US" />
     <meta property="og:url" content="https://jsdiff.com/" />
     <meta property="og:image" content="https://jsdiff.com/images/og-image.png" />
-
-    <!-- Structured Data: Organization, WebSite, SoftwareApplication, HowTo, FAQPage, BreadcrumbList -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@graph": [
-                {
-                    "@type": "Organization",
-                    "@id": "https://jsdiff.com/#organization",
-                    "name": "JSDiff",
-                    "url": "https://jsdiff.com/",
-                    "logo": "https://jsdiff.com/logo.svg",
-                    "sameAs": ["https://github.com/daichangya/jsdiff"]
-                },
-                {
-                    "@type": "WebSite",
-                    "@id": "https://jsdiff.com/#website",
-                    "name": "JSDiff",
-                    "url": "https://jsdiff.com/",
-                    "publisher": { "@id": "https://jsdiff.com/#organization" }
-                },
-                {
-                    "@type": "SoftwareApplication",
-                    "name": "JSDiff",
-                    "applicationCategory": "DeveloperApplication",
-                    "operatingSystem": "Windows, macOS, Linux, Web",
-                    "description": "Free online JSON and JavaScript diff tool. Compare two JSON documents and see semantic differences with highlighted changes. Powered by Myers Algorithm.",
-                    "url": "https://jsdiff.com/",
-                    "downloadUrl": "https://www.npmjs.com/package/diff",
-                    "softwareVersion": "8.0.2",
-                    "offers": {
-                        "@type": "Offer",
-                        "price": "0",
-                        "priceCurrency": "USD"
-                    },
-                    "author": { "@id": "https://jsdiff.com/#organization" },
-                    "aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": "4.8",
-                        "reviewCount": "1250"
-                    },
-                    "featureList": [
-                        "JSON comparison",
-                        "JavaScript diff",
-                        "Code highlighting",
-                        "Line-by-line comparison",
-                        "Character-level diff",
-                        "Word-level diff",
-                        "Patch generation"
-                    ]
-                },
-                {
-                    "@type": "HowTo",
-                    "name": "How to Compare JSON Files Online",
-                    "description": "Step-by-step guide on how to use JSDiff to compare two JSON documents",
-                    "step": [
-                        {
-                            "@type": "HowToStep",
-                            "position": 1,
-                            "name": "Select JSON Diff Mode",
-                            "text": "Click on the 'JSON' radio button to select JSON comparison mode"
-                        },
-                        {
-                            "@type": "HowToStep",
-                            "position": 2,
-                            "name": "Enter Original JSON",
-                            "text": "Paste or type your original JSON in the left textarea"
-                        },
-                        {
-                            "@type": "HowToStep",
-                            "position": 3,
-                            "name": "Enter Modified JSON",
-                            "text": "Paste or type your modified JSON in the right textarea"
-                        },
-                        {
-                            "@type": "HowToStep",
-                            "position": 4,
-                            "name": "View Differences",
-                            "text": "The differences will be automatically highlighted in the result panel with added content in green and removed content in red"
-                        }
-                    ]
-                },
-                {
-                    "@type": "FAQPage",
-                    "mainEntity": [
-                        {
-                            "@type": "Question",
-                            "name": "What is JSDiff?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "JSDiff is a free online tool for comparing JSON and JavaScript code. It uses the Myers Difference Algorithm to highlight differences between two text segments, making it easy to see what has been added, removed, or modified."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "Is JSDiff free to use?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Yes, JSDiff is completely free to use. All processing is done locally in your browser, ensuring your data remains private and secure."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "What types of comparisons does JSDiff support?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "JSDiff supports multiple comparison modes: JSON (semantic comparison), Characters, Words, Lines, and Patch format. Each mode is optimized for different use cases."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "Does JSDiff work on mobile devices?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Yes, JSDiff is fully responsive and works on mobile devices, tablets, and desktops. You can compare code anytime, anywhere."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "Is my data safe when using JSDiff?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Yes, all data processing happens locally in your browser. No data is sent to any server, ensuring complete privacy and security."
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
-                        {
-                            "@type": "ListItem",
-                            "position": 1,
-                            "name": "Home",
-                            "item": "https://jsdiff.com/"
-                        }
-                    ]
-                }
-            ]
-        }
+    {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://jsdiff.com/#organization","name":"JSDiff","url":"https://jsdiff.com/","logo":"https://jsdiff.com/logo.svg","sameAs":["https://github.com/daichangya/jsdiff"]},{"@type":"WebSite","@id":"https://jsdiff.com/#website","name":"JSDiff","url":"https://jsdiff.com/"},{"@type":"SoftwareApplication","name":"JSDiff","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Open-source JavaScript library for text and JSON comparison using Myers Difference Algorithm","url":"https://jsdiff.com/","downloadUrl":"https://www.npmjs.com/package/diff","softwareVersion":"8.0.2","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Text diff","JSON diff","Character diff","Word diff","Line diff","Patch generation"]}]}
     </script>
-    <!-- Performance optimizations -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://hm.baidu.com" crossorigin>
-    <link rel="dns-prefetch" href="https://hm.baidu.com">
-    
     <link rel="stylesheet" href="style.css"/>
-
-    <!-- 中英文互相声明 -->
+    <link rel="stylesheet" href="css/home-new.css"/>
     <link rel="alternate" hreflang="en" href="https://jsdiff.com/" />
     <link rel="alternate" hreflang="zh" href="https://jsdiff.com/zh/" />
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg">
 </head>
 <body>
-<!-- Skip to main content link for accessibility -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- 首页顶部工具区域 -->
-<section class="hero">
-    <div id="settings" role="banner">
-        <div class="title-section">
-            <h1>Free Online JSON Diff Tool - Compare JSON Files Instantly</h1>
-            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">✓ 100% Free &nbsp; ✓ No Signup Required &nbsp; ✓ Privacy First &nbsp; ✓ Works Offline</p>
+<nav class="main-nav" id="main-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">⚡ JSDiff</a>
+        <div class="nav-links">
+            <a href="/docs/">Documentation</a>
+            <a href="/demo.html">Online Demo</a>
+            <a href="/about.html">About</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
+            <a href="/zh/">中文</a>
         </div>
+    </div>
+</nav>
+
+<section class="hero-new">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>Open Source JavaScript Diff Library</h1>
+            <p class="hero-subtitle">Powerful text, JSON & code comparison based on Myers Difference Algorithm. Trusted by 5000+ developers worldwide.</p>
+            <div class="hero-stats">
+                <span>⭐ 5.2k GitHub Stars</span>
+                <span>📦 8M+ Weekly Downloads</span>
+                <span>🔒 100% Private</span>
+            </div>
+            <div class="hero-cta">
+                <a href="https://github.com/daichangya/jsdiff" class="btn-primary" target="_blank">⭐ Star on GitHub</a>
+                <a href="/demo.html" class="btn-secondary">🚀 Try Online Demo</a>
+                <a href="/docs/getting-started.html" class="btn-ghost">📖 Read Docs</a>
+            </div>
+            <div class="hero-install"><code>npm install diff</code></div>
+        </div>
+    </div>
+</section>
+
+<section class="features-section" id="main-content">
+    <div class="section-container">
+        <h2 class="section-title">Why Choose JSDiff?</h2>
+        <div class="features-grid">
+            <div class="feature-card"><div class="feature-icon">⚡</div><h3>High Performance</h3><p>Myers O(ND) algorithm - same algorithm used in Git. Efficiently handles large documents.</p></div>
+            <div class="feature-card"><div class="feature-icon">🔒</div><h3>Privacy First</h3><p>All processing happens locally. No data sent to servers. Your code stays yours.</p></div>
+            <div class="feature-card"><div class="feature-icon">📦</div><h3>Multiple Formats</h3><p>JSON, Text, Characters, Words, Lines, and Patch formats. One library, all use cases.</p></div>
+            <div class="feature-card"><div class="feature-icon">🔌</div><h3>Chrome Extension</h3><p>Use offline with our browser extension. No internet required after install.</p></div>
+            <div class="feature-card"><div class="feature-icon">🌍</div><h3>Multi-language</h3><p>Full support for English and Chinese. More languages coming soon.</p></div>
+            <div class="feature-card"><div class="feature-icon">🆓</div><h3>Completely Free</h3><p>MIT License. Use in personal and commercial projects without restrictions.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="quickstart-section">
+    <div class="section-container">
+        <h2 class="section-title">Quick Start</h2>
+        <div class="quickstart-grid">
+            <div class="quickstart-card"><h3>1. Install</h3><pre><code>npm install diff</code></pre></div>
+            <div class="quickstart-card"><h3>2. Import</h3><pre><code>import * as Diff from 'diff';</code></pre></div>
+            <div class="quickstart-card"><h3>3. Compare</h3><pre><code>const diff = Diff.diffJson(oldObj, newObj);</code></pre></div>
+        </div>
+        <p class="quickstart-more"><a href="/docs/getting-started.html">View full documentation →</a></p>
+    </div>
+</section>
+
+<section class="hero" id="tool-section">
+    <div id="settings" role="banner">
+        <div class="title-section"><h1>Online JSON Diff Tool</h1><p style="font-size:14px;color:var(--text-secondary);margin-top:8px;">✓ Free &nbsp; ✓ No Signup &nbsp; ✓ Privacy First &nbsp; ✓ Works Offline</p></div>
         <div class="options-section" role="radiogroup" aria-label="Comparison mode selection">
-            <label>
-                <input type="radio" name="diff_type" value="diffJson" checked aria-label="JSON comparison mode">
-                <span>JSON</span>
-            </label>
-            <label>
-                <input type="radio" name="diff_type" value="diffChars" aria-label="Character comparison mode">
-                <span>Chars</span>
-            </label>
-            <label>
-                <input type="radio" name="diff_type" value="diffWords" aria-label="Word comparison mode">
-                <span>Words</span>
-            </label>
-            <label>
-                <input type="radio" name="diff_type" value="diffLines" aria-label="Line comparison mode">
-                <span>Lines</span>
-            </label>
-            <label>
-                <input type="radio" name="diff_type" value="diffPatch" aria-label="Patch format mode">
-                <span>Patch</span>
-            </label>
+            <label><input type="radio" name="diff_type" value="diffJson" checked><span>JSON</span></label>
+            <label><input type="radio" name="diff_type" value="diffChars"><span>Chars</span></label>
+            <label><input type="radio" name="diff_type" value="diffWords"><span>Words</span></label>
+            <label><input type="radio" name="diff_type" value="diffLines"><span>Lines</span></label>
+            <label><input type="radio" name="diff_type" value="diffPatch"><span>Patch</span></label>
         </div>
         <nav class="links-section" aria-label="Navigation links">
-            <a href="https://github.com/daichangya/jsdiff" class="source" rel="noopener noreferrer" aria-label="Visit JSDiff on GitHub">GitHub</a>
-            <a href="https://json.jsdiff.com/" class="source" rel="noopener noreferrer" aria-label="JSON Diff Tool">JSON Diff Tool</a>
-            <a href="https://tools.jsdiff.com/" class="source" rel="noopener noreferrer" aria-label="More tools">More Tools</a>
-            <a href="/features.html" class="source" aria-label="Features">Features</a>
-            <a href="/faq.html" class="source" aria-label="Frequently asked questions">FAQ</a>
-            <a href="/docs/how-to-use-jsdiff.html" class="source" aria-label="How to use JSDiff guide">Guide</a>
-            <a href="/tools-comparison.html" class="source" aria-label="Compare JSDiff with other tools">Compare</a>
-            <a href="/glossary/" class="source" aria-label="Glossary">Glossary</a>
-            <a href="https://chromewebstore.google.com/detail/dev-tools/kjlnngihiddagfiojdggelcedcdnkaii" class="source" rel="noopener noreferrer" aria-label="Chrome Extension" title="Chrome Extension - Use JSDiff offline in your browser">
-                🔌 Chrome Extension
-            </a>
+            <a href="https://github.com/daichangya/jsdiff" class="source" target="_blank">GitHub</a>
+            <a href="/features.html" class="source">Features</a>
+            <a href="/faq.html" class="source">FAQ</a>
+            <a href="/docs/how-to-use-jsdiff.html" class="source">Guide</a>
+            <a href="https://chromewebstore.google.com/detail/dev-tools/kjlnngihiddagfiojdggelcedcdnkaii" class="source" target="_blank">🔌 Chrome Extension</a>
         </nav>
     </div>
-    
-    <!-- Value Proposition Banner -->
-    <div class="value-proposition below-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px 20px; text-align: center; margin: 20px auto; max-width: 1200px; border-radius: 12px;">
-        <h2 style="margin: 0 0 15px 0; font-size: 28px;">Compare JSON Instantly - 100% Free & Private</h2>
-        <p style="margin: 0 0 25px 0; font-size: 16px; opacity: 0.9;">No signup required. All processing happens locally in your browser. Your data never leaves your device.</p>
-        <div class="stats-grid" style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-            <div class="stat-item" style="text-align: center;">
-                <div class="stat-value" style="font-size: 24px; font-weight: bold; margin-bottom: 5px;">✓ 100% Free</div>
-                <div class="stat-label" style="font-size: 14px; opacity: 0.8;">Forever</div>
-            </div>
-            <div class="stat-item" style="text-align: center;">
-                <div class="stat-value" style="font-size: 24px; font-weight: bold; margin-bottom: 5px;">✓ 100% Private</div>
-                <div class="stat-label" style="font-size: 14px; opacity: 0.8;">Local Processing</div>
-            </div>
-            <div class="stat-item" style="text-align: center;">
-                <div class="stat-value" style="font-size: 24px; font-weight: bold; margin-bottom: 5px;">✓ Works Offline</div>
-                <div class="stat-label" style="font-size: 14px; opacity: 0.8;">No Internet Needed</div>
-            </div>
-            <div class="stat-item" style="text-align: center;">
-                <div class="stat-value" style="font-size: 24px; font-weight: bold; margin-bottom: 5px;">✓ 5 Diff Modes</div>
-                <div class="stat-label" style="font-size: 14px; opacity: 0.8;">Multiple Options</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container" id="main-content" role="main">
+    <div class="container" id="tool-content" role="main">
         <div class="panel">
             <div class="file-input-wrapper">
                 <input type="file" id="file-a" accept=".txt,.json,.js,.md,.xml,.yaml,.yml,.csv" aria-label="Load original file">
@@ -266,7 +113,7 @@
                 <button type="button" class="btn-clear-file" id="clear-file-a" aria-label="Clear loaded file" style="display: none;">✕</button>
             </div>
             <label for="a" class="sr-only">Original text input</label>
-            <textarea id="a" placeholder="Enter original text here" aria-label="Original text input">restaurant</textarea>
+            <textarea id="a" placeholder="Enter original text here" aria-label="Original text input">{"name": "Product A", "price": 100}</textarea>
         </div>
         <div class="panel">
             <div class="file-input-wrapper">
@@ -276,7 +123,7 @@
                 <button type="button" class="btn-clear-file" id="clear-file-b" aria-label="Clear loaded file" style="display: none;">✕</button>
             </div>
             <label for="b" class="sr-only">Modified text input</label>
-            <textarea id="b" placeholder="Enter modified text here" aria-label="Modified text input">aura</textarea>
+            <textarea id="b" placeholder="Enter modified text here" aria-label="Modified text input">{"name": "Product A", "price": 120}</textarea>
         </div>
         <div class="panel">
             <label for="result" class="sr-only">Comparison results</label>
@@ -287,42 +134,11 @@
     </div>
 </section>
 
-<!-- Social Proof Section -->
-<section class="social-proof" style="background: #f8f9fa; padding: 40px 20px; text-align: center; margin: 40px 0;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="margin-bottom: 30px; color: #333;">Trusted by Developers Worldwide</h2>
-        <div style="display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;">
-            <div style="text-align: center;">
-                <div style="font-size: 36px; font-weight: bold; color: #667eea;">⭐ 5,000+</div>
-                <div style="color: #666; margin-top: 5px;">GitHub Stars</div>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 36px; font-weight: bold; color: #667eea;">👥 10,000+</div>
-                <div style="color: #666; margin-top: 5px;">Monthly Users</div>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 36px; font-weight: bold; color: #667eea;">🔒 100%</div>
-                <div style="color: #666; margin-top: 5px;">Private & Secure</div>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 36px; font-weight: bold; color: #667eea;">🚀 5</div>
-                <div style="color: #666; margin-top: 5px;">Diff Modes</div>
-            </div>
-        </div>
-        <p style="margin-top: 30px; color: #666; font-size: 14px;">
-            <a href="https://github.com/daichangya/jsdiff" style="color: #667eea; text-decoration: none;" target="_blank" rel="noopener">
-                Star us on GitHub →
-            </a>
-        </p>
-    </div>
-</section>
-
 <script src="diff.js"></script>
 <script src="scroll-sync.js"></script>
 <script src="json-renderer.js"></script>
 <script src="jsdiff-app.js"></script>
 
-<!-- Baidu Analytics -->
 <script>
     var _hmt = _hmt || [];
     (function() {
@@ -332,8 +148,6 @@
         s.parentNode.insertBefore(hm, s);
     })();
 </script>
-
-<!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HWZV1HVCPJ"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -342,61 +156,17 @@
     gtag('config', 'G-HWZV1HVCPJ');
 </script>
 
-
-<section class="seo-intro">
-    <section>
-        <h2>JSDiff - Online JSON / JavaScript Comparison Tool</h2>
-        <p>
-            JSDiff is a free online tool designed specifically for developers. It helps you quickly compare the differences between two segments of JSON or JavaScript code,
-            supporting highlighted display, structured presentation, and one-click merging. It is suitable for scenarios such as front-end development, interface debugging, and configuration file comparison.
-        </p>
-    </section>
-
-    <section>
-        <h2>Feature Highlights</h2>
-        <ul>
-            <li>Supports structured comparison of JSON and JavaScript objects</li>
-            <li>Highlights added, deleted, and modified parts</li>
-            <li>Supports merging differences and exporting results</li>
-            <li>Adapts to mobile devices, allowing code comparison anytime and anywhere</li>
-            <li>Data is processed locally to ensure privacy and security</li>
-        </ul>
-        <p style="margin-top: 15px;">
-            <a href="/features.html" style="color: var(--primary-color); font-weight: bold; font-size: 16px;">View All Features →</a>
-        </p>
-    </section>
-
-    <section>
-        <h2>Usage Scenarios</h2>
-        <p>Whether you are engaged in <strong>API debugging</strong>, <strong>configuration file comparison</strong>, or <strong>code review</strong>, JSDiff can help you quickly identify differences and improve work efficiency.</p>
-        <p style="margin-top: 15px;">
-            <a href="/use-cases/api-debugging.html" style="color: var(--primary-color); margin-right: 20px;">API Debugging →</a>
-            <a href="/use-cases/code-review.html" style="color: var(--primary-color); margin-right: 20px;">Code Review →</a>
-            <a href="/use-cases/config-comparison.html" style="color: var(--primary-color); margin-right: 20px;">Config Comparison →</a>
-            <a href="/use-cases/testing.html" style="color: var(--primary-color);">Testing →</a>
-        </p>
-        <p style="margin-top: 10px;">
-            <a href="/best-json-diff-tools.html" style="color: var(--primary-color); font-weight: bold;">View Best JSON Diff Tools 2026 →</a>
-        </p>
-    </section>
-
-    <section>
-        <h2>Technical Foundation</h2>
-        <p>JSDiff is powered by the <strong>Myers Difference Algorithm</strong>, an efficient O(ND) algorithm for sequence comparison. This algorithm is widely used in version control systems like Git and text editors.</p>
-        <p><a href="docs/myers-diff-algorithm.html">Learn more about Myers Difference Algorithm</a> - Discover how this powerful algorithm efficiently compares sequences and generates minimal edit scripts.</p>
-        <p style="margin-top: 10px;">Key terms: <a href="/glossary/">Glossary</a> (<a href="/glossary/json-diff.html">JSON diff</a>, <a href="/glossary/semantic-diff.html">semantic diff</a>, <a href="/glossary/myers-algorithm.html">Myers algorithm</a>).</p>
-    </section>
-</section>
-
-<!-- Footer with Legal Links -->
-<footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 14px;">
-    <p>
-        <a href="/privacy-policy.html" style="color: var(--primary-color); margin: 0 15px;">Privacy Policy</a>
-        <a href="/terms-of-service.html" style="color: var(--primary-color); margin: 0 15px;">Terms of Service</a>
-    </p>
-    <p style="margin-top: 10px; font-size: 12px;">
-        © 2026 JSDiff. Open source under MIT License.
-    </p>
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="/about.html">About</a>
+            <a href="/docs/">Documentation</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-of-service.html">Terms of Service</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+        </div>
+        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+    </div>
 </footer>
 
 </body>
