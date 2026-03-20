@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Compare JSON Files: A Complete Guide 2026 | JSDiff</title>
+    <meta name="description" content="Learn how to compare JSON files effectively. Complete guide covering online tools, command-line methods, and best practices for JSON comparison."/>
+    <meta name="keywords" content="compare json files, json diff, json comparison, how to compare json, json diff tool">
+    <link rel="canonical" href="https://jsdiff.com/blog/how-to-compare-json-files.html" />
+    <meta property="og:title" content="How to Compare JSON Files: A Complete Guide" />
+    <meta property="og:description" content="Learn the best methods and tools for comparing JSON files."/>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"How to Compare JSON Files: A Complete Guide","author":{"@type":"Organization","name":"JSDiff"},"datePublished":"2026-03-20","publisher":{"@type":"Organization","name":"JSDiff"}}
+    </script>
+    <link rel="stylesheet" href="../style.css"/>
+    <link rel="stylesheet" href="../css/home-new.css"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        .article-content { max-width: 800px; margin: 0 auto; }
+        .article-content h2 { color: var(--secondary-color); margin: 40px 0 20px; }
+        .article-content h3 { color: var(--primary-color); margin: 30px 0 15px; }
+        .article-content p { line-height: 1.8; margin-bottom: 20px; }
+        .article-content ul, .article-content ol { padding-left: 30px; margin-bottom: 20px; }
+        .article-content li { margin-bottom: 10px; line-height: 1.6; }
+        .article-content pre { background: #2d3748; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 20px 0; }
+        .article-content code { font-family: 'SFMono-Regular', Consolas, monospace; }
+        .article-meta { color: #666; font-size: 14px; margin-bottom: 30px; }
+        .toc { background: #f8f9fa; padding: 30px; border-radius: 12px; margin: 30px 0; }
+        .toc h3 { margin-top: 0; }
+        .toc ul { list-style: none; padding-left: 0; }
+        .toc li { margin-bottom: 8px; }
+        .toc a { color: var(--primary-color); }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="main-nav" id="main-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">⚡ JSDiff</a>
+        <div class="nav-links">
+            <a href="/docs/">Documentation</a>
+            <a href="/demo.html">Online Demo</a>
+            <a href="/about.html">About</a>
+            <a href="/changelog.html">Changelog</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
+            <a href="/zh/">中文</a>
+        </div>
+    </div>
+</nav>
+
+<main class="content-container" id="main-content" style="margin-top: 100px;">
+    <nav style="margin-bottom: 20px;">
+        <a href="/blog/" style="color: var(--primary-color);">← Back to Blog</a>
+    </nav>
+
+    <article class="article-content">
+        <h1 style="font-size: 42px; margin-bottom: 15px;">How to Compare JSON Files: A Complete Guide</h1>
+        <div class="article-meta">
+            Published: March 20, 2026 | 8 min read | By JSDiff Team
+        </div>
+
+        <p>Comparing JSON files is a common task for developers, especially when working with APIs, configuration files, or data migrations. Whether you need to identify changes between two API responses or track modifications in your app's config, having the right tools and methods is essential.</p>
+
+        <p>In this comprehensive guide, we'll explore various methods to compare JSON files, from simple online tools to programmatic solutions.</p>
+
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#why-compare">Why Compare JSON Files?</a></li>
+                <li><a href="#online-tools">Method 1: Online JSON Diff Tools</a></li>
+                <li><a href="#command-line">Method 2: Command Line Tools</a></li>
+                <li><a href="#programmatic">Method 3: Programmatic Comparison</a></li>
+                <li><a href="#best-practices">Best Practices</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+        </div>
+
+        <h2 id="why-compare">Why Compare JSON Files?</h2>
+        <p>JSON (JavaScript Object Notation) has become the standard format for data exchange in modern web development. Here are common scenarios where you might need to compare JSON files:</p>
+        <ul>
+            <li><strong>API Development:</strong> Comparing API responses before and after changes</li>
+            <li><strong>Configuration Management:</strong> Tracking changes in config files across environments</li>
+            <li><strong>Data Migration:</strong> Verifying data integrity during database migrations</li>
+            <li><strong>Testing:</strong> Comparing expected vs actual JSON outputs in automated tests</li>
+            <li><strong>Version Control:</strong> Understanding what changed between file versions</li>
+        </ul>
+
+        <h2 id="online-tools">Method 1: Online JSON Diff Tools</h2>
+        <p>The quickest way to compare JSON files is using an online tool. These tools provide instant visual feedback without requiring any installation.</p>
+
+        <h3>Advantages:</h3>
+        <ul>
+            <li>No installation required</li>
+            <li>Instant visual comparison</li>
+            <li>Syntax highlighting</li>
+            <li>Works on any device</li>
+        </ul>
+
+        <h3>How to use JSDiff Online:</h3>
+        <ol>
+            <li>Visit <a href="/json-diff-online.html">jsdiff.com/json-diff-online</a></li>
+            <li>Paste your original JSON in the left panel</li>
+            <li>Paste your modified JSON in the right panel</li>
+            <li>See differences highlighted automatically</li>
+        </ol>
+
+        <p><strong>Tip:</strong> Look for tools that offer semantic JSON comparison rather than simple text comparison. This ensures that formatting differences (like whitespace) don't trigger false positives.</p>
+
+        <h2 id="command-line">Method 2: Command Line Tools</h2>
+        <p>For developers who prefer working in the terminal, several command-line tools can compare JSON files.</p>
+
+        <h3>Using diff command:</h3>
+        <pre><code># Basic comparison
+diff file1.json file2.json
+
+# Side-by-side comparison
+diff -y file1.json file2.json
+
+# Ignore whitespace
+diff -w file1.json file2.json</code></pre>
+
+        <h3>Using jq (JSON processor):</h3>
+        <pre><code># Install jq first
+# macOS: brew install jq
+# Ubuntu: apt-get install jq
+
+# Compare two JSON files
+jq -s '.[0] == .[1]' file1.json file2.json
+
+# Show differences
+jq -n --slurpfile a file1.json --slurpfile b file2.json '$a == $b'</code></pre>
+
+        <h2 id="programmatic">Method 3: Programmatic Comparison</h2>
+        <p>For automated workflows or integration into your applications, you can compare JSON programmatically.</p>
+
+        <h3>Using JSDiff in JavaScript:</h3>
+        <pre><code>import { diffJson } from 'diff';
+import fs from 'fs';
+
+// Read JSON files
+const oldJson = JSON.parse(fs.readFileSync('old.json', 'utf8'));
+const newJson = JSON.parse(fs.readFileSync('new.json', 'utf8'));
+
+// Compare
+const differences = diffJson(oldJson, newJson);
+
+// Output results
+differences.forEach(part => {
+  if (part.added) {
+    console.log('Added:', part.value);
+  } else if (part.removed) {
+    console.log('Removed:', part.value);
+  }
+});</code></pre>
+
+        <h3>Using Python:</h3>
+        <pre><code>import json
+from deepdiff import DeepDiff
+
+# Load JSON files
+with open('file1.json') as f:
+    json1 = json.load(f)
+
+with open('file2.json') as f:
+    json2 = json.load(f)
+
+# Compare
+diff = DeepDiff(json1, json2)
+print(diff)</code></pre>
+
+        <h2 id="best-practices">Best Practices</h2>
+        <ul>
+            <li><strong>Normalize JSON:</strong> Ensure both files have consistent formatting before comparison</li>
+            <li><strong>Sort Keys:</strong> Object key order shouldn't matter in JSON comparison</li>
+            <li><strong>Handle Arrays:</strong> Consider whether array order is significant for your use case</li>
+            <li><strong>Ignore Whitespace:</strong> Formatting differences shouldn't trigger false positives</li>
+            <li><strong>Semantic Comparison:</strong> Use tools that understand JSON structure, not just text</li>
+        </ul>
+
+        <h2 id="conclusion">Conclusion</h2>
+        <p>Comparing JSON files doesn't have to be complicated. Whether you prefer online tools for quick checks, command-line utilities for scripting, or programmatic solutions for automation, there's a method that fits your workflow.</p>
+
+        <p>For most developers, we recommend starting with an <a href="/json-diff-online.html">online JSON diff tool</a> for quick comparisons, then moving to programmatic solutions when you need to integrate comparison into your CI/CD pipeline or automated tests.</p>
+
+        <p><strong>Ready to try it?</strong> <a href="/demo.html">Compare your JSON files now</a> with our free online tool.</p>
+    </article>
+
+    <div class="cta-section" style="margin-top: 60px;">
+        <h2>Try JSDiff Today</h2>
+        <p>Free, private, and works offline. No signup required.</p>
+        <a href="/demo.html" class="btn">Start Comparing →</a>
+    </div>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/docs/">Documentation</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+        </div>
+        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+    </div>
+</footer>
+
+</body>
+</html>

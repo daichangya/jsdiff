@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Diff vs Text Diff: When to Use What | JSDiff</title>
+    <meta name="description" content="Understanding the difference between JSON diff and text diff. Learn which comparison method is right for your use case."/>
+    <meta name="keywords" content="json diff vs text diff, json comparison, text comparison, when to use json diff">
+    <link rel="canonical" href="https://jsdiff.com/blog/json-diff-vs-text-diff.html" />
+    <meta property="og:title" content="JSON Diff vs Text Diff: When to Use What" />
+    <meta property="og:description" content="Understanding the difference between JSON diff and text diff."/>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"JSON Diff vs Text Diff: When to Use What","author":{"@type":"Organization","name":"JSDiff"},"datePublished":"2026-03-15","publisher":{"@type":"Organization","name":"JSDiff"}}
+    </script>
+    <link rel="stylesheet" href="../style.css"/>
+    <link rel="stylesheet" href="../css/home-new.css"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        .article-content { max-width: 800px; margin: 0 auto; }
+        .article-content h2 { color: var(--secondary-color); margin: 40px 0 20px; }
+        .article-content h3 { color: var(--primary-color); margin: 30px 0 15px; }
+        .article-content p { line-height: 1.8; margin-bottom: 20px; }
+        .article-content ul, .article-content ol { padding-left: 30px; margin-bottom: 20px; }
+        .article-content li { margin-bottom: 10px; line-height: 1.6; }
+        .article-content pre { background: #2d3748; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 20px 0; }
+        .article-content code { font-family: 'SFMono-Regular', Consolas, monospace; }
+        .article-meta { color: #666; font-size: 14px; margin-bottom: 30px; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
+        .comparison-table th, .comparison-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        .comparison-table th { background: #f8f9fa; font-weight: bold; }
+        .comparison-table tr:hover { background: #f8f9fa; }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="main-nav" id="main-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">⚡ JSDiff</a>
+        <div class="nav-links">
+            <a href="/docs/">Documentation</a>
+            <a href="/demo.html">Online Demo</a>
+            <a href="/about.html">About</a>
+            <a href="/changelog.html">Changelog</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
+            <a href="/zh/">中文</a>
+        </div>
+    </div>
+</nav>
+
+<main class="content-container" id="main-content" style="margin-top: 100px;">
+    <nav style="margin-bottom: 20px;">
+        <a href="/blog/" style="color: var(--primary-color);">← Back to Blog</a>
+    </nav>
+
+    <article class="article-content">
+        <h1 style="font-size: 42px; margin-bottom: 15px;">JSON Diff vs Text Diff: When to Use What</h1>
+        <div class="article-meta">
+            Published: March 15, 2026 | 6 min read | By JSDiff Team
+        </div>
+
+        <p>When comparing files, you have two main approaches: text diff and JSON diff. While they might seem similar, they serve different purposes and produce different results. Understanding when to use each can save you time and prevent confusion.</p>
+
+        <h2>What's the Difference?</h2>
+        
+        <table class="comparison-table">
+            <tr>
+                <th>Aspect</th>
+                <th>Text Diff</th>
+                <th>JSON Diff</th>
+            </tr>
+            <tr>
+                <td>What it compares</td>
+                <td>Raw text content</td>
+                <td>Structured data</td>
+            </tr>
+            <tr>
+                <td>Formatting sensitivity</td>
+                <td>High (whitespace matters)</td>
+                <td>Low (ignores formatting)</td>
+            </tr>
+                <td>Key order sensitivity</td>
+                <td>High</td>
+                <td>Low (usually)</td>
+            </tr>
+            <tr>
+                <td>Best for</td>
+                <td>Code, logs, plain text</td>
+                <td>API responses, configs</td>
+            </tr>
+            <tr>
+                <td>Example changes detected</td>
+                <td>"name" vs " name"</td>
+                <td>value changes only</td>
+            </tr>
+        </table>
+
+        <h2>When to Use Text Diff</h2>
+        <p>Text diff treats files as plain strings and compares them character by character. Use text diff when:</p>
+        <ul>
+            <li><strong>Comparing source code:</strong> When exact formatting matters (Python indentation, etc.)</li>
+            <li><strong>Reviewing log files:</strong> When you need to see every character change</li>
+            <li><strong>Checking configuration files:</strong> When whitespace or comments are significant</li>
+            <li><strong>Legal documents:</strong> When every character change must be tracked</li>
+        </ul>
+
+        <h3>Text Diff Example:</h3>
+        <pre><code>// File 1
+{
+  "name": "John",
+  "age": 30
+}
+
+// File 2
+{
+    "name": "John",
+    "age": 30
+}
+
+// Text diff result: Shows difference in indentation!
+// JSON diff result: No difference (same data)</code></pre>
+
+        <h2>When to Use JSON Diff</h2>
+        <p>JSON diff parses the files as structured data and compares the actual values. Use JSON diff when:</p>
+        <ul>
+            <li><strong>Comparing API responses:</strong> Focus on data changes, not formatting</li>
+            <li><strong>Checking configuration:</strong> When only values matter, not layout</li>
+            <li><strong>Data validation:</strong> When verifying data integrity</li>
+            <li><strong>Database migrations:</strong> When comparing exported data</li>
+        </ul>
+
+        <h3>JSON Diff Example:</h3>
+        <pre><code>// File 1
+{"users":[{"name":"John","age":30}]}
+
+// File 2
+{
+  "users": [
+    {
+      "age": 30,
+      "name": "John"
+    }
+  ]
+}
+
+// Text diff result: Many differences!
+// JSON diff result: No difference (same data, different formatting)</code></pre>
+
+        <h2>Real-World Scenarios</h2>
+
+        <h3>Scenario 1: API Development</h3>
+        <p><strong>Recommendation:</strong> Use JSON diff</p>
+        <p>When comparing API responses, you care about the data, not how it's formatted. JSON diff will show you actual field changes without being distracted by indentation or key ordering differences.</p>
+
+        <h3>Scenario 2: Code Review</h3>
+        <p><strong>Recommendation:</strong> Use Text diff</p>
+        <p>When reviewing code changes, formatting matters. Extra whitespace, missing newlines, or indentation changes can affect code functionality (especially in Python).</p>
+
+        <h3>Scenario 3: Configuration Files</h3>
+        <p><strong>Recommendation:</strong> Depends on format</p>
+        <ul>
+            <li>JSON configs → JSON diff</li>
+            <li>YAML configs → Text diff (structure matters)</li>
+            <li>INI files → Text diff</li>
+        </ul>
+
+        <h2>How to Choose</h2>
+        <p>Ask yourself these questions:</p>
+        <ol>
+            <li><strong>Does formatting matter?</strong> If yes → Text diff</li>
+            <li><strong>Am I comparing data or code?</strong> Data → JSON diff, Code → Text diff</li>
+            <li><strong>Do key names have meaning?</strong> If order matters → Text diff</li>
+            <li><strong>Are the files minified?</strong> If yes → JSON diff (text diff will be unreadable)</li>
+        </ol>
+
+        <h2>Using JSDiff for Both</h2>
+        <p>JSDiff supports both comparison methods, making it easy to choose the right approach:</p>
+        <pre><code>import { diffJson, diffLines } from 'diff';
+
+// JSON diff - ignores formatting
+const jsonDifferences = diffJson(object1, object2);
+
+// Text diff - includes formatting
+const textDifferences = diffLines(jsonString1, jsonString2);</code></pre>
+
+        <h2>Conclusion</h2>
+        <p>Both JSON diff and text diff have their place in a developer's toolkit. The key is understanding what you're trying to achieve:</p>
+        <ul>
+            <li>Use <strong>JSON diff</strong> when you care about data integrity</li>
+            <li>Use <strong>text diff</strong> when you care about exact content</li>
+        </ul>
+        <p>When in doubt, try both and see which gives you more useful results for your specific use case.</p>
+
+        <p><strong>Ready to try both methods?</strong> <a href="/demo.html">Test JSDiff online</a> and switch between JSON and text comparison modes.</p>
+    </article>
+
+    <div class="cta-section" style="margin-top: 60px;">
+        <h2>Try JSDiff Today</h2>
+        <p>Free, private, and works offline. No signup required.</p>
+        <a href="/demo.html" class="btn">Start Comparing →</a>
+    </div>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/docs/">Documentation</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+        </div>
+        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+    </div>
+</footer>
+
+</body>
+</html>
