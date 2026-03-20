@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - JSDiff Documentation</title>
+    <meta name="description" content="Learn how to install and use JSDiff - the JavaScript diff library. Quick start guide with examples."/>
+    <link rel="canonical" href="https://jsdiff.com/docs/getting-started.html" />
+    <link rel="stylesheet" href="../style.css"/>
+    <link rel="stylesheet" href="../css/home-new.css"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="main-nav" id="main-nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">⚡ JSDiff</a>
+        <div class="nav-links">
+            <a href="/docs/">Documentation</a>
+            <a href="/demo.html">Online Demo</a>
+            <a href="/about.html">About</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
+            <a href="/zh/">中文</a>
+        </div>
+    </div>
+</nav>
+
+<main class="content-container" id="main-content" style="margin-top: 100px;">
+    <nav style="margin-bottom: 20px;">
+        <a href="/docs/" style="color: var(--primary-color);">← Back to Documentation</a>
+    </nav>
+    
+    <h1 class="page-title">Getting Started</h1>
+    
+    <section class="card-feature primary">
+        <div class="card-feature-header">
+            <div class="card-feature-icon">📦</div>
+            <div class="card-feature-content">
+                <h3>Installation</h3>
+                <p>Install JSDiff via npm:</p>
+                <pre style="margin-top: 15px;"><code>npm install diff</code></pre>
+                <p style="margin-top: 15px;">Or using yarn:</p>
+                <pre><code>yarn add diff</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-feature">
+        <div class="card-feature-header">
+            <div class="card-feature-icon">📝</div>
+            <div class="card-feature-content">
+                <h3>Basic Usage</h3>
+                <p>Import the library and start comparing:</p>
+                <pre style="margin-top: 15px;"><code>import * as Diff from 'diff';
+
+const text1 = 'Hello world';
+const text2 = 'Hello there';
+
+const diff = Diff.diffChars(text1, text2);
+
+diff.forEach((part) => {
+  const color = part.added ? 'green' : 
+                part.removed ? 'red' : 'grey';
+  process.stdout.write(part.value[color]);
+});
+
+console.log();</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-feature">
+        <div class="card-feature-header">
+            <div class="card-feature-icon">🔧</div>
+            <div class="card-feature-content">
+                <h3>Diff Types</h3>
+                <p>JSDiff supports multiple comparison modes:</p>
+                <ul style="margin-top: 15px;">
+                    <li><strong>diffChars</strong> - Character-level comparison</li>
+                    <li><strong>diffWords</strong> - Word-level comparison (ignores whitespace)</li>
+                    <li><strong>diffLines</strong> - Line-level comparison</li>
+                    <li><strong>diffJson</strong> - JSON object comparison</li>
+                </ul>
+                <pre style="margin-top: 15px;"><code>// Character diff
+const charDiff = Diff.diffChars('abc', 'aXc');
+
+// Word diff
+const wordDiff = Diff.diffWords('Hello world', 'Hello there');
+
+// Line diff
+const lineDiff = Diff.diffLines('line1\nline2', 'line1\nline3');
+
+// JSON diff
+const jsonDiff = Diff.diffJson({a: 1}, {a: 2});</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-feature success">
+        <div class="card-feature-header">
+            <div class="card-feature-icon">✅</div>
+            <div class="card-feature-content">
+                <h3>Next Steps</h3>
+                <ul>
+                    <li><a href="api-reference.html">Explore the API Reference</a></li>
+                    <li><a href="examples.html">See more examples</a></li>
+                    <li><a href="/demo.html">Try the online demo</a></li>
+                    <li><a href="https://github.com/daichangya/jsdiff" target="_blank">View on GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="/about.html">About</a>
+            <a href="/docs/">Documentation</a>
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-of-service.html">Terms of Service</a>
+            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+        </div>
+        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+    </div>
+</footer>
+
+</body>
+</html>
