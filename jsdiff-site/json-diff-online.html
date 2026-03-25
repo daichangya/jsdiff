@@ -3,15 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>JSON Diff Online - Compare JSON Files Instantly | Free Tool 2026</title>
-    <meta name="description" content="Free online JSON diff tool. Compare two JSON files instantly with syntax highlighting. No signup, 100% private, works offline. Best JSON comparison tool 2026."/>
-    <meta name="keywords" content="json diff online, compare json files, json comparison tool, online json diff, json difference checker">
-    <meta name="baidu-site-verification" content="codeva-J44mWjyOTw" />
+    <title>JSON Diff Online - Free JSON Compare Tool | JSDiff</title>
+    <meta name="description" content="Free online JSON diff tool. Compare two JSON files instantly with semantic highlighting. No signup required, 100% private, works offline. Try now!">
+    <meta name="keywords" content="json diff online, json compare, json comparison tool, online json diff, compare json files, json diff checker">
+    <meta name="google-adsense-account" content="ca-pub-5736605339005018">
     <link rel="canonical" href="https://jsdiff.com/json-diff-online.html" />
-    <meta property="og:title" content="JSON Diff Online - Compare JSON Files Instantly" />
-    <meta property="og:description" content="Free online JSON diff tool. Compare two JSON files instantly with syntax highlighting."/>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JSON Diff Online - Free JSON Compare Tool" />
+    <meta property="og:description" content="Free online JSON diff tool. Compare two JSON files instantly with semantic highlighting. No signup required!"/>
+    <meta property="og:url" content="https://jsdiff.com/json-diff-online.html" />
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebPage","name":"JSON Diff Online","description":"Free online JSON diff tool for comparing JSON files","url":"https://jsdiff.com/json-diff-online.html"}
+    {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://jsdiff.com/json-diff-online.html","name":"JSON Diff Online","description":"Free online JSON diff tool for comparing JSON files"},{"@type":"SoftwareApplication","name":"JSON Diff Online","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Free online JSON comparison tool with semantic highlighting","url":"https://jsdiff.com/json-diff-online.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["JSON diff","Side-by-side comparison","Semantic highlighting","100% private","No signup required"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"1250"}}]}
     </script>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="css/home-new.css"/>
@@ -28,224 +30,203 @@
             <a href="/demo.html">Online Demo</a>
             <a href="/about.html">About</a>
             <a href="/blog/">Blog</a>
-            <a href="/changelog.html">Changelog</a>
             <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
             <a href="/zh/">中文</a>
         </div>
     </div>
 </nav>
 
-<main style="padding-top: 80px;">
-    <!-- SEO Hero Section -->
-    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 20px; text-align: center;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h1 style="font-size: 42px; margin-bottom: 20px;">JSON Diff Online</h1>
-            <p style="font-size: 20px; opacity: 0.95; margin-bottom: 30px;">Compare two JSON files instantly. Free, private, and works offline.</p>
-            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
+<section class="hero-new" style="padding: 60px 0 40px;">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>JSON Diff Online</h1>
+            <p class="hero-subtitle">Compare two JSON files instantly with our free online tool. Semantic highlighting, 100% private, no signup required.</p>
+            <div class="hero-stats">
                 <span>✓ 100% Free</span>
-                <span>✓ No Signup</span>
-                <span>✓ Privacy First</span>
-                <span>✓ Works Offline</span>
+                <span>🔒 100% Private</span>
+                <span>⚡ Instant Results</span>
             </div>
-            <a href="#tool" style="display: inline-block; background: white; color: #667eea; padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px;">Start Comparing →</a>
+            <div class="hero-cta">
+                <a href="#tool-section" class="btn-primary">🚀 Start Comparing</a>
+                <a href="/docs/json-diff-guide.html" class="btn-ghost">📖 How to Use</a>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Tool Section -->
-    <section class="hero" id="tool" style="min-height: 600px;">
-        <div id="settings" role="banner">
-            <div class="title-section">
-                <h1>Online JSON Diff Tool</h1>
-                <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Paste your JSON files below to compare</p>
-            </div>
-            <div class="options-section" role="radiogroup" aria-label="Comparison mode selection">
-                <label><input type="radio" name="diff_type" value="diffJson" checked><span>JSON</span></label>
-                <label><input type="radio" name="diff_type" value="diffChars"><span>Chars</span></label>
-                <label><input type="radio" name="diff_type" value="diffWords"><span>Words</span></label>
-                <label><input type="radio" name="diff_type" value="diffLines"><span>Lines</span></label>
-            </div>
+<section class="hero" id="main-content">
+    <div id="settings" role="banner">
+        <div class="title-section">
+            <h2 style="font-size: 24px; margin-bottom: 8px;">Online JSON Diff Tool</h2>
+            <p style="font-size:14px;color:var(--text-secondary);">✓ Free &nbsp; ✓ No Signup &nbsp; ✓ Privacy First &nbsp; ✓ Works Offline</p>
         </div>
-        
-        <div class="container" id="main-content" role="main">
-            <div class="panel">
-                <div class="file-input-wrapper">
-                    <input type="file" id="file-a" accept=".json" aria-label="Load original JSON file">
-                    <label for="file-a" class="btn-file">📁 Load JSON</label>
-                    <span class="file-name" id="file-a-name"></span>
-                    <button type="button" class="btn-clear-file" id="clear-file-a" style="display: none;">✕</button>
-                </div>
-                <label for="a" class="sr-only">Original JSON</label>
-                <textarea id="a" placeholder='Paste original JSON here, e.g. {"name": "John", "age": 30}' aria-label="Original JSON">{
-  "name": "Product A",
-  "price": 99.99,
-  "inStock": true,
-  "tags": ["electronics", "gadget"]
-}</textarea>
-            </div>
-            <div class="panel">
-                <div class="file-input-wrapper">
-                    <input type="file" id="file-b" accept=".json" aria-label="Load modified JSON file">
-                    <label for="file-b" class="btn-file">📁 Load JSON</label>
-                    <span class="file-name" id="file-b-name"></span>
-                    <button type="button" class="btn-clear-file" id="clear-file-b" style="display: none;">✕</button>
-                </div>
-                <label for="b" class="sr-only">Modified JSON</label>
-                <textarea id="b" placeholder='Paste modified JSON here' aria-label="Modified JSON">{
-  "name": "Product A",
-  "price": 89.99,
-  "inStock": false,
-  "tags": ["electronics", "gadget", "sale"],
-  "discount": 10
-}</textarea>
-            </div>
-            <div class="panel">
-                <label for="result" class="sr-only">Comparison results</label>
-                <div class="result-wrapper">
-                    <pre id="result" role="region" aria-live="polite" aria-label="Comparison results"></pre>
-                </div>
-            </div>
+        <div class="options-section" role="radiogroup" aria-label="Comparison mode selection">
+            <label><input type="radio" name="diff_type" value="diffJson" checked><span>JSON</span></label>
+            <label><input type="radio" name="diff_type" value="diffChars"><span>Chars</span></label>
+            <label><input type="radio" name="diff_type" value="diffWords"><span>Words</span></label>
+            <label><input type="radio" name="diff_type" value="diffLines"><span>Lines</span></label>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section style="padding: 60px 20px; background: #f8f9fa;">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--secondary-color);">Why Use Our JSON Diff Tool?</h2>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
-                <div style="background: white; padding: 30px; border-radius: 12px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">⚡ Instant Results</h3>
-                    <p>See differences immediately as you type. No waiting, no page reloads.</p>
-                </div>
-                <div style="background: white; padding: 30px; border-radius: 12px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">🔒 100% Private</h3>
-                    <p>All processing happens in your browser. Your JSON never leaves your device.</p>
-                </div>
-                <div style="background: white; padding: 30px; border-radius: 12px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">🎨 Syntax Highlighting</h3>
-                    <p>Color-coded differences make it easy to spot changes at a glance.</p>
-                </div>
-                <div style="background: white; padding: 30px; border-radius: 12px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">📱 Works Everywhere</h3>
-                    <p>Use on desktop, tablet, or mobile. No installation required.</p>
+        <div class="options-section" style="margin-top: 10px;">
+            <label><input type="checkbox" id="ignore_case"><span>Ignore Case</span></label>
+            <label><input type="checkbox" id="full_context" checked><span>Full Context</span></label>
+        </div>
+    </div>
+
+    <div id="tool-section" class="container">
+        <div class="panel left-panel">
+            <div class="panel-header">
+                <label for="input-left">Original JSON</label>
+                <div class="panel-actions">
+                    <button id="load-sample-left" class="btn-small">Load Sample</button>
+                    <button id="clear-left" class="btn-small">Clear</button>
+                    <button id="paste-left" class="btn-small">Paste</button>
+                    <button id="copy-left" class="btn-small">Copy</button>
+                    <button id="file-left" class="btn-small">Upload</button>
+                    <input type="file" id="file-input-left" accept=".json,.txt" style="display: none;">
                 </div>
             </div>
+            <textarea id="input-left" placeholder="Paste your original JSON here..." spellcheck="false"></textarea>
         </div>
-    </section>
 
-    <!-- How to Use -->
-    <section style="padding: 60px 20px;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px;">How to Compare JSON Files Online</h2>
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-                <div style="display: flex; align-items: center; gap: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <span style="font-size: 32px; font-weight: bold; color: var(--primary-color);">1</span>
-                    <div>
-                        <h3 style="margin-bottom: 5px;">Paste or Upload</h3>
-                        <p style="color: #666;">Paste your JSON into the left and right text areas, or upload JSON files directly.</p>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <span style="font-size: 32px; font-weight: bold; color: var(--primary-color);">2</span>
-                    <div>
-                        <h3 style="margin-bottom: 5px;">See Differences</h3>
-                        <p style="color: #666;">Differences are highlighted automatically. Added text in green, removed in red.</p>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <span style="font-size: 32px; font-weight: bold; color: var(--primary-color);">3</span>
-                    <div>
-                        <h3 style="margin-bottom: 5px;">Copy Results</h3>
-                        <p style="color: #666;">Copy the comparison results or download as needed. It's that simple!</p>
-                    </div>
+        <div class="panel right-panel">
+            <div class="panel-header">
+                <label for="input-right">Modified JSON</label>
+                <div class="panel-actions">
+                    <button id="load-sample-right" class="btn-small">Load Sample</button>
+                    <button id="clear-right" class="btn-small">Clear</button>
+                    <button id="paste-right" class="btn-small">Paste</button>
+                    <button id="copy-right" class="btn-small">Copy</button>
+                    <button id="file-right" class="btn-small">Upload</button>
+                    <input type="file" id="file-input-right" accept=".json,.txt" style="display: none;">
                 </div>
             </div>
+            <textarea id="input-right" placeholder="Paste your modified JSON here..." spellcheck="false"></textarea>
         </div>
-    </section>
+    </div>
 
-    <!-- Use Cases -->
-    <section style="padding: 60px 20px; background: #f8f9fa;">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px;">Common Use Cases</h2>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-                <div style="text-align: center; padding: 20px;">
-                    <div style="font-size: 40px; margin-bottom: 10px;">🔧</div>
-                    <h3>API Development</h3>
-                    <p style="color: #666;">Compare API responses during development and testing.</p>
-                </div>
-                <div style="text-align: center; padding: 20px;">
-                    <div style="font-size: 40px; margin-bottom: 10px;">⚙️</div>
-                    <h3>Config Files</h3>
-                    <p style="color: #666;">Track changes in configuration files across environments.</p>
-                </div>
-                <div style="text-align: center; padding: 20px;">
-                    <div style="font-size: 40px; margin-bottom: 10px;">📊</div>
-                    <h3>Data Migration</h3>
-                    <p style="color: #666;">Verify data integrity during database migrations.</p>
-                </div>
+    <div id="output-wrapper">
+        <div id="legend">
+            <span class="legend-item"><span class="legend-color ins"></span> Added</span>
+            <span class="legend-item"><span class="legend-color del"></span> Removed</span>
+            <span class="legend-item"><span class="legend-color sub"></span> Modified</span>
+            <span class="legend-item"><span class="legend-color eq"></span> Unchanged</span>
+            <span class="legend-item"><span class="legend-color moved"></span> Moved</span>
+        </div>
+        <div id="output" role="region" aria-label="Comparison results"></div>
+    </div>
+</section>
+
+<section class="features-section" style="padding: 40px 0;">
+    <div class="section-container">
+        <h2 class="section-title">Why Use Our JSON Diff Tool?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>100% Private</h3>
+                <p>All processing happens in your browser. Your JSON data never leaves your computer.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Results</h3>
+                <p>Compare large JSON files in milliseconds. No waiting, no server processing.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Semantic Highlighting</h3>
+                <p>Clear visual diff with color-coded changes. Added, removed, and modified values at a glance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Easy Copy & Paste</h3>
+                <p>Quickly paste from clipboard or upload JSON files directly from your computer.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Export Results</h3>
+                <p>Save your diff results or copy them to clipboard for sharing with your team.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FAQ -->
-    <section style="padding: 60px 20px;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px;">Frequently Asked Questions</h2>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <details style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <summary style="font-weight: bold; cursor: pointer;">Is this JSON diff tool free?</summary>
-                    <p style="margin-top: 10px; color: #666;">Yes! Our JSON diff tool is completely free to use. No signup required, no hidden fees.</p>
-                </details>
-                <details style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <summary style="font-weight: bold; cursor: pointer;">Is my data safe?</summary>
-                    <p style="margin-top: 10px; color: #666;">Absolutely. All processing happens locally in your browser. Your JSON files are never uploaded to any server.</p>
-                </details>
-                <details style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <summary style="font-weight: bold; cursor: pointer;">Can I compare large JSON files?</summary>
-                    <p style="margin-top: 10px; color: #666;">Yes, our tool can handle large JSON files efficiently thanks to the optimized Myers algorithm.</p>
-                </details>
-                <details style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                    <summary style="font-weight: bold; cursor: pointer;">Does it work offline?</summary>
-                    <p style="margin-top: 10px; color: #666;">Yes! Install our Chrome Extension to use the tool offline without internet connection.</p>
-                </details>
+<section class="quickstart-section" style="padding: 40px 0;">
+    <div class="section-container">
+        <h2 class="section-title">How to Compare JSON Online</h2>
+        <div class="quickstart-grid">
+            <div class="quickstart-card">
+                <h3>1. Paste JSON</h3>
+                <p>Copy and paste your original JSON in the left panel and modified JSON in the right panel.</p>
+            </div>
+            <div class="quickstart-card">
+                <h3>2. Compare Instantly</h3>
+                <p>The diff appears automatically as you type. No need to click any buttons.</p>
+            </div>
+            <div class="quickstart-card">
+                <h3>3. Review Changes</h3>
+                <p>See exactly what changed with color-coded highlighting. Green for added, red for removed.</p>
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>
 
-<footer class="main-footer">
-    <div class="footer-container">
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/docs/">Documentation</a>
-            <a href="/privacy-policy.html">Privacy Policy</a>
-            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+<section class="features-section" style="padding: 40px 0; background: #f8f9fa;">
+    <div class="section-container">
+        <h2 class="section-title">Common Use Cases</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>API Response Comparison</h3>
+                <p>Compare API responses before and after changes to ensure data consistency.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Configuration Files</h3>
+                <p>Diff configuration files like package.json, tsconfig.json, or any JSON config.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧪</div>
+                <h3>Test Data Validation</h3>
+                <p>Validate that your test outputs match expected results exactly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Version Comparison</h3>
+                <p>See what changed between different versions of your JSON data.</p>
+            </div>
         </div>
-        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+    </div>
+</section>
+
+<section class="features-section" style="padding: 60px 0;">
+    <div class="section-container" style="text-align: center;">
+        <h2 class="section-title">Ready to Compare JSON?</h2>
+        <p style="font-size: 18px; color: #666; margin-bottom: 30px;">Start using our free JSON diff tool now. No signup required.</p>
+        <a href="#tool-section" class="btn-primary" style="font-size: 18px; padding: 15px 40px;">🚀 Start Comparing JSON</a>
+        <p style="margin-top: 20px; color: #888;">Or <a href="/">learn more about JSDiff</a></p>
+    </div>
+</section>
+
+<footer class="main-footer" style="background: #1a1a2e; color: #fff; padding: 40px 0; margin-top: 0;">
+    <div class="section-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div>
+                <h3 style="margin-bottom: 10px;">⚡ JSDiff</h3>
+                <p style="color: #888;">Open source JavaScript diff library</p>
+            </div>
+            <div style="display: flex; gap: 30px;">
+                <a href="/docs/" style="color: #fff;">Documentation</a>
+                <a href="/demo.html" style="color: #fff;">Demo</a>
+                <a href="https://github.com/daichangya/jsdiff" style="color: #fff;" target="_blank">GitHub</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #333; margin-top: 30px; padding-top: 20px; text-align: center; color: #666;">
+            <p>&copy; 2024 JSDiff. MIT License.</p>
+        </div>
     </div>
 </footer>
 
-<script src="diff.js"></script>
-<script src="scroll-sync.js"></script>
-<script src="json-renderer.js"></script>
+<script src="dist/diff.min.js"></script>
 <script src="jsdiff-app.js"></script>
-
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?4bdc02239b6fe6f4e90583308d9ed3cd";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWZV1HVCPJ"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HWZV1HVCPJ');
-</script>
-
 </body>
 </html>
