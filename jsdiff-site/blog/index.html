@@ -3,9 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - JSDiff</title>
-    <meta name="description" content="JSDiff blog - tips, tutorials, and best practices for comparing JSON and text files."/>
+    <title>JSDiff Blog - JSON Diff Tips, Tutorials & Guides</title>
+    <meta name="description" content="Learn about JSON diff, text comparison, and developer tools. Tips, tutorials, and best practices for comparing JSON files and code.">
+    <meta name="keywords" content="json diff blog, json comparison tips, developer tutorials, json diff guide">
     <link rel="canonical" href="https://jsdiff.com/blog/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JSDiff Blog - JSON Diff Tips & Tutorials" />
+    <meta property="og:description" content="Learn about JSON diff, text comparison, and developer tools." />
+    <meta property="og:url" content="https://jsdiff.com/blog/" />
+    
     <link rel="stylesheet" href="../style.css"/>
     <link rel="stylesheet" href="../css/home-new.css"/>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -19,63 +27,88 @@
         <div class="nav-links">
             <a href="/docs/">Documentation</a>
             <a href="/demo.html">Online Demo</a>
-            <a href="/about.html">About</a>
-            <a href="/changelog.html">Changelog</a>
+            <a href="/blog/" style="font-weight: bold;">Blog</a>
             <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
             <a href="/zh/">中文</a>
         </div>
     </div>
 </nav>
 
-<main class="content-container" id="main-content" style="margin-top: 100px;">
-    <h1 class="page-title">JSDiff Blog</h1>
-    <p class="page-intro">Tips, tutorials, and best practices for comparing JSON and text files.</p>
-    
-    <div class="grid-2" style="margin-top: 40px;">
-        <article class="card-feature" style="cursor: pointer;" onclick="location.href='how-to-compare-json-files.html'">
-            <div class="card-feature-header">
-                <div class="card-feature-icon">📚</div>
-                <div class="card-feature-content">
-                    <h3>How to Compare JSON Files: A Complete Guide</h3>
-                    <p style="color: #666; font-size: 14px; margin-bottom: 10px;">Published: March 20, 2026 | 8 min read</p>
-                    <p>Learn the best methods and tools for comparing JSON files. From online tools to command-line solutions, we cover everything you need to know.</p>
-                    <p style="margin-top: 15px;"><a href="how-to-compare-json-files.html" style="color: var(--primary-color); font-weight: bold;">Read more →</a></p>
-                </div>
-            </div>
-        </article>
-
-        <article class="card-feature" style="cursor: pointer;" onclick="location.href='json-diff-vs-text-diff.html'">
-            <div class="card-feature-header">
-                <div class="card-feature-icon">🔍</div>
-                <div class="card-feature-content">
-                    <h3>JSON Diff vs Text Diff: When to Use What</h3>
-                    <p style="color: #666; font-size: 14px; margin-bottom: 10px;">Published: March 15, 2026 | 6 min read</p>
-                    <p>Understanding the difference between JSON diff and text diff. Learn which comparison method is right for your use case.</p>
-                    <p style="margin-top: 15px;"><a href="json-diff-vs-text-diff.html" style="color: var(--primary-color); font-weight: bold;">Read more →</a></p>
-                </div>
-            </div>
-        </article>
-    </div>
-
-    <div class="cta-section" style="margin-top: 60px;">
-        <h2>Want More Tips?</h2>
-        <p>Subscribe to get the latest articles and updates.</p>
-        <a href="https://github.com/daichangya/jsdiff" class="btn" target="_blank">Follow on GitHub</a>
-    </div>
-</main>
-
-<footer class="main-footer">
-    <div class="footer-container">
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/docs/">Documentation</a>
-            <a href="/privacy-policy.html">Privacy Policy</a>
-            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+<section class="hero-new" style="padding: 80px 0 60px;" id="main-content">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>JSDiff Blog</h1>
+            <p class="hero-subtitle">Tips, tutorials, and best practices for JSON diff and code comparison.</p>
         </div>
-        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+    </div>
+</section>
+
+<section style="padding: 40px 0; background: #f8f9fa;">
+    <div class="section-container" style="max-width: 1000px;">
+        <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--secondary-color);">Latest Articles</h2>
+        
+        <div style="display: grid; gap: 25px;">
+            <article style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                    <span style="background: var(--primary-color); color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px;">Guide</span>
+                    <span style="color: #888; font-size: 14px;">March 25, 2026</span>
+                </div>
+                <h3 style="font-size: 24px; margin-bottom: 10px;">
+                    <a href="/blog/json-diff-vs-text-diff.html" style="color: var(--secondary-color); text-decoration: none;">JSON Diff vs Text Diff: When to Use What</a>
+                </h3>
+                <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Learn the difference between semantic JSON comparison and line-by-line text comparison. Understand when to use each for better results.</p>
+                <a href="/blog/json-diff-vs-text-diff.html" style="color: var(--primary-color); font-weight: 600;">Read more →</a>
+            </article>
+            
+            <article style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                    <span style="background: #28a745; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px;">Tutorial</span>
+                    <span style="color: #888; font-size: 14px;">March 25, 2026</span>
+                </div>
+                <h3 style="font-size: 24px; margin-bottom: 10px;">
+                    <a href="/blog/how-to-compare-json-files.html" style="color: var(--secondary-color); text-decoration: none;">How to Compare JSON Files: A Complete Guide</a>
+                </h3>
+                <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">Learn how to compare JSON files effectively. Step-by-step guide to using online JSON diff tools, understanding differences, and best practices.</p>
+                <a href="/blog/how-to-compare-json-files.html" style="color: var(--primary-color); font-weight: 600;">Read more →</a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section style="padding: 60px 0;">
+    <div class="section-container" style="text-align: center;">
+        <h2 style="font-size: 28px; margin-bottom: 20px;">Ready to Try JSDiff?</h2>
+        <p style="color: #666; margin-bottom: 30px;">Free online JSON diff tool - no signup required!</p>
+        <a href="/json-diff-online.html" class="btn-primary" style="font-size: 18px; padding: 15px 40px;">Try JSON Diff Online →</a>
+    </div>
+</section>
+
+<footer class="main-footer" style="background: #1a1a2e; color: #fff; padding: 40px 0;">
+    <div class="section-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div>
+                <h3 style="margin-bottom: 10px;">⚡ JSDiff</h3>
+                <p style="color: #888;">Free online JSON diff tool</p>
+            </div>
+            <div style="display: flex; gap: 30px;">
+                <a href="/" style="color: #fff;">Home</a>
+                <a href="/json-diff-online.html" style="color: #fff;">JSON Diff</a>
+                <a href="/javascript-diff.html" style="color: #fff;">JS Diff</a>
+                <a href="https://github.com/daichangya/jsdiff" style="color: #fff;" target="_blank">GitHub</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #333; margin-top: 30px; padding-top: 20px; text-align: center; color: #666;">
+            <p>&copy; 2026 JSDiff. Open source under MIT License.</p>
+        </div>
     </div>
 </footer>
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWZV1HVCPJ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HWZV1HVCPJ');
+</script>
 </body>
 </html>

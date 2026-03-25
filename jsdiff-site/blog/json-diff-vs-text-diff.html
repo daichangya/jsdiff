@@ -3,33 +3,61 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Diff vs Text Diff: When to Use What | JSDiff</title>
-    <meta name="description" content="Understanding the difference between JSON diff and text diff. Learn which comparison method is right for your use case."/>
-    <meta name="keywords" content="json diff vs text diff, json comparison, text comparison, when to use json diff">
+    <title>JSON Diff vs Text Diff: When to Use What | JSDiff Blog</title>
+    <meta name="description" content="Learn the difference between JSON diff and text diff tools. Understand when to use semantic JSON comparison vs line-by-line text comparison for better results.">
+    <meta name="keywords" content="json diff vs text diff, semantic json comparison, text diff tool, json diff tool, when to use json diff">
     <link rel="canonical" href="https://jsdiff.com/blog/json-diff-vs-text-diff.html" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="JSON Diff vs Text Diff: When to Use What" />
-    <meta property="og:description" content="Understanding the difference between JSON diff and text diff."/>
+    <meta property="og:description" content="Learn when to use semantic JSON comparison vs line-by-line text comparison for better results." />
+    <meta property="og:url" content="https://jsdiff.com/blog/json-diff-vs-text-diff.html" />
+    
+    <!-- Article Structured Data -->
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","headline":"JSON Diff vs Text Diff: When to Use What","author":{"@type":"Organization","name":"JSDiff"},"datePublished":"2026-03-15","publisher":{"@type":"Organization","name":"JSDiff"}}
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "JSON Diff vs Text Diff: When to Use What",
+        "description": "Learn the difference between JSON diff and text diff tools. Understand when to use each for better results.",
+        "author": {
+            "@type": "Organization",
+            "name": "JSDiff"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "JSDiff",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://jsdiff.com/logo.svg"
+            }
+        },
+        "datePublished": "2026-03-25",
+        "dateModified": "2026-03-25",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://jsdiff.com/blog/json-diff-vs-text-diff.html"
+        }
+    }
     </script>
+    
+    <!-- Breadcrumb Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsdiff.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://jsdiff.com/blog/" },
+            { "@type": "ListItem", "position": 3, "name": "JSON Diff vs Text Diff", "item": "https://jsdiff.com/blog/json-diff-vs-text-diff.html" }
+        ]
+    }
+    </script>
+    
     <link rel="stylesheet" href="../style.css"/>
     <link rel="stylesheet" href="../css/home-new.css"/>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <style>
-        .article-content { max-width: 800px; margin: 0 auto; }
-        .article-content h2 { color: var(--secondary-color); margin: 40px 0 20px; }
-        .article-content h3 { color: var(--primary-color); margin: 30px 0 15px; }
-        .article-content p { line-height: 1.8; margin-bottom: 20px; }
-        .article-content ul, .article-content ol { padding-left: 30px; margin-bottom: 20px; }
-        .article-content li { margin-bottom: 10px; line-height: 1.6; }
-        .article-content pre { background: #2d3748; color: #e2e8f0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 20px 0; }
-        .article-content code { font-family: 'SFMono-Regular', Consolas, monospace; }
-        .article-meta { color: #666; font-size: 14px; margin-bottom: 30px; }
-        .comparison-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
-        .comparison-table th, .comparison-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
-        .comparison-table th { background: #f8f9fa; font-weight: bold; }
-        .comparison-table tr:hover { background: #f8f9fa; }
-    </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -40,179 +68,205 @@
         <div class="nav-links">
             <a href="/docs/">Documentation</a>
             <a href="/demo.html">Online Demo</a>
-            <a href="/about.html">About</a>
-            <a href="/changelog.html">Changelog</a>
+            <a href="/blog/">Blog</a>
             <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
             <a href="/zh/">中文</a>
         </div>
     </div>
 </nav>
 
-<main class="content-container" id="main-content" style="margin-top: 100px;">
-    <nav style="margin-bottom: 20px;">
-        <a href="/blog/" style="color: var(--primary-color);">← Back to Blog</a>
-    </nav>
+<article class="hero-new" style="padding: 60px 0 40px;" id="main-content">
+    <div class="hero-container" style="max-width: 800px; text-align: left;">
+        <header>
+            <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 10px;">📚 Developer Guide</p>
+            <h1 style="font-size: 42px; margin-bottom: 20px;">JSON Diff vs Text Diff: When to Use What</h1>
+            <p style="font-size: 18px; color: #666; margin-bottom: 30px;">Understanding the difference between semantic JSON comparison and line-by-line text comparison.</p>
+            <div style="display: flex; gap: 20px; color: #888; font-size: 14px;">
+                <span>📅 March 25, 2026</span>
+                <span>⏱️ 6 min read</span>
+            </div>
+        </header>
 
-    <article class="article-content">
-        <h1 style="font-size: 42px; margin-bottom: 15px;">JSON Diff vs Text Diff: When to Use What</h1>
-        <div class="article-meta">
-            Published: March 15, 2026 | 6 min read | By JSDiff Team
+        <div style="margin-top: 40px; line-height: 1.8; color: #333; font-size: 18px;">
+            <p>When comparing files, you have two main approaches: <strong>JSON diff</strong> (semantic comparison) and <strong>text diff</strong> (line-by-line comparison). Choosing the right tool can save you hours of confusion and help you spot the actual differences that matter.</p>
+
+            <h2 style="font-size: 28px; margin: 40px 0 20px; color: var(--secondary-color);">The Key Difference</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;">
+                <div style="background: #e8f5e9; padding: 25px; border-radius: 8px; border-left: 4px solid #4caf50;">
+                    <h3 style="font-size: 20px; margin-bottom: 15px; color: #2e7d32;">📦 JSON Diff</h3>
+                    <p style="margin-bottom: 10px;"><strong>Semantic Comparison</strong></p>
+                    <ul style="padding-left: 20px; font-size: 16px;">
+                        <li>Understands JSON structure</li>
+                        <li>Ignores property order</li>
+                        <li>Compares values, not text</li>
+                        <li>Smart nested object handling</li>
+                    </ul>
+                </div>
+                <div style="background: #fff3e0; padding: 25px; border-radius: 8px; border-left: 4px solid #ff9800;">
+                    <h3 style="font-size: 20px; margin-bottom: 15px; color: #e65100;">📝 Text Diff</h3>
+                    <p style="margin-bottom: 10px;"><strong>Line-by-Line Comparison</strong></p>
+                    <ul style="padding-left: 20px; font-size: 16px;">
+                        <li>Treats everything as text</li>
+                        <li>Order-sensitive</li>
+                        <li>Character-by-character</li>
+                        <li>Universal for any file</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 style="font-size: 28px; margin: 40px 0 20px; color: var(--secondary-color);">Real-World Example</h2>
+            <p>Let's compare the same JSON files using both approaches:</p>
+            
+            <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0; font-family: monospace; font-size: 14px;">
+                <p style="margin-bottom: 15px;"><strong>File A:</strong></p>
+                <pre style="background: #fff; padding: 15px; border-radius: 4px; overflow-x: auto;">{"name": "John", "age": 30, "city": "NYC"}</pre>
+                
+                <p style="margin: 20px 0 15px;"><strong>File B:</strong> (same data, different order)</p>
+                <pre style="background: #fff; padding: 15px; border-radius: 4px; overflow-x: auto;">{"city": "NYC", "name": "John", "age": 30}</pre>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;">
+                <div style="background: #ffebee; padding: 20px; border-radius: 8px;">
+                    <h4 style="color: #c62828; margin-bottom: 10px;">❌ Text Diff Result</h4>
+                    <p style="font-size: 16px; color: #666;">Shows 3 lines changed (false positives) because property order differs.</p>
+                </div>
+                <div style="background: #e8f5e9; padding: 20px; border-radius: 8px;">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✅ JSON Diff Result</h4>
+                    <p style="font-size: 16px; color: #666;">Shows "No differences" - correctly identifies they're identical.</p>
+                </div>
+            </div>
+
+            <h2 style="font-size: 28px; margin: 40px 0 20px; color: var(--secondary-color);">When to Use JSON Diff</h2>
+            <p>Use JSON diff when you're comparing:</p>
+            <ul style="margin: 20px 0; padding-left: 30px;">
+                <li style="margin-bottom: 12px;"><strong>API Responses</strong> - Compare JSON data from APIs, ignoring formatting differences</li>
+                <li style="margin-bottom: 12px;"><strong>Configuration Files</strong> - package.json, tsconfig.json, app settings</li>
+                <li style="margin-bottom: 12px;"><strong>Database Records</strong> - JSON exported from databases</li>
+                <li style="margin-bottom: 12px;"><strong>Test Data</strong> - Expected vs actual JSON outputs</li>
+                <li><strong>Nested Objects</strong> - Complex JSON with multiple levels</li>
+            </ul>
+
+            <div style="background: #e3f2fd; padding: 25px; border-radius: 8px; margin: 25px 0;">
+                <h4 style="color: #1565c0; margin-bottom: 10px;">💡 Pro Tip</h4>
+                <p style="font-size: 16px;">JSON diff tools like <a href="/json-diff-online.html" style="color: var(--primary-color); font-weight: 600;">JSDiff</a> use semantic comparison, so {"a":1,"b":2} and {"b":2,"a":1} are considered identical.</p>
+            </div>
+
+            <h2 style="font-size: 28px; margin: 40px 0 20px; color: var(--secondary-color);">When to Use Text Diff</h2>
+            <p>Use text diff when you're comparing:</p>
+            <ul style="margin: 20px 0; padding-left: 30px;">
+                <li style="margin-bottom: 12px;"><strong>Source Code</strong> - JavaScript, Python, Java files where order matters</li>
+                <li style="margin-bottom: 12px;"><strong>Log Files</strong> - Line-by-line log comparison</li>
+                <li style="margin-bottom: 12px;"><strong>Markdown/Documents</strong> - Text content where structure matters</li>
+                <li style="margin-bottom: 12px;"><strong>CSV/Data Files</strong> - Tabular data in text format</li>
+                <li><strong>Any Non-JSON</strong> - XML, YAML, or plain text files</li>
+            </ul>
+
+            <h2 style="font-size: 28px; margin: 40px 0 20px; color: var(--secondary-color);">Comparison Table</h2>
+            <table style="width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 16px;">
+                <thead>
+                    <tr style="background: #f0f0f0;">
+                        <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Feature</th>
+                        <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">JSON Diff</th>
+                        <th style="padding: 12px; text-align: center; border: 1px solid #ddd;">Text Diff</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #ddd;">Understands structure</td>
+                        <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">✅ Yes</td>
+                        <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">❌ No</td>
+                    </tr>
+                    <tr style="background: #fafafa;">
+                        <td style="padding: 12px; border: 1px solid #ddd;">Ignores property order</td>
+                        <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">✅ Yes</td>
+                        <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">❌ No</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #ddd;">Works with any file</td>
+                        <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">❌ JSON only</td>
+                        <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">✅ Any text</td>
+                    </tr>
+                    <tr style="background: #fafafa;">
+                        <td style="padding: 12px; border: 1px solid #ddd;">Shows formatting diffs</td>
+                        <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">❌ No</td>
+                        <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #ddd;">Nested object support</td>
+                        <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">✅ Excellent</td>
+                        <td style="padding: 12px; border: 1px solid #ddd; text-align: center;">⚠️ Limited</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 style="font-size: 28px; margin: 40px 0 20px; color: var(--secondary-color);">Quick Decision Guide</h2>
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; margin: 25px 0;">
+                <p style="margin-bottom: 20px;"><strong>Ask yourself:</strong></p>
+                <ol style="padding-left: 25px;">
+                    <li style="margin-bottom: 15px;">Are you comparing JSON files? → <strong>Use JSON Diff</strong></li>
+                    <li style="margin-bottom: 15px;">Does property order matter? → <strong>Use Text Diff</strong></li>
+                    <li style="margin-bottom: 15px;">Are you comparing code? → <strong>Use Text Diff</strong></li>
+                    <li>Need to see formatting changes? → <strong>Use Text Diff</strong></li>
+                </ol>
+            </div>
+
+            <h2 style="font-size: 28px; margin: 40px 0 20px; color: var(--secondary-color);">Recommended Tools</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 25px 0;">
+                <a href="/json-diff-online.html" style="text-decoration: none; color: inherit; padding: 20px; border: 2px solid #4caf50; border-radius: 8px; transition: all 0.2s;">
+                    <h3 style="color: #4caf50; margin-bottom: 10px;">📦 JSON Diff Online</h3>
+                    <p style="color: #666; font-size: 16px;">Free semantic JSON comparison tool. Perfect for API responses and config files.</p>
+                </a>
+                <a href="/javascript-diff.html" style="text-decoration: none; color: inherit; padding: 20px; border: 2px solid #ff9800; border-radius: 8px; transition: all 0.2s;">
+                    <h3 style="color: #ff9800; margin-bottom: 10px;">📝 Text Diff Online</h3>
+                    <p style="color: #666; font-size: 16px;">Line-by-line text comparison. Great for code, logs, and any text files.</p>
+                </a>
+            </div>
+
+            <div style="background: linear-gradient(135deg, var(--primary-color), #5a67d8); color: white; padding: 30px; border-radius: 12px; text-align: center; margin: 40px 0;">
+                <h3 style="font-size: 24px; margin-bottom: 15px;">Not Sure Which to Use?</h3>
+                <p style="margin-bottom: 20px; opacity: 0.9;">Try both! Our tools are free and work instantly in your browser.</p>
+                <a href="/json-diff-online.html" style="background: white; color: var(--primary-color); padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; margin-right: 10px;">Try JSON Diff →</a>
+                <a href="/javascript-diff.html" style="background: rgba(255,255,255,0.2); color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block;">Try Text Diff →</a>
+            </div>
+
+            <h2 style="font-size: 28px; margin: 40px 0 20px; color: var(--secondary-color);">Related Articles</h2>
+            <ul style="padding-left: 0; list-style: none;">
+                <li style="margin-bottom: 15px;">→ <a href="/blog/how-to-compare-json-files.html" style="color: var(--primary-color);">How to Compare JSON Files: A Complete Guide</a></li>
+                <li style="margin-bottom: 15px;">→ <a href="/features.html" style="color: var(--primary-color);">JSDiff Features - Complete Feature List</a></li>
+                <li style="margin-bottom: 15px;">→ <a href="/faq.html" style="color: var(--primary-color);">Frequently Asked Questions</a></li>
+            </ul>
         </div>
-
-        <p>When comparing files, you have two main approaches: text diff and JSON diff. While they might seem similar, they serve different purposes and produce different results. Understanding when to use each can save you time and prevent confusion.</p>
-
-        <h2>What's the Difference?</h2>
-        
-        <table class="comparison-table">
-            <tr>
-                <th>Aspect</th>
-                <th>Text Diff</th>
-                <th>JSON Diff</th>
-            </tr>
-            <tr>
-                <td>What it compares</td>
-                <td>Raw text content</td>
-                <td>Structured data</td>
-            </tr>
-            <tr>
-                <td>Formatting sensitivity</td>
-                <td>High (whitespace matters)</td>
-                <td>Low (ignores formatting)</td>
-            </tr>
-                <td>Key order sensitivity</td>
-                <td>High</td>
-                <td>Low (usually)</td>
-            </tr>
-            <tr>
-                <td>Best for</td>
-                <td>Code, logs, plain text</td>
-                <td>API responses, configs</td>
-            </tr>
-            <tr>
-                <td>Example changes detected</td>
-                <td>"name" vs " name"</td>
-                <td>value changes only</td>
-            </tr>
-        </table>
-
-        <h2>When to Use Text Diff</h2>
-        <p>Text diff treats files as plain strings and compares them character by character. Use text diff when:</p>
-        <ul>
-            <li><strong>Comparing source code:</strong> When exact formatting matters (Python indentation, etc.)</li>
-            <li><strong>Reviewing log files:</strong> When you need to see every character change</li>
-            <li><strong>Checking configuration files:</strong> When whitespace or comments are significant</li>
-            <li><strong>Legal documents:</strong> When every character change must be tracked</li>
-        </ul>
-
-        <h3>Text Diff Example:</h3>
-        <pre><code>// File 1
-{
-  "name": "John",
-  "age": 30
-}
-
-// File 2
-{
-    "name": "John",
-    "age": 30
-}
-
-// Text diff result: Shows difference in indentation!
-// JSON diff result: No difference (same data)</code></pre>
-
-        <h2>When to Use JSON Diff</h2>
-        <p>JSON diff parses the files as structured data and compares the actual values. Use JSON diff when:</p>
-        <ul>
-            <li><strong>Comparing API responses:</strong> Focus on data changes, not formatting</li>
-            <li><strong>Checking configuration:</strong> When only values matter, not layout</li>
-            <li><strong>Data validation:</strong> When verifying data integrity</li>
-            <li><strong>Database migrations:</strong> When comparing exported data</li>
-        </ul>
-
-        <h3>JSON Diff Example:</h3>
-        <pre><code>// File 1
-{"users":[{"name":"John","age":30}]}
-
-// File 2
-{
-  "users": [
-    {
-      "age": 30,
-      "name": "John"
-    }
-  ]
-}
-
-// Text diff result: Many differences!
-// JSON diff result: No difference (same data, different formatting)</code></pre>
-
-        <h2>Real-World Scenarios</h2>
-
-        <h3>Scenario 1: API Development</h3>
-        <p><strong>Recommendation:</strong> Use JSON diff</p>
-        <p>When comparing API responses, you care about the data, not how it's formatted. JSON diff will show you actual field changes without being distracted by indentation or key ordering differences.</p>
-
-        <h3>Scenario 2: Code Review</h3>
-        <p><strong>Recommendation:</strong> Use Text diff</p>
-        <p>When reviewing code changes, formatting matters. Extra whitespace, missing newlines, or indentation changes can affect code functionality (especially in Python).</p>
-
-        <h3>Scenario 3: Configuration Files</h3>
-        <p><strong>Recommendation:</strong> Depends on format</p>
-        <ul>
-            <li>JSON configs → JSON diff</li>
-            <li>YAML configs → Text diff (structure matters)</li>
-            <li>INI files → Text diff</li>
-        </ul>
-
-        <h2>How to Choose</h2>
-        <p>Ask yourself these questions:</p>
-        <ol>
-            <li><strong>Does formatting matter?</strong> If yes → Text diff</li>
-            <li><strong>Am I comparing data or code?</strong> Data → JSON diff, Code → Text diff</li>
-            <li><strong>Do key names have meaning?</strong> If order matters → Text diff</li>
-            <li><strong>Are the files minified?</strong> If yes → JSON diff (text diff will be unreadable)</li>
-        </ol>
-
-        <h2>Using JSDiff for Both</h2>
-        <p>JSDiff supports both comparison methods, making it easy to choose the right approach:</p>
-        <pre><code>import { diffJson, diffLines } from 'diff';
-
-// JSON diff - ignores formatting
-const jsonDifferences = diffJson(object1, object2);
-
-// Text diff - includes formatting
-const textDifferences = diffLines(jsonString1, jsonString2);</code></pre>
-
-        <h2>Conclusion</h2>
-        <p>Both JSON diff and text diff have their place in a developer's toolkit. The key is understanding what you're trying to achieve:</p>
-        <ul>
-            <li>Use <strong>JSON diff</strong> when you care about data integrity</li>
-            <li>Use <strong>text diff</strong> when you care about exact content</li>
-        </ul>
-        <p>When in doubt, try both and see which gives you more useful results for your specific use case.</p>
-
-        <p><strong>Ready to try both methods?</strong> <a href="/demo.html">Test JSDiff online</a> and switch between JSON and text comparison modes.</p>
-    </article>
-
-    <div class="cta-section" style="margin-top: 60px;">
-        <h2>Try JSDiff Today</h2>
-        <p>Free, private, and works offline. No signup required.</p>
-        <a href="/demo.html" class="btn">Start Comparing →</a>
     </div>
-</main>
+</article>
 
-<footer class="main-footer">
-    <div class="footer-container">
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/docs/">Documentation</a>
-            <a href="/privacy-policy.html">Privacy Policy</a>
-            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+<footer class="main-footer" style="background: #1a1a2e; color: #fff; padding: 40px 0; margin-top: 60px;">
+    <div class="section-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div>
+                <h3 style="margin-bottom: 10px;">⚡ JSDiff</h3>
+                <p style="color: #888;">Free online JSON diff tool</p>
+            </div>
+            <div style="display: flex; gap: 30px;">
+                <a href="/" style="color: #fff;">Home</a>
+                <a href="/json-diff-online.html" style="color: #fff;">JSON Diff</a>
+                <a href="/javascript-diff.html" style="color: #fff;">JS Diff</a>
+                <a href="https://github.com/daichangya/jsdiff" style="color: #fff;" target="_blank">GitHub</a>
+            </div>
         </div>
-        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+        <div style="border-top: 1px solid #333; margin-top: 30px; padding-top: 20px; text-align: center; color: #666;">
+            <p>&copy; 2026 JSDiff. Open source under MIT License.</p>
+        </div>
     </div>
 </footer>
 
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWZV1HVCPJ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HWZV1HVCPJ');
+</script>
 </body>
 </html>
