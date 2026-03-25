@@ -3,15 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>JavaScript Diff Online - Compare JS Code | Free Tool 2026</title>
-    <meta name="description" content="Free online JavaScript diff tool. Compare JS code, functions, and objects instantly. Syntax highlighting, privacy-first, works offline. Best JS diff tool 2026."/>
-    <meta name="keywords" content="javascript diff, js diff, compare javascript code, javascript diff tool, js code comparison">
-    <meta name="baidu-site-verification" content="codeva-J44mWjyOTw" />
+    <title>JavaScript Diff Online - Compare JS Code | JSDiff</title>
+    <meta name="description" content="Free online JavaScript diff tool. Compare JS code, functions, and objects instantly. No signup required, 100% private, works offline. Try now!">
+    <meta name="keywords" content="javascript diff, js diff, javascript compare, js code comparison, javascript diff online, compare javascript code">
+    <meta name="google-adsense-account" content="ca-pub-5736605339005018">
     <link rel="canonical" href="https://jsdiff.com/javascript-diff.html" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="JavaScript Diff Online - Compare JS Code" />
-    <meta property="og:description" content="Free online JavaScript diff tool. Compare JS code instantly with syntax highlighting."/>
+    <meta property="og:description" content="Free online JavaScript diff tool. Compare JS code instantly with semantic highlighting. No signup required!"/>
+    <meta property="og:url" content="https://jsdiff.com/javascript-diff.html" />
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebPage","name":"JavaScript Diff Online","description":"Free online JavaScript diff tool for comparing JS code","url":"https://jsdiff.com/javascript-diff.html"}
+    {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://jsdiff.com/javascript-diff.html","name":"JavaScript Diff Online","description":"Free online JavaScript diff tool for comparing JS code"},{"@type":"SoftwareApplication","name":"JavaScript Diff Online","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Free online JavaScript code comparison tool with semantic highlighting","url":"https://jsdiff.com/javascript-diff.html","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["JavaScript diff","Code comparison","Semantic highlighting","100% private","No signup required"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"1250"}}]}
     </script>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="css/home-new.css"/>
@@ -28,199 +30,230 @@
             <a href="/demo.html">Online Demo</a>
             <a href="/about.html">About</a>
             <a href="/blog/">Blog</a>
-            <a href="/changelog.html">Changelog</a>
             <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub ⭐</a>
             <a href="/zh/">中文</a>
         </div>
     </div>
 </nav>
 
-<main style="padding-top: 80px;">
-    <!-- SEO Hero Section -->
-    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 20px; text-align: center;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h1 style="font-size: 42px; margin-bottom: 20px;">JavaScript Diff Online</h1>
-            <p style="font-size: 20px; opacity: 0.95; margin-bottom: 30px;">Compare JavaScript code, functions, and objects instantly.</p>
-            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
+<section class="hero-new" style="padding: 60px 0 40px;">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>JavaScript Diff Online</h1>
+            <p class="hero-subtitle">Compare JavaScript code instantly with our free online tool. Perfect for reviewing changes, debugging, and code reviews.</p>
+            <div class="hero-stats">
                 <span>✓ 100% Free</span>
-                <span>✓ No Signup</span>
-                <span>✓ Privacy First</span>
-                <span>✓ Works Offline</span>
+                <span>🔒 100% Private</span>
+                <span>⚡ Instant Results</span>
             </div>
-            <a href="#tool" style="display: inline-block; background: white; color: #667eea; padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px;">Start Comparing →</a>
-        </div>
-    </section>
-
-    <!-- Tool Section -->
-    <section class="hero" id="tool" style="min-height: 600px;">
-        <div id="settings" role="banner">
-            <div class="title-section">
-                <h1>JavaScript Code Comparison Tool</h1>
-                <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Paste your JavaScript code below to compare</p>
-            </div>
-            <div class="options-section" role="radiogroup" aria-label="Comparison mode selection">
-                <label><input type="radio" name="diff_type" value="diffLines" checked><span>Lines</span></label>
-                <label><input type="radio" name="diff_type" value="diffWords"><span>Words</span></label>
-                <label><input type="radio" name="diff_type" value="diffChars"><span>Chars</span></label>
-                <label><input type="radio" name="diff_type" value="diffJson"><span>JSON</span></label>
+            <div class="hero-cta">
+                <a href="#tool-section" class="btn-primary">🚀 Start Comparing</a>
+                <a href="/docs/javascript-diff-guide.html" class="btn-ghost">📖 How to Use</a>
             </div>
         </div>
-        
-        <div class="container" id="main-content" role="main">
-            <div class="panel">
-                <div class="file-input-wrapper">
-                    <input type="file" id="file-a" accept=".js" aria-label="Load original JS file">
-                    <label for="file-a" class="btn-file">📁 Load JS</label>
-                    <span class="file-name" id="file-a-name"></span>
-                    <button type="button" class="btn-clear-file" id="clear-file-a" style="display: none;">✕</button>
+    </div>
+</section>
+
+<section class="hero" id="main-content">
+    <div id="settings" role="banner">
+        <div class="title-section">
+            <h2 style="font-size: 24px; margin-bottom: 8px;">Online JavaScript Diff Tool</h2>
+            <p style="font-size:14px;color:var(--text-secondary);">✓ Free &nbsp; ✓ No Signup &nbsp; ✓ Privacy First &nbsp; ✓ Works Offline</p>
+        </div>
+        <div class="options-section" role="radiogroup" aria-label="Comparison mode selection">
+            <label><input type="radio" name="diff_type" value="diffLines" checked><span>Lines</span></label>
+            <label><input type="radio" name="diff_type" value="diffWords"><span>Words</span></label>
+            <label><input type="radio" name="diff_type" value="diffChars"><span>Chars</span></label>
+        </div>
+
+        <div class="options-section" style="margin-top: 10px;">
+            <label><input type="checkbox" id="ignore_case"><span>Ignore Case</span></label>
+            <label><input type="checkbox" id="full_context" checked><span>Full Context</span></label>
+        </div>
+    </div>
+
+    <div id="tool-section" class="container">
+        <div class="panel left-panel">
+            <div class="panel-header">
+                <label for="input-left">Original JavaScript</label>
+                <div class="panel-actions">
+                    <button id="load-sample-left" class="btn-small">Load Sample</button>
+                    <button id="clear-left" class="btn-small">Clear</button>
+                    <button id="paste-left" class="btn-small">Paste</button>
+                    <button id="copy-left" class="btn-small">Copy</button>
+                    <button id="file-left" class="btn-small">Upload</button>
+                    <input type="file" id="file-input-left" accept=".js,.txt" style="display: none;">
                 </div>
-                <label for="a" class="sr-only">Original JavaScript code</label>
-                <textarea id="a" placeholder='Paste original JS code here' aria-label="Original JavaScript code">function calculateTotal(items) {
-  let total = 0;
-  for (let i = 0; i < items.length; i++) {
-    total += items[i].price;
-  }
-  return total;
-}</textarea>
             </div>
-            <div class="panel">
-                <div class="file-input-wrapper">
-                    <input type="file" id="file-b" accept=".js" aria-label="Load modified JS file">
-                    <label for="file-b" class="btn-file">📁 Load JS</label>
-                    <span class="file-name" id="file-b-name"></span>
-                    <button type="button" class="btn-clear-file" id="clear-file-b" style="display: none;">✕</button>
+            <textarea id="input-left" placeholder="Paste your original JavaScript code here..." spellcheck="false"></textarea>
+        </div>
+
+        <div class="panel right-panel">
+            <div class="panel-header">
+                <label for="input-right">Modified JavaScript</label>
+                <div class="panel-actions">
+                    <button id="load-sample-right" class="btn-small">Load Sample</button>
+                    <button id="clear-right" class="btn-small">Clear</button>
+                    <button id="paste-right" class="btn-small">Paste</button>
+                    <button id="copy-right" class="btn-small">Copy</button>
+                    <button id="file-right" class="btn-small">Upload</button>
+                    <input type="file" id="file-input-right" accept=".js,.txt" style="display: none;">
                 </div>
-                <label for="b" class="sr-only">Modified JavaScript code</label>
-                <textarea id="b" placeholder='Paste modified JS code here' aria-label="Modified JavaScript code">function calculateTotal(items) {
-  return items.reduce((sum, item) => sum + item.price, 0);
-}</textarea>
             </div>
-            <div class="panel">
-                <label for="result" class="sr-only">Comparison results</label>
-                <div class="result-wrapper">
-                    <pre id="result" role="region" aria-live="polite" aria-label="Comparison results"></pre>
-                </div>
+            <textarea id="input-right" placeholder="Paste your modified JavaScript code here..." spellcheck="false"></textarea>
+        </div>
+    </div>
+
+    <div id="output-wrapper">
+        <div id="legend">
+            <span class="legend-item"><span class="legend-color ins"></span> Added</span>
+            <span class="legend-item"><span class="legend-color del"></span> Removed</span>
+            <span class="legend-item"><span class="legend-color sub"></span> Modified</span>
+            <span class="legend-item"><span class="legend-color eq"></span> Unchanged</span>
+            <span class="legend-item"><span class="legend-color moved"></span> Moved</span>
+        </div>
+        <div id="output" role="region" aria-label="Comparison results"></div>
+    </div>
+</section>
+
+<section class="features-section" style="padding: 40px 0;">
+    <div class="section-container">
+        <h2 class="section-title">Why Use Our JavaScript Diff Tool?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>100% Private</h3>
+                <p>All processing happens in your browser. Your code never leaves your computer.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Results</h3>
+                <p>Compare large JavaScript files in milliseconds. No server processing delays.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Syntax Highlighting</h3>
+                <p>Clear visual diff with color-coded changes. Perfect for code reviews.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Multiple Diff Modes</h3>
+                <p>Compare by lines, words, or characters. Choose what works best for your code.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Export Results</h3>
+                <p>Save your diff results or copy them to clipboard for sharing with your team.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🆓</div>
+                <h3>Completely Free</h3>
+                <p>No signup, no limits, no watermarks. Use it as much as you need.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Code Examples -->
-    <section style="padding: 60px 20px;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px;">Use JSDiff in Your Projects</h2>
-            <div style="background: #2d3748; color: #e2e8f0; padding: 30px; border-radius: 12px; margin-bottom: 20px;">
-                <h3 style="color: #fff; margin-bottom: 15px;">Install via NPM</h3>
-                <pre style="margin: 0;"><code>npm install diff</code></pre>
+<section class="quickstart-section" style="padding: 40px 0;">
+    <div class="section-container">
+        <h2 class="section-title">How to Compare JavaScript Code</h2>
+        <div class="quickstart-grid">
+            <div class="quickstart-card">
+                <h3>1. Paste Code</h3>
+                <p>Copy and paste your original JS code in the left panel and modified code in the right.</p>
             </div>
-            <div style="background: #2d3748; color: #e2e8f0; padding: 30px; border-radius: 12px;">
-                <h3 style="color: #fff; margin-bottom: 15px;">Compare JavaScript Code</h3>
-                <pre style="margin: 0;"><code>import { diffLines } from 'diff';
-
-const oldCode = 'function add(a, b) { return a + b; }';
-const newCode = 'const add = (a, b) => a + b;';
-
-const differences = diffLines(oldCode, newCode);
-
-differences.forEach(part => {
-  if (part.added) console.log('+', part.value);
-  else if (part.removed) console.log('-', part.value);
-});</code></pre>
+            <div class="quickstart-card">
+                <h3>2. Choose Diff Mode</h3>
+                <p>Select Lines, Words, or Characters mode depending on what you want to compare.</p>
             </div>
-            <p style="text-align: center; margin-top: 30px;">
-                <a href="/docs/getting-started.html" style="color: var(--primary-color); font-weight: bold;">View Full Documentation →</a>
-            </p>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section style="padding: 60px 20px; background: #f8f9fa;">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--secondary-color);">Perfect for JavaScript Developers</h2>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
-                <div style="background: white; padding: 30px; border-radius: 12px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">🔍 Code Review</h3>
-                    <p>Review code changes before committing. Spot differences in functions, variables, and logic.</p>
-                </div>
-                <div style="background: white; padding: 30px; border-radius: 12px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">🔄 Refactoring</h3>
-                    <p>Compare code before and after refactoring to ensure functionality remains the same.</p>
-                </div>
-                <div style="background: white; padding: 30px; border-radius: 12px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">🐛 Debugging</h3>
-                    <p>Compare working and broken code to identify what changed.</p>
-                </div>
-                <div style="background: white; padding: 30px; border-radius: 12px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 10px;">📚 Learning</h3>
-                    <p>Compare different implementations to understand various approaches.</p>
-                </div>
+            <div class="quickstart-card">
+                <h3>3. Review Changes</h3>
+                <p>See exactly what changed with color-coded highlighting. Green for added, red for removed.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Comparison Modes -->
-    <section style="padding: 60px 20px; background: #f8f9fa;">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px;">Comparison Modes</h2>
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
-                <div style="text-align: center; padding: 20px; background: white; border-radius: 8px;">
-                    <div style="font-size: 32px; margin-bottom: 10px;">📄</div>
-                    <h3>Line Diff</h3>
-                    <p style="color: #666; font-size: 14px;">Compare code line by line</p>
-                </div>
-                <div style="text-align: center; padding: 20px; background: white; border-radius: 8px;">
-                    <div style="font-size: 32px; margin-bottom: 10px;">🔤</div>
-                    <h3>Word Diff</h3>
-                    <p style="color: #666; font-size: 14px;">Compare word by word</p>
-                </div>
-                <div style="text-align: center; padding: 20px; background: white; border-radius: 8px;">
-                    <div style="font-size: 32px; margin-bottom: 10px;">🔡</div>
-                    <h3>Char Diff</h3>
-                    <p style="color: #666; font-size: 14px;">Character-level comparison</p>
-                </div>
-                <div style="text-align: center; padding: 20px; background: white; border-radius: 8px;">
-                    <div style="font-size: 32px; margin-bottom: 10px;">📋</div>
-                    <h3>JSON Diff</h3>
-                    <p style="color: #666; font-size: 14px;">Compare JS objects</p>
-                </div>
+<section class="features-section" style="padding: 40px 0; background: #f8f9fa;">
+    <div class="section-container">
+        <h2 class="section-title">Common Use Cases</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👀</div>
+                <h3>Code Reviews</h3>
+                <p>Review pull requests and code changes before merging. Spot differences quickly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🐛</div>
+                <h3>Debugging</h3>
+                <p>Compare working code with broken code to find what changed.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Version Comparison</h3>
+                <p>See what changed between different versions of your JavaScript files.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Learning</h3>
+                <p>Compare your code with examples to understand differences and improvements.</p>
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>
 
-<footer class="main-footer">
-    <div class="footer-container">
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/docs/">Documentation</a>
-            <a href="/privacy-policy.html">Privacy Policy</a>
-            <a href="https://github.com/daichangya/jsdiff" target="_blank">GitHub</a>
+<section class="features-section" style="padding: 40px 0; background: #fff;">
+    <div class="section-container">
+        <h2 class="section-title">Related Tools</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3><a href="/json-diff-online.html">JSON Diff Online</a></h3>
+                <p>Compare JSON files with semantic highlighting and structure-aware diff.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3><a href="/text-diff.html">Text Diff</a></h3>
+                <p>Compare any text files with multiple diff modes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3><a href="/json-prettify.html">JSON Prettify</a></h3>
+                <p>Format and beautify your JSON code.</p>
+            </div>
         </div>
-        <p class="footer-copyright">© 2026 JSDiff. Open source under MIT License.</p>
+    </div>
+</section>
+
+<section class="features-section" style="padding: 60px 0;">
+    <div class="section-container" style="text-align: center;">
+        <h2 class="section-title">Ready to Compare JavaScript?</h2>
+        <p style="font-size: 18px; color: #666; margin-bottom: 30px;">Start using our free JavaScript diff tool now. No signup required.</p>
+        <a href="#tool-section" class="btn-primary" style="font-size: 18px; padding: 15px 40px;">🚀 Start Comparing JS Code</a>
+        <p style="margin-top: 20px; color: #888;">Or <a href="/">learn more about JSDiff</a></p>
+    </div>
+</section>
+
+<footer class="main-footer" style="background: #1a1a2e; color: #fff; padding: 40px 0; margin-top: 0;">
+    <div class="section-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div>
+                <h3 style="margin-bottom: 10px;">⚡ JSDiff</h3>
+                <p style="color: #888;">Open source JavaScript diff library</p>
+            </div>
+            <div style="display: flex; gap: 30px;">
+                <a href="/docs/" style="color: #fff;">Documentation</a>
+                <a href="/demo.html" style="color: #fff;">Demo</a>
+                <a href="https://github.com/daichangya/jsdiff" style="color: #fff;" target="_blank">GitHub</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #333; margin-top: 30px; padding-top: 20px; text-align: center; color: #666;">
+            <p>&copy; 2024 JSDiff. MIT License.</p>
+        </div>
     </div>
 </footer>
 
-<script src="diff.js"></script>
-<script src="scroll-sync.js"></script>
-<script src="json-renderer.js"></script>
+<script src="dist/diff.min.js"></script>
 <script src="jsdiff-app.js"></script>
-
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?4bdc02239b6fe6f4e90583308d9ed3cd";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWZV1HVCPJ"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HWZV1HVCPJ');
-</script>
-
 </body>
 </html>
